@@ -1,7 +1,7 @@
 Home 
     - Portfolio Value
     - Quick Actions 
-        - Cooling Off
+        - RSP (Regular Saving Plan)
         - Switching
         - Redemption
         - Top up 
@@ -11,7 +11,7 @@ Home
 Portfolio 
     - Holdings 
         - Account Switcher 
-        - Funds (Retail/Wholesale)
+        - My Funds 
             - Fund Details 
                 - Top up
                 - Switching
@@ -19,35 +19,56 @@ Portfolio
                 - RSP (Regular Saving Plan)
     - Analysis 
         - Allocation
+            - Filter: view by Fund, Goal, Account
         - Account Breakdown 
             - Sort by Master Account/Fund/Purpose
-        - Charts 
 
 Invest 
     - Your Goals
     - Goal Details 
     - Create Goals 
-    - Explore Funds 
+    - Available Funds (Retail/Wholesale) // available funds for investing. 
 
 Activity
     - Transactions 
     - Statements 
 
-More 
+Profile
+    - Account Details
+        - Name / all personal details 
+        - Email 
+        - Address
+        - Phone Number
     - Security 
         - Change Password 
         - Secret Phrase 
-        - 2FA Authentication 
+        - 2FA Authentication // On Hold Dont Do First 
     - Bank Account Info
     - Notification Settings 
     - Contact Us 
     - About Opus Touch 
 
-Profile Icon (Top Left)
-    - Name / all personal details 
-    - Email 
-    - Address
-    - Phone Number 
 
 Notification Icon (Top Right)
     - Shows notifications 
+
+
+SubPages 
+    - RSP 
+    - Switching 
+    - Cooling Off
+    - Redemption
+    - Top up / Invest 
+    - Your Goals (View All)
+    - Create Goal Page 
+    - Available Funds [Retail/Wholesale] (View All) // Retail has both Info & Invest, while Wholesale only has Info
+    - Change Password 
+    - Secret Phrase 
+    - 2FA Authentication // On Hold Dont Do First 
+    - Bank Info 
+    - Notification Settings 
+    - Contact Us 
+    - About Opus Touch
+    - Transaction Confirm Page (Boost, FPX, Offline)
+    - Fund FactSheet for Funds (inside Available Funds)
+    - 
