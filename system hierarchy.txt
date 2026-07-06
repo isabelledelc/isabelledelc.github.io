@@ -1,0 +1,53 @@
+Home 
+    - Portfolio Value
+    - Quick Actions 
+        - Cooling Off
+        - Switching
+        - Redemption
+        - Top up 
+    - Recent Activity (Transactions)
+    - Market Commentary
+
+Portfolio 
+    - Holdings 
+        - Account Switcher 
+        - Funds (Retail/Wholesale)
+            - Fund Details 
+                - Top up
+                - Switching
+                - Redemption
+                - RSP (Regular Saving Plan)
+    - Analysis 
+        - Allocation
+        - Account Breakdown 
+            - Sort by Master Account/Fund/Purpose
+        - Charts 
+
+Invest 
+    - Your Goals
+    - Goal Details 
+    - Create Goals 
+    - Explore Funds 
+
+Activity
+    - Transactions 
+    - Statements 
+
+More 
+    - Security 
+        - Change Password 
+        - Secret Phrase 
+        - 2FA Authentication 
+    - Bank Account Info
+    - Notification Settings 
+    - Contact Us 
+    - About Opus Touch 
+
+Profile Icon (Top Left)
+    - Name / all personal details 
+    - Email 
+    - Address
+    - Phone Number 
+
+Notification Icon (Top Right)
+    - Shows notifications 
