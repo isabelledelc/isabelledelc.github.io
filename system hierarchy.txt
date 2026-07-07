@@ -54,11 +54,11 @@ Notification Icon (Top Right)
 
 
 SubPages 
-    - RSP 
-    - Switching 
-    - Cooling Off
-    - Redemption
-    - Top up / Invest 
+    - RSP (justin)
+    - Switching (justin)
+    - Cooling Off (justin)
+    - Redemption (justin)
+    - Top up / Invest (justin)
     - Your Goals (View All)
     - Create Goal Page 
     - Available Funds [Retail/Wholesale] (View All) // Retail has both Info & Invest, while Wholesale only has Info
@@ -66,9 +66,9 @@ SubPages
     - Secret Phrase 
     - 2FA Authentication // On Hold Dont Do First 
     - Bank Info 
-    - Notification Settings 
-    - Contact Us 
-    - About Opus Touch
-    - Transaction Confirm Page (Boost, FPX, Offline)
+    - Notification Settings (extra)
+    - Contact Us (justin)
+    - About Opus Touch (justin)
+    - Transaction Confirm Page (Boost, FPX, Offline)  
     - Fund FactSheet for Funds (inside Available Funds)
     - 
