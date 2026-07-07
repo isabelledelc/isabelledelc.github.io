@@ -1,51 +1,53 @@
 Home 
-    - Portfolio Value
-    - Quick Actions 
-        - RSP (Regular Saving Plan)
-        - Switching
-        - Redemption
-        - Top up 
-    - Recent Activity (Transactions)
-    - Market Commentary
+    - Portfolio Value   ✓  
+        - View All Accounts 
+    - Quick Actions     ✓
+        - RSP (Regular Saving Plan)         // Sub page not done yet, but button is there
+        - Switching                         // ''
+        - Redemption                        // ''
+        - Top up                            // ''
+    - Recent Activity (Transactions)    ✓
+    - Market Commentary     ✓
 
 Portfolio 
-    - Holdings 
-        - Account Switcher 
-        - My Funds 
-            - Fund Details 
-                - Top up
-                - Switching
-                - Redemption
-                - RSP (Regular Saving Plan)
-    - Analysis 
-        - Allocation
+    - Holdings      ✓
+        - Account Switcher      ✓          // Switch between viewing Master/Sub Accounts
+        - My Funds              ✓          // Master Acc View: shows all funds from sub and master | Sub Acc View: sohws only respective funds for said acc
+            - Fund Details                                
+                - Top up                    // use same sub page
+                - Switching                 // ''
+                - Redemption                // ''
+                - RSP (Regular Saving Plan) // ''
+                - Cooling Off               // Only show when applicable 
+    - Analysis      ✓
+        - Allocation    ✓
             - Filter: view by Fund, Goal, Account
-        - Account Breakdown 
+        - Account Breakdown     ✓
             - Sort by Master Account/Fund/Purpose
 
 Invest 
-    - Your Goals
-    - Goal Details 
-    - Create Goals 
-    - Available Funds (Retail/Wholesale) // available funds for investing. 
+    - Your Goals    ✓
+    - Goal Details      // Sub page not created
+    - Create Goals      // '' 
+    - Available Funds (Retail/Wholesale)   ✓        // available funds for investing, sub page not created 
 
 Activity
-    - Transactions 
-    - Statements 
+    - Transactions  ✓
+    - Statements    
 
-Profile
-    - Account Details
-        - Name / all personal details 
-        - Email 
-        - Address
-        - Phone Number
+Settings Page   ✓
+    - Account Details   ✓ 
+        - Name / all personal details ✓
+        - Email     ✓
+        - Address   ✓
+        - Phone Number  ✓
     - Security 
-        - Change Password 
-        - Secret Phrase 
-        - 2FA Authentication // On Hold Dont Do First 
+        - Change Password   ✓
+        - Secret Phrase     ✓
+        - 2FA Authentication                // On Hold Dont Do First 
     - Bank Account Info
     - Notification Settings 
-    - Contact Us 
+    - Contact Us    ✓
     - About Opus Touch 
 
 
@@ -58,17 +60,17 @@ SubPages
     - Switching (justin)
     - Cooling Off (justin)
     - Redemption (justin)
-    - Top up / Invest (justin)
+    - Top up / Invest 
     - Your Goals (View All)
     - Create Goal Page 
-    - Available Funds [Retail/Wholesale] (View All) // Retail has both Info & Invest, while Wholesale only has Info
+    - Available Funds [Retail/Wholesale] (View All)             // Retail has both Info & Invest, while Wholesale only has Info
     - Change Password 
     - Secret Phrase 
     - 2FA Authentication // On Hold Dont Do First 
-    - Bank Info 
+    - Bank Acc Info 
     - Notification Settings (extra)
-    - Contact Us (justin)
+    - Contact Us (justin)       ✓
     - About Opus Touch (justin)
-    - Transaction Confirm Page (Boost, FPX, Offline)  
-    - Fund FactSheet for Funds (inside Available Funds)
+    - Transaction Confirm Page (Boost, FPX, Offline)            ✓
+    - Fund FactSheet for Funds (inside Available Funds)         ✓
     - 
