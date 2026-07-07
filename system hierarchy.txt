@@ -36,11 +36,13 @@ Activity
     - Statements    
 
 Settings Page   ✓
-    - Account Details   ✓ 
-        - Name / all personal details ✓
-        - Email     ✓
-        - Address   ✓
-        - Phone Number  ✓
+    - View Profile      ✓ 
+    - Edit Profile      ✓ 
+        - Account Details   ✓ 
+            - Name / all personal details ✓
+            - Email     ✓
+            - Address   ✓
+            - Phone Number  ✓
     - Security 
         - Change Password   ✓
         - Secret Phrase     ✓
@@ -54,6 +56,18 @@ Settings Page   ✓
 Notification Icon (Top Right)
     - Shows notifications 
 
+Login Page
+
+Sign up Page 
+    - Google 
+    - with email provider 
+        - Display Name 
+        - Inv code optional 
+        - phone number 
+        - email 
+        - password 
+        - confirm password
+
 
 SubPages 
     - RSP (justin)
@@ -64,6 +78,10 @@ SubPages
     - Your Goals (View All)
     - Create Goal Page 
     - Available Funds [Retail/Wholesale] (View All)             // Retail has both Info & Invest, while Wholesale only has Info
+    - Retail View All
+    - Wholesale View 
+    - View all Transactions 
+    - View all Statements 
     - Change Password 
     - Secret Phrase 
     - 2FA Authentication // On Hold Dont Do First 
