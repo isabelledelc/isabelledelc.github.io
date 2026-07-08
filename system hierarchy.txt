@@ -56,7 +56,7 @@ Settings Page   ✓
 Notification Icon (Top Right)
     - Shows notifications 
 
-Login Page
+Login Page      ✓ 
 
 Sign up Page 
     - Google 
@@ -69,26 +69,41 @@ Sign up Page
         - confirm password
 
 
-SubPages 
-    - RSP (justin)
-    - Switching (justin)
-    - Cooling Off (justin)
-    - Redemption (justin)
-    - Top up / Invest 
-    - Your Goals (View All)
-    - Create Goal Page 
-    - Available Funds [Retail/Wholesale] (View All)             // Retail has both Info & Invest, while Wholesale only has Info
-    - Retail View All
-    - Wholesale View 
-    - View all Transactions 
-    - View all Statements 
-    - Change Password 
-    - Secret Phrase 
-    - 2FA Authentication // On Hold Dont Do First 
-    - Bank Acc Info 
-    - Notification Settings (extra)
-    - Contact Us (justin)       ✓
-    - About Opus Touch (justin)
-    - Transaction Confirm Page (Boost, FPX, Offline)            ✓
-    - Fund FactSheet for Funds (inside Available Funds)         ✓
-    - 
+Home SubPages
+    View All Accounts 
+    View All market commentary 
+
+Portfolio SubPages
+    Account Switcher 
+    My Funds 
+    Fund Details 
+
+Investment 
+    View all goals 
+    view goal detials 
+    create goals 
+    retail view all 
+    wholesale view all 
+    fund fact sheet 
+
+Actvity 
+    view all transactions 
+    view all statements 
+
+settings 
+    view profile        ✓
+    edit profile        ✓
+    change password     ✓
+    secret phrase       ✓
+    bank acc info 
+    contact us          ✓
+    about opus touch    ✓
+
+Other SubPages
+    RSP
+    Switching
+    Redemption          ✓
+    Top up / Invest     ✓ (can change more)
+    Cooling Off 
+    Transaction Confirm Page (Boost, FPX, Offline)  ✓
+    payment confirmation    ✓
