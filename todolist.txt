@@ -3,3 +3,9 @@ npm install
 npm run dev 
 
 install intellisense for tailwindcss 
+
+error lens 
+
+prettier code formatter 
+
+prettier eslint 
