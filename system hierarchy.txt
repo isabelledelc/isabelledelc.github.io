@@ -70,18 +70,18 @@ Sign up Page ✓
 
 
 Home SubPages       
-    View All Accounts 
-    View All market commentary 
-        - market commentary details page 
+    View All Accounts   ✓
+    View All market commentary      ✓
+        - market commentary details page    ✓
 
 Portfolio SubPages
-    Account Switcher 
-    My Funds 
-    Fund Details 
+    Account Switcher    ✓ (same with view all accounts)
+    My Funds            ✓
+    Fund Details        in progress 
 
 Investment 
-    View all goals 
-    view goal detials 
+    View all goals      ✓
+    view goal detials   half done 
     create goals 
     retail view all 
     wholesale view all 
@@ -102,12 +102,13 @@ settings
 
 Other SubPages
     RSP                 ✓
+    RSP transaction page ✓
     Switching           ✓
     Redemption          ✓
     Top up / Invest     ✓ 
     Cooling Off         ✓
     Transaction Confirm Page (Boost, FPX, Offline)  ✓
     payment confirmation    ✓
-    FAQ
-    Terms and conditions 
-    forgot password     
+    FAQ                     ✓
+    Terms and conditions    ✓
+    forgot password         ✓

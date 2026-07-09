@@ -1,11 +1,9 @@
-npm install 
+https://sdk.myinvois.hasil.gov.my/einvoicingapi/
 
-npm run dev 
+https://sdk.myinvois.hasil.gov.my/faq/
 
-install intellisense for tailwindcss 
+https://sdk.myinvois.hasil.gov.my/postman/
 
-error lens 
+https://sdk.myinvois.hasil.gov.my/files/SANDBOX%20Env.postman_environment.json
 
-prettier code formatter 
-
-prettier eslint 
+postman app 
