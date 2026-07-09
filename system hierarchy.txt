@@ -1,64 +1,64 @@
 Home 
-    - Portfolio Value   ✓  
+    - Portfolio Value     
         - View All Accounts 
-    - Quick Actions     ✓
+    - Quick Actions     
         - RSP (Regular Saving Plan)         // Sub page not done yet, but button is there
         - Switching                         // ''
         - Redemption                        // ''
         - Top up                            // ''
-    - Recent Activity (Transactions)    ✓
-    - Market Commentary     ✓
+    - Recent Activity (Transactions)    
+    - Market Commentary     
 
 Portfolio 
-    - Holdings      ✓
-        - Account Switcher      ✓          // Switch between viewing Master/Sub Accounts
-        - My Funds              ✓          // Master Acc View: shows all funds from sub and master | Sub Acc View: sohws only respective funds for said acc
+    - Holdings      
+        - Account Switcher                // Switch between viewing Master/Sub Accounts
+        - My Funds                        // Master Acc View: shows all funds from sub and master | Sub Acc View: sohws only respective funds for said acc
             - Fund Details                                
                 - Top up                    // use same sub page
                 - Switching                 // ''
                 - Redemption                // ''
                 - RSP (Regular Saving Plan) // ''
                 - Cooling Off               // Only show when applicable 
-    - Analysis      ✓
-        - Allocation    ✓
+    - Analysis      
+        - Allocation    
             - Filter: view by Fund, Goal, Account
-        - Account Breakdown     ✓
+        - Account Breakdown     
             - Sort by Master Account/Fund/Purpose
 
 Invest 
-    - Your Goals    ✓
+    - Your Goals    
     - Goal Details      // Sub page not created
     - Create Goals      // '' 
-    - Available Funds (Retail/Wholesale)   ✓        // available funds for investing, sub page not created 
+    - Available Funds (Retail/Wholesale)           // available funds for investing, sub page not created 
 
 Activity
-    - Transactions  ✓
+    - Transactions  
     - Statements    
 
-Settings Page   ✓
-    - View Profile      ✓ 
-    - Edit Profile      ✓ 
-        - Account Details   ✓ 
-            - Name / all personal details ✓
-            - Email     ✓
-            - Address   ✓
-            - Phone Number  ✓
+Settings Page   
+    - View Profile      
+    - Edit Profile      
+        - Account Details   
+            - Name / all personal details 
+            - Email     
+            - Address   
+            - Phone Number  
     - Security 
-        - Change Password   ✓
-        - Secret Phrase     ✓
+        - Change Password   
+        - Secret Phrase     
         - 2FA Authentication                // On Hold Dont Do First 
     - Bank Account Info
     - Notification Settings 
-    - Contact Us    ✓
+    - Contact Us    
     - About Opus Touch 
 
 
 Notification Icon (Top Right)
     - Shows notifications 
 
-Login Page      ✓ 
+Login Page   ✓    
 
-Sign up Page 
+Sign up Page ✓
     - Google 
     - with email provider 
         - Display Name 
@@ -69,7 +69,7 @@ Sign up Page
         - confirm password
 
 
-Home SubPages
+Home SubPages       
     View All Accounts 
     View All market commentary 
 
@@ -84,7 +84,7 @@ Investment
     create goals 
     retail view all 
     wholesale view all 
-    fund fact sheet 
+    fund fact sheet     ✓
 
 Actvity 
     view all transactions 
@@ -95,15 +95,15 @@ settings
     edit profile        ✓
     change password     ✓
     secret phrase       ✓
-    bank acc info 
+    bank acc info       ✓
     contact us          ✓
     about opus touch    ✓
 
 Other SubPages
-    RSP
-    Switching
+    RSP                 ✓
+    Switching           ✓
     Redemption          ✓
-    Top up / Invest     ✓ (can change more)
-    Cooling Off 
+    Top up / Invest     ✓ 
+    Cooling Off         ✓
     Transaction Confirm Page (Boost, FPX, Offline)  ✓
     payment confirmation    ✓
