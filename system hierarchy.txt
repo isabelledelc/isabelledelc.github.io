@@ -72,6 +72,7 @@ Sign up Page ✓
 Home SubPages       
     View All Accounts 
     View All market commentary 
+        - market commentary details page 
 
 Portfolio SubPages
     Account Switcher 
@@ -107,3 +108,6 @@ Other SubPages
     Cooling Off         ✓
     Transaction Confirm Page (Boost, FPX, Offline)  ✓
     payment confirmation    ✓
+    FAQ
+    Terms and conditions 
+    forgot password     
