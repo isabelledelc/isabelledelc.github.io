@@ -1,9 +1,7 @@
-https://sdk.myinvois.hasil.gov.my/einvoicingapi/
-
-https://sdk.myinvois.hasil.gov.my/faq/
-
 https://sdk.myinvois.hasil.gov.my/postman/
 
-https://sdk.myinvois.hasil.gov.my/files/SANDBOX%20Env.postman_environment.json
+3 dots beside + import, both sandbox and einvoicing file 
 
-postman app 
+get client id and client secret and start testing 
+
+https://preprod-profile.myinvois.hasil.gov.my/register
