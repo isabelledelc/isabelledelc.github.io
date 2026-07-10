@@ -5,3 +5,13 @@ https://sdk.myinvois.hasil.gov.my/postman/
 get client id and client secret and start testing 
 
 https://preprod-profile.myinvois.hasil.gov.my/register
+
+
+
+
+create goal page 
+
+name 
+target amount 
+goal achievement date (optional)
+
