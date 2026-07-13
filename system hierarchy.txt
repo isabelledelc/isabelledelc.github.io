@@ -77,19 +77,19 @@ Home SubPages
 Portfolio SubPages
     Account Switcher    ✓ (same with view all accounts)
     My Funds            ✓
-    Fund Details        in progress 
+    Fund Details        ✓ 
 
 Investment 
     View all goals      ✓
-    view goal detials   half done 
-    create goals 
-    retail view all 
-    wholesale view all 
+    view goal detials   ✓ 
+    create goals        ✓
+    retail view all     ✓
+    wholesale view all  ✓
     fund fact sheet     ✓
 
 Actvity 
-    view all transactions 
-    view all statements 
+    view all transactions   ✓
+    view all statements     ✓
 
 settings 
     view profile        ✓
