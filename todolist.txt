@@ -1,17 +1,6 @@
-https://sdk.myinvois.hasil.gov.my/postman/
+add header.tsx file 
 
-3 dots beside + import, both sandbox and einvoicing file 
+change navbar to reflect Figma 
 
-get client id and client secret and start testing 
-
-https://preprod-profile.myinvois.hasil.gov.my/register
-
-
-
-
-create goal page 
-
-name 
-target amount 
-goal achievement date (optional)
-
+add files for each page 
+root file doesnt change
