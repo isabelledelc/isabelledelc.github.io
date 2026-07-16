@@ -1,6 +1,6 @@
 // LandingPage.tsx
-import Navbar from './components/shared/navbar.tsx';
-import Footer from './components/shared/footer.tsx';
+import Navbar from '../../components/shared/navbar';
+import Footer from '../../components/shared/footer';
 
 import HeroSection from './components/HeroSection';
 import FeaturesSection from './components/FeaturesSection';
