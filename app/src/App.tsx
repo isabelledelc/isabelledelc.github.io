@@ -1,15 +1,19 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import './App.css'
+import LandingPage from "./pages/Landing/LandingPage";
+import LoginPage from "./pages/Login/LoginPage";
+import HomePage from "./pages/Home/HomePage";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-4xl font-italic text-blue-600">
-        Hello Tailwind
-      </h1>
-      <p className="italic"> hi ryan </p>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
