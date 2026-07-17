@@ -1,6 +1,16 @@
-add header.tsx file 
+new file called header.tsx
+    - has OT logo, notifications, profile with name, and dropdown for logout 
 
-change navbar to reflect Figma 
+navbar.tsx file 
+    - have 5 tabs, dashboard, portfolio, investment, Activity, Settings 
 
-add files for each page 
-root file doesnt change
+
+
+
+
+
+Github Repo 
+    - add files for each page 
+    - root file doesnt change
+
+
