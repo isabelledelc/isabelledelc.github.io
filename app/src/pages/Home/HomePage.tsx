@@ -1,4 +1,5 @@
 // DashboardPage.tsx
+import Header from '../../components/shared/header';
 import Navbar from '../../components/shared/navbar';
 import Footer from '../../components/shared/footer';
 
@@ -10,6 +11,7 @@ import MarketCommentary from './components/ViewMarketCommentary';
 export default function HomePage() {
   return (
     <div style={{ width: '100%', minHeight: '100vh', fontFamily: 'sans-serif' }}>
+      <Header />
       <Navbar />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
