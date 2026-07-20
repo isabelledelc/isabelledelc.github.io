@@ -8,6 +8,7 @@ import Investment from "./pages/Invest/Investment.tsx";
 import Activity from "./pages/Activity/Activity.tsx";
 import Settings from "./pages/Settings/Settings.tsx";
 import ViewProfile from './pages/Settings/subpages/ViewProfile';
+import EditProfile from './pages/Settings/components/EditProfile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/activity" element={<Activity />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/settings/view-profile" element={<ViewProfile />} />
+        <Route path="/settings/edit-profile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   );
