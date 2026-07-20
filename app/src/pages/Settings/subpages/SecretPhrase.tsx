@@ -32,110 +32,166 @@ export default function SecretPhrase() {
   const [phrase, setPhrase] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [step, setStep] = useState(1);
+
+  const selectedItem = images.find((item) => item.id === selectedImage)!;
+  const confirmationPhrase = phrase.trim() || 'No secret phrase entered';
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!phrase.trim()) return;
+    setStep(2);
+  }
+
+  function handleConfirm() {
     setShowSuccess(true);
   }
 
-  const selected = images.find((item) => item.id === selectedImage)!;
-
   return (
-    <div className="min-h-screen w-full bg-[#E9F7E5]">
+    <div className="min-h-screen w-full bg-[#A8E090]">
       <Header />
       <Navbar />
 
-      <main className="mx-auto max-w-5xl px-4 pb-16 pt-8">
-        <div className="rounded-[32px] bg-white p-6 shadow-[0_30px_80px_rgba(30,63,40,0.08)]">
-          <div className="mb-6 flex items-center gap-3 text-xl font-semibold text-slate-900">
-            <Link
-              to="/settings/security"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 text-slate-500 transition hover:border-[#528c68] hover:text-[#528c68]"
-            >
-              ←
-            </Link>
-            <span>Secret Phrase</span>
-            <span className="ml-3 text-sm text-slate-500">🔑</span>
-          </div>
-
-          <div className="mb-8 space-y-3 text-center">
-            <h2 className="text-lg font-semibold text-slate-900">Setting Up Your Security Secret Phrase</h2>
-            <p className="text-sm text-slate-600">Please make sure that the following details are correct.</p>
-          </div>
-
-          <div className="mb-8 rounded-[24px] border border-[#D9F2D9] bg-[#F5FBF5] p-6 text-center">
-            <div className="mx-auto mb-4 flex h-[156px] w-[156px] items-center justify-center rounded-3xl border border-slate-200 bg-white">
-              <img src={selected.src} alt={selected.label} className="h-28 w-28 object-contain" />
-            </div>
-            <div className="text-sm font-semibold text-slate-900">{selected.label}</div>
-            <div className="text-xs text-slate-500">Selected secret phrase image</div>
-          </div>
-
-          <div className="mb-8">
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-              {images.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setSelectedImage(item.id)}
-                  className={`rounded-3xl border p-3 transition ${selectedImage === item.id ? 'border-[#2ECC71] bg-[#ECF9EE]' : 'border-slate-200 bg-slate-50 hover:border-[#8ACB8A]'}`}
-                >
-                  <img src={item.src} alt={item.label} className="mx-auto h-14 w-14 object-contain" />
-                  <div className="mt-2 text-xs text-slate-600">{item.label}</div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2 text-center">
-              <p className="text-sm text-slate-600">Please enter your secret phrase</p>
-            </div>
-            <div className="relative mx-auto max-w-2xl">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={phrase}
-                onChange={(e) => setPhrase(e.target.value)}
-                className="w-full rounded-full border border-[#8ACB8A] px-4 py-3 text-sm text-slate-900 outline-none focus:border-[#2ECC71]"
-                placeholder="Enter secret phrase"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+      <main className="mx-auto max-w-4xl px-4 pb-16 pt-8">
+        <div className="overflow-hidden rounded-[24px] bg-white shadow-lg">
+          <div className="border-b border-slate-200 p-6">
+            <div className="flex items-center gap-4 text-xl font-bold text-slate-900">
+              <Link
+                to="/settings/security"
+                className="text-slate-700 transition hover:text-[#2ECC71]"
+                aria-label="Back"
               >
-                {showPassword ? '🙈' : '👁️'}
-              </button>
+                &lt;
+              </Link>
+              <span>Secret Phrase</span>
+              <span className="text-xl">🔑</span>
             </div>
+          </div>
 
-            <div className="text-center">
-              <button className="rounded-full bg-green-600 px-10 py-3 text-sm font-semibold text-white transition hover:bg-green-700">
-                Next
-              </button>
-            </div>
-          </form>
+          <div className="px-6 pb-10 pt-8 text-center">
+            <h2 className="text-xl font-bold text-slate-800">
+              Setting Up Your Security Secret Phrase
+            </h2>
+            <p className="mt-6 text-sm font-medium text-slate-600">
+              {step === 1
+                ? 'Please Select One Of The Picture As Your Secret Phase Picture'
+                : 'Please Make Sure That The Following Details Are Correct'}
+            </p>
+
+            {step === 1 && (
+              <div className="mx-auto mt-8 grid max-w-xl grid-cols-5 gap-6">
+                {images.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setSelectedImage(item.id)}
+                    className={`flex items-center justify-center rounded-2xl p-2 transition ${
+                      selectedImage === item.id
+                        ? 'scale-110 border-2 border-[#2ECC71] bg-[#ECF9EE]'
+                        : 'hover:scale-105'
+                    }`}
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.label}
+                      className="h-16 w-16 object-contain"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="bg-[#EAF6EA] px-6 py-12 text-center">
+            {step === 1 ? (
+              <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
+                <p className="text-sm font-semibold text-slate-700">
+                  Please Enter Your Secret Phase
+                </p>
+
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={phrase}
+                    onChange={(e) => setPhrase(e.target.value)}
+                    className="w-full rounded-lg border border-[#2ECC71] bg-white px-4 py-2.5 pr-10 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-[#2ECC71]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600"
+                  >
+                    {showPassword ? '🙈' : '👁️'}
+                  </button>
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    className="w-48 rounded-full bg-[#2ECC71] py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#27ae60]"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div className="mx-auto max-w-md space-y-8">
+                <div className="mx-auto flex w-64 flex-col items-center justify-center rounded-2xl border-2 border-[#8ACB8A] bg-white p-8 shadow-sm">
+                  <img
+                    src={selectedItem.src}
+                    alt={selectedItem.label}
+                    className="h-28 w-28 object-contain"
+                  />
+                  <span className="mt-4 text-base font-bold text-slate-900 capitalize">
+                    {selectedItem.label}
+                  </span>
+                </div>
+
+                <div className="rounded-2xl border border-[#8ACB8A] bg-white p-4 text-left shadow-sm">
+                  <p className="text-sm font-semibold text-slate-700">Secret Phrase</p>
+                  <p className="mt-2 break-all text-sm text-slate-900">
+                    {confirmationPhrase}
+                  </p>
+                </div>
+
+                <div>
+                  <button
+                    type="button"
+                    onClick={handleConfirm}
+                    className="w-48 rounded-full bg-[#2ECC71] py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#27ae60]"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </main>
 
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-          <div className="relative w-[420px] rounded-md border-2 border-[#2ECC71] bg-white p-6 text-center shadow-xl">
+          <div className="relative w-[420px] rounded-lg border-2 border-[#2ECC71] bg-white p-6 text-center shadow-xl">
             <button
               onClick={() => setShowSuccess(false)}
-              className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+              className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100"
               aria-label="Close"
             >
               ✕
             </button>
             <div className="mb-4 flex items-center justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#2ECC71] text-white">✓</div>
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2ECC71] text-2xl text-white">
+                ✓
+              </div>
             </div>
-            <h3 className="mb-2 text-2xl font-bold">Success !</h3>
-            <p className="text-sm text-slate-700">Your secret phrase successfully updated!</p>
+            <h3 className="mb-2 text-2xl font-bold text-slate-900">Success !</h3>
+            <p className="text-sm text-slate-700">
+              Your secret phrase successfully updated!
+            </p>
           </div>
         </div>
       )}
     </div>
   );
 }
+
