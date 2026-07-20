@@ -7,6 +7,7 @@ import Portfolio from "./pages/Portfolio/Portfolio.tsx";
 import Investment from "./pages/Invest/Investment.tsx";
 import Activity from "./pages/Activity/Activity.tsx";
 import Settings from "./pages/Settings/Settings.tsx";
+import ViewProfile from './pages/Settings/subpages/ViewProfile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/invest" element={<Investment />} />
         <Route path="/activity" element={<Activity />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/settings/view-profile" element={<ViewProfile />} />
       </Routes>
     </BrowserRouter>
   );
