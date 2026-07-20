@@ -1,4 +1,5 @@
 // LandingPage.tsx
+import Header from '../../components/shared/header';
 import Navbar from '../../components/shared/navbar';
 import Footer from '../../components/shared/footer';
 
@@ -11,18 +12,27 @@ export default function LandingPage() {
   return (
     <div style={{ width: '100%', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       {/* Shared Navigation */}
-      <Navbar />
+      <Header />
+      <Navbar variant="landing" />
 
       {/* Main Scrollable Sections */}
       <main>
         <HeroSection />
-        <FeaturesSection />
-        <GettingStartedSection />
-        <BenefitsSection />
+        <section id="features">
+          <FeaturesSection />
+        </section>
+        <section id="get-started">
+          <GettingStartedSection />
+        </section>
+        <section id="why-us">
+          <BenefitsSection />
+        </section>
       </main>
 
       {/* Shared Footer */}
-      <Footer />
+      <section id="faq">
+        <Footer />
+      </section>
     </div>
   );
 }
