@@ -42,16 +42,20 @@ function ChevronDownIcon() {
 
 export default function Header() {
 	const location = useLocation();
-	const isLandingPage = location.pathname === '/';
+	const appRoutePrefixes = ['/home', '/portfolio', '/invest', '/activity', '/settings'];
+	const isInAppPage = appRoutePrefixes.some(
+		(routePrefix) => location.pathname === routePrefix || location.pathname.startsWith(`${routePrefix}/`)
+	);
+	const useLandingHeaderStyle = !isInAppPage;
 
 	return (
 		<header className="bg-white px-6 py-4">
 			<div className="flex items-center justify-between border-b border-[#e7ecea] pb-4">
 				<Brand />
 
-				{isLandingPage ? (
+				{useLandingHeaderStyle ? (
 					<Link
-						to="/login"
+						to="/#login"
 						className="rounded-full border-2 border-[#2f8f79] bg-white px-5 py-1.75 text-sm leading-none text-[#1b1f24] no-underline"
 					>
 						Login
