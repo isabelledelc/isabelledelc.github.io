@@ -3,15 +3,43 @@ import Header from '../../../components/shared/header';
 import Navbar from '../../../components/shared/navbar';
 import { Link } from 'react-router-dom';
 
-export default function SecretPhrase() {
-  const [phrase, setPhrase] = useState('my secret phrase for testing');
-  const [showSaved, setShowSaved] = useState(false);
+import bagImg from '../../../assets/secretphrasePic/bag.png';
+import clockImg from '../../../assets/secretphrasePic/clock.png';
+import mouseImg from '../../../assets/secretphrasePic/mouse.png';
+import sunflowerImg from '../../../assets/secretphrasePic/flower.png';
+import appleImg from '../../../assets/secretphrasePic/apple.png';
+import chairImg from '../../../assets/secretphrasePic/chair.png';
+import headphoneImg from '../../../assets/secretphrasePic/earphone.png';
+import mugImg from '../../../assets/secretphrasePic/cup.png';
+import towersImg from '../../../assets/secretphrasePic/klcc.png';
+import catImg from '../../../assets/secretphrasePic/cat.png';
 
-  function handleSave(e: React.FormEvent) {
+const images = [
+  { id: 'bag', src: bagImg, label: 'Bag' },
+  { id: 'clock', src: clockImg, label: 'Clock' },
+  { id: 'mouse', src: mouseImg, label: 'Mouse' },
+  { id: 'sunflower', src: sunflowerImg, label: 'Sunflower' },
+  { id: 'apple', src: appleImg, label: 'Apple' },
+  { id: 'chair', src: chairImg, label: 'Chair' },
+  { id: 'headphone', src: headphoneImg, label: 'Headphone' },
+  { id: 'mug', src: mugImg, label: 'Mug' },
+  { id: 'towers', src: towersImg, label: 'Towers' },
+  { id: 'cat', src: catImg, label: 'Cat' },
+];
+
+export default function SecretPhrase() {
+  const [selectedImage, setSelectedImage] = useState(images[0].id);
+  const [phrase, setPhrase] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setShowSaved(true);
-    setTimeout(() => setShowSaved(false), 1200);
+    if (!phrase.trim()) return;
+    setShowSuccess(true);
   }
+
+  const selected = images.find((item) => item.id === selectedImage)!;
 
   return (
     <div className="min-h-screen w-full bg-[#E9F7E5]">
@@ -27,29 +55,84 @@ export default function SecretPhrase() {
             >
               ←
             </Link>
-            <span>Security</span>
-            <span className="ml-3 text-sm text-slate-500">/ Secret Phrase</span>
+            <span>Secret Phrase</span>
+            <span className="ml-3 text-sm text-slate-500">🔑</span>
           </div>
 
-          <form onSubmit={handleSave} className="max-w-2xl">
-            <div className="mb-4">
-              <label className="mb-2 block text-sm font-medium text-slate-600">Secret Phrase</label>
-              <textarea value={phrase} onChange={(e) => setPhrase(e.target.value)} className="w-full rounded border px-3 py-2 text-sm" rows={3} />
+          <div className="mb-8 space-y-3 text-center">
+            <h2 className="text-lg font-semibold text-slate-900">Setting Up Your Security Secret Phrase</h2>
+            <p className="text-sm text-slate-600">Please make sure that the following details are correct.</p>
+          </div>
+
+          <div className="mb-8 rounded-[24px] border border-[#D9F2D9] bg-[#F5FBF5] p-6 text-center">
+            <div className="mx-auto mb-4 flex h-[156px] w-[156px] items-center justify-center rounded-3xl border border-slate-200 bg-white">
+              <img src={selected.src} alt={selected.label} className="h-28 w-28 object-contain" />
+            </div>
+            <div className="text-sm font-semibold text-slate-900">{selected.label}</div>
+            <div className="text-xs text-slate-500">Selected secret phrase image</div>
+          </div>
+
+          <div className="mb-8">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+              {images.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedImage(item.id)}
+                  className={`rounded-3xl border p-3 transition ${selectedImage === item.id ? 'border-[#2ECC71] bg-[#ECF9EE]' : 'border-slate-200 bg-slate-50 hover:border-[#8ACB8A]'}`}
+                >
+                  <img src={item.src} alt={item.label} className="mx-auto h-14 w-14 object-contain" />
+                  <div className="mt-2 text-xs text-slate-600">{item.label}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2 text-center">
+              <p className="text-sm text-slate-600">Please enter your secret phrase</p>
+            </div>
+            <div className="relative mx-auto max-w-2xl">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={phrase}
+                onChange={(e) => setPhrase(e.target.value)}
+                className="w-full rounded-full border border-[#8ACB8A] px-4 py-3 text-sm text-slate-900 outline-none focus:border-[#2ECC71]"
+                placeholder="Enter secret phrase"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
             </div>
 
-            <button className="rounded-full bg-green-600 px-6 py-2 text-sm font-semibold text-white">Save</button>
+            <div className="text-center">
+              <button className="rounded-full bg-green-600 px-10 py-3 text-sm font-semibold text-white transition hover:bg-green-700">
+                Next
+              </button>
+            </div>
           </form>
         </div>
       </main>
 
-      {showSaved && (
+      {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-          <div className="rounded-md border-2 border-[#2ECC71] bg-white p-6 text-center">
+          <div className="relative w-[420px] rounded-md border-2 border-[#2ECC71] bg-white p-6 text-center shadow-xl">
+            <button
+              onClick={() => setShowSuccess(false)}
+              className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+              aria-label="Close"
+            >
+              ✕
+            </button>
             <div className="mb-4 flex items-center justify-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2ECC71] text-white">✓</div>
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#2ECC71] text-white">✓</div>
             </div>
-            <h3 className="mb-2 text-lg font-bold">Saved</h3>
-            <p className="text-sm text-slate-700">Your secret phrase has been saved.</p>
+            <h3 className="mb-2 text-2xl font-bold">Success !</h3>
+            <p className="text-sm text-slate-700">Your secret phrase successfully updated!</p>
           </div>
         </div>
       )}
