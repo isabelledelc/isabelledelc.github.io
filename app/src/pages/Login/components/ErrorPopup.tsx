@@ -10,7 +10,7 @@ export default function ErrorPopup({ isOpen, onClose, errors }: ErrorPopupProps)
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
 			{/* Modal Box */}
-			<div className="relative w-full max-w-[420px] rounded-2xl bg-white p-8 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+			<div className="relative w-full max-w-105 rounded-2xl bg-white p-8 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
 				{/* Top-right 'X' close button */}
 				<button
 					onClick={onClose}
@@ -54,7 +54,7 @@ export default function ErrorPopup({ isOpen, onClose, errors }: ErrorPopupProps)
 				<div className="flex justify-center">
 					<button
 						onClick={onClose}
-						className="w-full max-w-[180px] rounded-full bg-[#1db954] hover:bg-[#1aa34a] text-white font-semibold py-3 text-base transition-colors shadow-sm text-center"
+						className="w-full max-w-45 rounded-full bg-[#1db954] hover:bg-[#1aa34a] text-white font-semibold py-3 text-base transition-colors shadow-sm text-center"
 					>
 						Close
 					</button>
