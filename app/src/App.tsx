@@ -13,6 +13,8 @@ import ChangePassword from './pages/Settings/subpages/ChangePassword';
 import Security from './pages/Settings/subpages/Security';
 import SecretPhrase from './pages/Settings/subpages/SecretPhrase';
 import ViewBankAccount from './pages/Settings/subpages/BankAccountInfo.tsx';
+import ContactUs from './pages/Settings/subpages/ContactUs.tsx';
+import AboutOpusTouch from './pages/Settings/subpages/AboutOpusTouch.tsx';
 
 function App() {
   return (
@@ -36,6 +38,10 @@ function App() {
         <Route path="/settings/secret-phrase" element={<SecretPhrase />} />
 
         <Route path="/settings/bank-account" element={<ViewBankAccount />} />
+
+        <Route path="/settings/contact-us" element={<ContactUs />} />
+
+        <Route path="/settings/about-opus-touch" element={<AboutOpusTouch />} />
         
       </Routes>
     </BrowserRouter>

@@ -25,12 +25,12 @@ const settingsLinks = [
   },
   {
     title: 'Contact Us',
-    href: '/settings/contact',
+    href: '/settings/contact-us',
     icon: 'phone',
   },
   {
     title: 'About Opus Touch',
-    href: '/settings/about',
+    href: '/settings/about-opus-touch',
     icon: 'info',
   },
 ];
