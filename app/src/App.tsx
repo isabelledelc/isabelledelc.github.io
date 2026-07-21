@@ -12,6 +12,7 @@ import EditProfile from './pages/Settings/components/EditProfile';
 import ChangePassword from './pages/Settings/subpages/ChangePassword';
 import Security from './pages/Settings/subpages/Security';
 import SecretPhrase from './pages/Settings/subpages/SecretPhrase';
+import ViewBankAccount from './pages/Settings/subpages/BankAccountInfo.tsx';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <Route path="/settings/security" element={<Security />} />
         <Route path="/settings/change-password" element={<ChangePassword />} />
         <Route path="/settings/secret-phrase" element={<SecretPhrase />} />
+
+        <Route path="/settings/bank-account" element={<ViewBankAccount />} />
+        
       </Routes>
     </BrowserRouter>
   );
