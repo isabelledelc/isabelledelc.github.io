@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing/LandingPage";
 import LoginPage from "./pages/Login/LoginPage.tsx";
 import Signup from "./pages/Login/Signup.tsx";
+import SignUpEmail from "./pages/Login/subpages/SignUpEmail.tsx";
 import HomePage from "./pages/Home/HomePage.tsx";
 import Portfolio from "./pages/Portfolio/Portfolio.tsx";
 import Investment from "./pages/Invest/Investment.tsx";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/signup/email" element={<SignUpEmail />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/invest" element={<Investment />} />
