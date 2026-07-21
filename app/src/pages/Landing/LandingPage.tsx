@@ -3,7 +3,7 @@ import Header from '../../components/shared/header';
 import Navbar from '../../components/shared/navbar';
 import Footer from '../../components/shared/footer';
 
-import HeroSection from './components/HeroSection';
+import LoginHeroSection from './components/LoginHeroSection';
 import FeaturesSection from './components/FeaturesSection';
 import GettingStartedSection from './components/GettingStartedSection';
 import BenefitsSection from './components/BenefitsSection';
@@ -17,7 +17,7 @@ export default function LandingPage() {
 
       {/* Main Scrollable Sections */}
       <main>
-        <HeroSection />
+        <LoginHeroSection />
         <section id="features">
           <FeaturesSection />
         </section>

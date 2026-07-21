@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function TotalGoalSummary() {
   return (
     <div className="rounded-3xl bg-[#EAF7E6] p-6 shadow-md flex flex-col md:flex-row justify-between items-center gap-6">

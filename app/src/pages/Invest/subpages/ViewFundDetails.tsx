@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ArrowUpRight, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ArrowUpRight, X } from 'lucide-react';
 
 interface Fund {
   id: string;

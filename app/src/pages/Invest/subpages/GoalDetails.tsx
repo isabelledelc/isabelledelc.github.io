@@ -1,10 +1,28 @@
-import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeft, Pencil, ArrowUpRight } from 'lucide-react';
 import Header from '../../../components/shared/header';
 import Navbar from '../../../components/shared/navbar';
 
-const goalsData = {
+interface Fund {
+  id: string;
+  name: string;
+  code: string;
+  allocatedAmount: string;
+}
+
+interface GoalData {
+  id: string;
+  title: string;
+  targetAmount: string;
+  savedAmount: string;
+  remainingAmount: string;
+  timeToGoal: string;
+  estimateDate: string;
+  progressPercentage: number;
+  funds: Fund[];
+}
+
+const goalsData: Record<string, GoalData> = {
   'goal-1': {
     id: 'goal-1',
     title: 'House Deposit',
@@ -141,11 +159,11 @@ export default function GoalDetails() {
           </div>
         </div>
 
-        <div className="rounded-3xl border-2 border-white/80 p-6 min-h-[220px] space-y-4">
+        <div className="rounded-3xl border-2 border-white/80 p-6 min-h-55 space-y-4">
           <h3 className="text-xl font-bold text-white">Funds Under Goal</h3>
           {goal.funds.length > 0 ? (
             <div className="grid gap-4 md:grid-cols-2">
-              {goal.funds.map((fund: { id: React.Key | null | undefined; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; code: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; allocatedAmount: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; }) => (
+              {goal.funds.map((fund) => (
                 <button
                   key={fund.id}
                   type="button"
