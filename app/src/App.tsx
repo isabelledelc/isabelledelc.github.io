@@ -15,6 +15,7 @@ import SecretPhrase from './pages/Settings/subpages/SecretPhrase';
 import ViewBankAccount from './pages/Settings/subpages/BankAccountInfo.tsx';
 import ContactUs from './pages/Settings/subpages/ContactUs.tsx';
 import AboutOpusTouch from './pages/Settings/subpages/AboutOpusTouch.tsx';
+import FundDetails from './pages/Portfolio/subpages/FundDetails';
 
 function App() {
   return (
@@ -42,7 +43,11 @@ function App() {
         <Route path="/settings/contact-us" element={<ContactUs />} />
 
         <Route path="/settings/about-opus-touch" element={<AboutOpusTouch />} />
-        
+
+        <Route path="/funds/:id" element={<FundDetails />} />
+
+        <Route path="/portfolio/fund-details" element={<FundDetails />} />
+
       </Routes>
     </BrowserRouter>
   );
