@@ -16,6 +16,7 @@ import ViewBankAccount from './pages/Settings/subpages/BankAccountInfo.tsx';
 import ContactUs from './pages/Settings/subpages/ContactUs.tsx';
 import AboutOpusTouch from './pages/Settings/subpages/AboutOpusTouch.tsx';
 import FundDetails from './pages/Portfolio/subpages/FundDetails';
+import GoalDetails from './pages/Invest/subpages/GoalDetails';
 
 function App() {
   return (
@@ -46,7 +47,10 @@ function App() {
 
         <Route path="/funds/:id" element={<FundDetails />} />
 
-        <Route path="/portfolio/fund-details" element={<FundDetails />} />
+        <Route path="/portfolio/fund-details" element={<FundDetails />}
+         />
+        <Route path="/invest/goal-details" element={<GoalDetails />} />
+        <Route path="/invest/goals/:goalId" element={<GoalDetails />} />
 
       </Routes>
     </BrowserRouter>
