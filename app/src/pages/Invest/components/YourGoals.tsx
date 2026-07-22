@@ -56,7 +56,7 @@ export default function YourGoals({ goals, onViewAllClick }: YourGoalsProps) {
       </div>
 
       <button
-        onClick={() => navigate('/invest/subpages/create-goals')}
+        onClick={() => navigate('/invest/create-goal')}
         className="w-full py-3.5 bg-[#22C55E] text-white font-bold text-sm rounded-xl hover:bg-emerald-600 active:scale-98 transition shadow-sm cursor-pointer"
       >
         Create Goal

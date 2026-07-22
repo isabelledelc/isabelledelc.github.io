@@ -27,6 +27,9 @@ import TopUp from "./pages/Transactions/TopUp";
 import RSP from "./pages/Transactions/RSP";
 import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
 
+import CreateGoal from './pages/Invest/subpages/CreateGoals';
+
+
 
 function App() {
   return (
@@ -67,6 +70,8 @@ function App() {
         <Route path="/transactions/top-up" element={<TopUp />} />
         <Route path="/transactions/rsp" element={<RSP />} />
         <Route path="/transactions/payment-confirmation" element={<PaymentConfirmation />} />
+
+        <Route path="/invest/create-goal" element={<CreateGoal />} />
         
       </Routes>
     </BrowserRouter>
