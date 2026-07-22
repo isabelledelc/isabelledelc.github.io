@@ -20,6 +20,12 @@ export default function AvailableFunds({ retailFunds, wholesaleFunds, onViewAllC
 
   const funds = activeTab === 'Retail' ? retailFunds : wholesaleFunds;
 
+  const handleInvestNow = (e: React.MouseEvent, fund: Fund) => {
+    // Prevent event bubbling if container div has a separate click handler
+    e.stopPropagation(); 
+    navigate('/top-up', { state: { selectedFund: fund } });
+  };
+
   return (
     <div className="rounded-3xl bg-[#8BC670] p-6 shadow-md flex flex-col justify-between space-y-4 text-white">
       <div>
@@ -59,7 +65,13 @@ export default function AvailableFunds({ retailFunds, wholesaleFunds, onViewAllC
               </div>
               <div className="flex flex-col items-end gap-2">
                 <ChevronRight className="w-4 h-4 text-slate-400" />
-                <span className="text-xs font-bold text-emerald-600 hover:underline">Invest Now</span>
+                <button
+                  type="button"
+                  onClick={(e) => handleInvestNow(e, fund)}
+                  className="text-xs font-bold text-emerald-600 hover:underline cursor-pointer bg-transparent border-none p-0"
+                >
+                  Invest Now
+                </button>
               </div>
             </div>
           ))}

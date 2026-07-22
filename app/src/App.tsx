@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/Landing/LandingPage";
@@ -32,8 +33,6 @@ import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
 
 import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -63,9 +62,12 @@ function App() {
         <Route path="/settings/contact-us" element={<ContactUs />} />
         <Route path="/settings/about-opus-touch" element={<AboutOpusTouch />} />
 
+        {/* fund detail pages */}
         <Route path="/funds/:id" element={<FundDetails />} />
         <Route path="/portfolio/fund-details" element={<FundDetails />} />
+        <Route path="/invest/subpages/view-fund-details" element={<FundDetails />} />
         <Route path="/portfolio/view-all-my-funds" element={<ViewAllMyFunds />} />
+
         <Route path="/invest/goal-details" element={<GoalDetails />} />
         <Route path="/invest/goals/:goalId" element={<GoalDetails />} />
 
@@ -74,11 +76,11 @@ function App() {
         <Route path="/transactions/switching" element={<Switching />} />
         <Route path="/transactions/redemption" element={<Redemption />} />
         <Route path="/transactions/top-up" element={<TopUp />} />
+        <Route path="/top-up" element={<TopUp />} />
         <Route path="/transactions/rsp" element={<RSP />} />
         <Route path="/transactions/payment-confirmation" element={<PaymentConfirmation />} />
 
         <Route path="/invest/create-goal" element={<CreateGoal />} />
-        
       </Routes>
     </BrowserRouter>
   );

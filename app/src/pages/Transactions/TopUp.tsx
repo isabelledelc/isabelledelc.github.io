@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import  { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from "../../components/shared/header";
 import Navbar from "../../components/shared/navbar";
 
 export default function TopUp() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Read fund details passed from navigation state (fallback if direct URL access)
+  const passedFund = location.state?.selectedFund;
+  const fundName = passedFund ? passedFund.name : 'OPUS Income Plus Fund';
 
   const [accountNum, setAccountNum] = useState('1234567890');
   const [amount, setAmount] = useState('250.00');
@@ -12,7 +17,7 @@ export default function TopUp() {
 
   const handleNext = () => {
     navigate('/transactions/payment-confirmation', {
-      state: { accountNum, amount, paymentMethod }
+      state: { accountNum, amount, paymentMethod, fundName }
     });
   };
 
@@ -27,7 +32,7 @@ export default function TopUp() {
           <div className="p-6 border-b border-gray-200 flex items-center space-x-4">
             <button 
               onClick={() => navigate(-1)}
-              className="text-xl font-bold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+              className="text-xl font-bold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition-colors cursor-pointer"
               title="Go Back"
             >
               &lt;
@@ -82,7 +87,7 @@ export default function TopUp() {
 
               <div className="grid grid-cols-2 items-center">
                 <label className="font-semibold text-gray-600">Fund Name</label>
-                <span className="text-gray-800 font-medium">OPUS Income Plus Fund</span>
+                <span className="text-gray-800 font-medium">{fundName}</span>
               </div>
 
               <div className="grid grid-cols-2 items-start">
@@ -91,21 +96,21 @@ export default function TopUp() {
                   <button 
                     type="button"
                     onClick={() => setPaymentMethod('Boost')}
-                    className={`border rounded-lg p-2 w-32 text-center font-bold text-lg transition-all ${paymentMethod === 'Boost' ? 'border-red-500 bg-red-50 text-red-600 ring-2 ring-red-400' : 'border-gray-200 text-gray-400 hover:border-red-300'}`}
+                    className={`border rounded-lg p-2 w-32 text-center font-bold text-lg transition-all cursor-pointer ${paymentMethod === 'Boost' ? 'border-red-500 bg-red-50 text-red-600 ring-2 ring-red-400' : 'border-gray-200 text-gray-400 hover:border-red-300'}`}
                   >
                     Boost
                   </button>
                   <button 
                     type="button"
                     onClick={() => setPaymentMethod('Offline')}
-                    className={`border rounded-lg p-2 w-32 text-center font-medium transition-all ${paymentMethod === 'Offline' ? 'border-orange-500 bg-orange-50 text-orange-600 ring-2 ring-orange-400' : 'border-gray-200 text-gray-400 hover:border-orange-300'}`}
+                    className={`border rounded-lg p-2 w-32 text-center font-medium transition-all cursor-pointer ${paymentMethod === 'Offline' ? 'border-orange-500 bg-orange-50 text-orange-600 ring-2 ring-orange-400' : 'border-gray-200 text-gray-400 hover:border-orange-300'}`}
                   >
                     Offline
                   </button>
                   <button 
                     type="button"
                     onClick={() => setPaymentMethod('FPX')}
-                    className={`border rounded-lg p-2 w-32 text-center font-semibold transition-all ${paymentMethod === 'FPX' ? 'border-blue-800 bg-blue-50 text-blue-800 ring-2 ring-blue-400' : 'border-gray-200 text-gray-400 hover:border-blue-300'}`}
+                    className={`border rounded-lg p-2 w-32 text-center font-semibold transition-all cursor-pointer ${paymentMethod === 'FPX' ? 'border-blue-800 bg-blue-50 text-blue-800 ring-2 ring-blue-400' : 'border-gray-200 text-gray-400 hover:border-blue-300'}`}
                   >
                     FPX
                   </button>
@@ -118,7 +123,7 @@ export default function TopUp() {
           <div className="p-8 flex justify-center pt-2">
             <button 
               onClick={handleNext}
-              className="bg-[#28A745] hover:bg-[#218838] text-white font-semibold py-3 px-24 rounded-xl text-lg transition-colors shadow-sm active:scale-95"
+              className="bg-[#28A745] hover:bg-[#218838] text-white font-semibold py-3 px-24 rounded-xl text-lg transition-colors shadow-sm active:scale-95 cursor-pointer"
             >
               Next
             </button>

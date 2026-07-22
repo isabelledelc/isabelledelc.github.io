@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, CreditCard, Filter, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import Header from "../../../components/shared/header";
 import Navbar from "../../../components/shared/navbar";
@@ -21,7 +21,16 @@ export default function FundDetails() {
   // State for Value Tab Toggle (Current Investment vs Since Inception)
   const [valueToggle, setValueToggle] = useState<"current" | "inception">("current");
 
-  // Navigation handler routing to the /transactions folder pages
+  // Back button handler navigating to previous page or falling back to portfolio
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/portfolio");
+    }
+  };
+
+  // Navigation handler routing to transaction pages
   const handleAction = (actionPath: string) => {
     navigate(`/transactions/${actionPath}?fundId=${fund.id}`);
   };
@@ -37,12 +46,14 @@ export default function FundDetails() {
           {/* Header Bar */}
           <div className="flex flex-wrap items-center justify-between border-b border-slate-100 p-6 gap-4">
             <div className="flex items-center gap-4">
-              <Link
-                to="/portfolio"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+              <button
+                type="button"
+                onClick={handleBack}
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer"
+                aria-label="Go Back"
               >
                 <ChevronLeft className="h-6 w-6" />
-              </Link>
+              </button>
               <h1 className="text-2xl font-bold text-slate-900">Funds Details</h1>
             </div>
 
@@ -64,6 +75,7 @@ export default function FundDetails() {
                 {(["History", "Performance", "Value", "Account"] as const).map((tab) => (
                   <button
                     key={tab}
+                    type="button"
                     onClick={() => setActiveTab(tab)}
                     className={`rounded-full px-6 py-2 text-sm font-bold transition-all cursor-pointer ${
                       activeTab === tab
@@ -154,6 +166,7 @@ export default function FundDetails() {
                       {valueToggle === "current" ? "Current Investment" : "Since Inception"}
                     </span>
                     <button
+                      type="button"
                       onClick={() => setValueToggle(valueToggle === "current" ? "inception" : "current")}
                       className={`relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full transition-colors ${
                         valueToggle === "inception" ? "bg-emerald-500" : "bg-slate-300"
@@ -251,7 +264,10 @@ export default function FundDetails() {
               {activeTab === "History" && (
                 <div className="space-y-4">
                   <div className="flex justify-start">
-                    <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                    <button 
+                      type="button" 
+                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition cursor-pointer"
+                    >
                       <Filter className="h-3.5 w-3.5" />
                       <span>Filter by type and duration</span>
                     </button>
@@ -315,24 +331,28 @@ export default function FundDetails() {
             {/* Bottom Action Bar */}
             <div className="mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-slate-100 pt-6">
               <button 
+                type="button"
                 onClick={() => handleAction("cooling-off")}
                 className="cursor-pointer rounded-xl bg-slate-200/70 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-300 transition active:scale-95"
               >
                 Cooling Off
               </button>
               <button 
+                type="button"
                 onClick={() => handleAction("switching")}
                 className="cursor-pointer rounded-xl bg-slate-200/70 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-300 transition active:scale-95"
               >
                 Switch
               </button>
               <button 
+                type="button"
                 onClick={() => handleAction("redemption")}
                 className="cursor-pointer rounded-xl bg-slate-200/70 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-300 transition active:scale-95"
               >
                 Redeem
               </button>
               <button 
+                type="button"
                 onClick={() => handleAction("top-up")}
                 className="cursor-pointer rounded-xl bg-[#22C55E] px-8 py-3 text-xs font-bold text-white shadow-md hover:bg-[#1ea850] transition active:scale-95"
               >
@@ -346,3 +366,4 @@ export default function FundDetails() {
     </div>
   );
 }
+
