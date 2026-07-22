@@ -38,7 +38,7 @@ import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/opustouch">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
