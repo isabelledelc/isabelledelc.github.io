@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/shared/header";
 import Navbar from "../../components/shared/navbar";
-import { Eye, EyeOff, ChevronRight, ChevronDown, X } from "lucide-react";
+import { Eye, EyeOff, ChevronRight, ChevronDown } from "lucide-react";
 
 // Sample Data
 const sampleFunds = [
@@ -39,7 +39,6 @@ export default function Portfolio() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"Holdings" | "Analysis">("Holdings");
   const [analysisFilter, setAnalysisFilter] = useState<"Fund" | "Goal" | "Account">("Fund");
-  const [showModal, setShowModal] = useState(false);
   const [showBalance, setShowBalance] = useState(true);
 
   function handleFundClick(fundId: string) {
@@ -126,7 +125,7 @@ export default function Portfolio() {
                 <div className="mb-4 flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-slate-800">My Funds</h2>
                   <button
-                    onClick={() => setShowModal(true)}
+                    onClick={() => navigate('/portfolio/view-all-my-funds')}
                     className="text-sm font-semibold text-emerald-700 cursor-pointer"
                   >
                     View All
@@ -271,48 +270,6 @@ export default function Portfolio() {
 
             </div>
 
-          </div>
-        )}
-
-        {/* Modal: All funds */}
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-            <div className="w-full max-w-2xl rounded-3xl bg-white p-6 shadow-2xl">
-              <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
-                <h3 className="text-xl font-bold text-slate-900">All Available Funds</h3>
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="rounded-full p-1 text-slate-400 hover:bg-slate-100 cursor-pointer"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-
-              <div className="flex max-h-[60vh] flex-col gap-3 overflow-y-auto pr-1">
-                {sampleFunds.map((fund) => (
-                  <div
-                    key={fund.id}
-                    onClick={() => {
-                      setShowModal(false);
-                      handleFundClick(fund.id);
-                    }}
-                    className="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 p-4 transition hover:border-emerald-500 hover:bg-emerald-50"
-                  >
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900">{fund.name}</h4>
-                      <span className="text-xs font-semibold text-slate-500">{fund.code}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-right">
-                      <div>
-                        <p className="text-sm font-bold text-slate-900">{fund.amount}</p>
-                        <p className="text-xs font-semibold text-emerald-600">{fund.returnVal}</p>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-slate-400" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         )}
 

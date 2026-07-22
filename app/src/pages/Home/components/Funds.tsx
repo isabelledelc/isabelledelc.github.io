@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
 interface FundItem {
@@ -18,9 +18,9 @@ export default function Funds() {
     <section>
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-2xl font-semibold text-white">Funds</h2>
-        <a href="#" className="text-xs  text-sky-300/80 hover:underline">
+        <Link to="/portfolio/view-all-my-funds" className="text-xs  text-sky-300/80 hover:underline">
           View All
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
