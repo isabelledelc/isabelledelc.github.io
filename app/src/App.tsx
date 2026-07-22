@@ -23,6 +23,7 @@ import ViewAllMyFunds from './pages/Portfolio/subpages/ViewAllMyFunds';
 import GoalDetails from './pages/Invest/subpages/GoalDetails';
 import FAQ from "./pages/Other Pages/FAQ";
 import TermsNConditions from "./pages/Other Pages/TermsNConditions";
+import MarketCommentaryDetailPage from "./pages/Home/subpages/MarketCommentaryDetailPage";
 
 import CoolingOff from "./pages/Transactions/CoolingOff";
 import Switching from "./pages/Transactions/Switching";
@@ -48,6 +49,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/terms-and-conditions" element={<TermsNConditions />} />
+        <Route path="/market-commentary/:id" element={<MarketCommentaryDetailPage />} />
 
         {/* profile pages */}
         <Route path="/settings/view-profile" element={<ViewProfile />} />
