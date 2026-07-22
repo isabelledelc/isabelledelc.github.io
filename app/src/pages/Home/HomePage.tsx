@@ -1,4 +1,3 @@
-// DashboardPage.tsx
 import Header from '../../components/shared/header';
 import Navbar from '../../components/shared/navbar';
 import PortfolioCard from './components/PortfolioCard';
@@ -9,16 +8,22 @@ import Funds from './components/Funds';
 
 export default function HomePage() {
   return (
-    /* Added Tailwind background and text color classes here */
-    <div className="min-h-screen bg-[#1c3c34] bg-[radial-gradient(ellipse_at_top_left,var(--tw-gradient-stops))] from-[#5e9483] via-[#21433a] to-[#122b24] text-white">
+    /* 
+      Light Mode (Default): Clean Slate/Gray background with dark text 
+      Dark Mode (dark:): Your signature deep green radial gradient with white text
+    */
+   <div className="min-h-screen transition-colors duration-300 
+    bg-[#d2e7d3] bg-[radial-gradient(circle_at_center,_#E4EDE4_0%,_#CAEBDC_75%,_#8DC2AF_100%)] text-slate-800 
+    dark:bg-[#1a2f24] dark:bg-[radial-gradient(circle_at_center,_#2B4737_0%,_#1B3226_50%,_#3B5958_100%)] dark:text-white">
       <div>
         <Header />
-        <Navbar />
 
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
           {/* Top Greeting */}
           <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-            <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 600 }}>Welcome back, Name</h1>
+            <h1 className="m-0 text-3xl font-semibold text-slate-800 dark:text-white">
+              Welcome back, Name
+            </h1>
           </header>
 
           <div className="px-4 sm:px-6 lg:px-8">  
@@ -41,8 +46,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }
