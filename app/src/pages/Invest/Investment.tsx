@@ -13,7 +13,6 @@ import AvailableFunds from './components/AvailableFunds';
 // Subpages / Modals
 import ViewAllGoals from './subpages/ViewAllGoals';
 import ViewAllFunds from './subpages/ViewAllFunds';
-import ViewMarketCommentary from './subpages/ViewMarketCommentary';
 
 // Shared Mock Data
 const goals = [
@@ -67,37 +66,6 @@ export default function Investment() {
           />
         </div>
 
-        {/* 3. Market Commentary Summary */}
-        <div className="rounded-3xl bg-[#EAF7E6] p-6 shadow-md space-y-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <FileText className="w-5 h-5 text-slate-700" />
-              <h3 className="text-lg font-bold text-slate-900">View Market Commentary</h3>
-            </div>
-            <button
-              onClick={() => setShowMarketModal(true)}
-              className="text-sm font-bold text-emerald-700 hover:underline cursor-pointer"
-            >
-              View All
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {marketCommentary.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => navigate(`/invest/subpages/commentary-details?id=${item.id}`)}
-                className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs hover:shadow-md transition cursor-pointer flex items-center justify-between"
-              >
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
-                  <p className="text-xs text-slate-400 mt-1">{item.date}</p>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </div>
-            ))}
-          </div>
-        </div>
       </main>
 
       {/* Pop-up Modals / Overlay Subpages */}
@@ -116,12 +84,6 @@ export default function Investment() {
         />
       )}
 
-      {showMarketModal && (
-        <ViewMarketCommentary
-          commentaries={marketCommentary}
-          onClose={() => setShowMarketModal(false)}
-        />
-      )}
     </div>
   );
 }
