@@ -27,8 +27,8 @@ export default function Funds() {
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-semibold text-white">Funds</h2>
-        <Link to="/portfolio/view-all-my-funds" className="text-xs text-sky-300/80 hover:underline">
+        <h2 className="text-2xl font-semibold text-slate-800 dark:text-white">Funds</h2>
+        <Link to="/portfolio/view-all-my-funds" className="text-[14px] text-sky-600 dark:text-sky-300/80 hover:underline">
           View All
         </Link>
       </div>
@@ -38,8 +38,8 @@ export default function Funds() {
           <div
             key={index}
             onClick={() => navigate(`/funds/${fund.id}`)}
-            className="group relative rounded-2xl bg-[#4b7768]/70 p-4 backdrop-blur-md border border-white/10 shadow-md transition-all hover:bg-[#4b7768]/90 cursor-pointer"
-          >
+            className="group relative rounded-2xl p-4 backdrop-blur-md shadow-md transition-all border bg-white/80 border-slate-200/80 hover:bg-white dark:bg-[#4b7768]/70 dark:border-white/10 dark:hover:bg-[#4b7768]/90"
+            >
             <div className="mb-3 flex items-start justify-between">
               <h3 className="text-base font-medium text-slate-900 dark:text-white">{fund.title}</h3>
               <ChevronRight className="h-5 w-5 text-slate-400 dark:text-white/80 transition-transform group-hover:translate-x-0.5" />
@@ -53,7 +53,7 @@ export default function Funds() {
             <button
               type="button"
               onClick={(e) => handleInvest(e, fund)}
-              className="mt-2 text-xs font-medium text-sky-300/80 underline hover:text-sky-200 bg-transparent border-none p-0 cursor-pointer"
+              className="mt-2 inline-block text-xs font-medium text-sky-600 dark:text-sky-300/80 underline hover:text-sky-500 dark:hover:text-sky-200"
             >
               Invest
             </button>

@@ -8,3 +8,76 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Force browser engines to adapt to transparent tracks without default UI fills */
+html {
+  color-scheme: light;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(47, 143, 121, 0.4) transparent;
+}
+
+html.dark,
+:root.dark {
+  color-scheme: dark;
+  scrollbar-color: rgba(52, 211, 153, 0.4) transparent;
+}
+
+/* --- WebKit Custom Scrollbar (Chrome, Edge, Safari, Opera) --- */
+
+/* 1. Global scrollbar sizing */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 2. Force tracks, track pieces, and viewport corners to stay 100% transparent */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 3. Completely strip out native scrollbar arrow buttons */
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-button:single-button,
+::-webkit-scrollbar-button:vertical,
+::-webkit-scrollbar-button:horizontal,
+::-webkit-scrollbar-button:start,
+::-webkit-scrollbar-button:end {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 4. Light mode scrollbar thumb (floats directly on top of page background) */
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 143, 121, 0.4) !important;
+  border-radius: 9999px !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(47, 143, 121, 0.7) !important;
+}
+
+/* 5. Dark mode scrollbar thumb */
+.dark ::-webkit-scrollbar-thumb,
+html.dark ::-webkit-scrollbar-thumb,
+:root.dark ::-webkit-scrollbar-thumb {
+  background: rgba(52, 211, 153, 0.4) !important;
+  border-radius: 9999px !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+html.dark ::-webkit-scrollbar-thumb:hover,
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.7) !important;
+}
