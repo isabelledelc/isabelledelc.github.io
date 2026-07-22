@@ -20,6 +20,8 @@ import AboutOpusTouch from './pages/Settings/subpages/AboutOpusTouch.tsx';
 import FundDetails from './pages/Portfolio/subpages/FundDetails';
 import ViewAllMyFunds from './pages/Portfolio/subpages/ViewAllMyFunds';
 import GoalDetails from './pages/Invest/subpages/GoalDetails';
+import FAQ from "./pages/Other Pages/FAQ";
+import TermsNConditions from "./pages/Other Pages/TermsNConditions";
 
 import CoolingOff from "./pages/Transactions/CoolingOff";
 import Switching from "./pages/Transactions/Switching";
@@ -42,6 +44,8 @@ function App() {
         <Route path="/invest" element={<Investment />} />
         <Route path="/activity" element={<Activity />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/terms-and-conditions" element={<TermsNConditions />} />
 
         {/* profile pages */}
         <Route path="/settings/view-profile" element={<ViewProfile />} />
