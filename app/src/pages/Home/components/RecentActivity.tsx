@@ -1,8 +1,41 @@
+import React from 'react';
+
+interface ActivityItem {
+  action: string;
+  fund: string;
+  time: string;
+}
+
+const activities: ActivityItem[] = [
+  { action: 'Invested MYR 5,000', fund: 'Opus Income Plus', time: 'Today, 10:23 AM' },
+  { action: 'Invested MYR 5,000', fund: 'Opus Income Plus', time: 'Yesterday, 6:21 PM' },
+  { action: 'Invested MYR 5,000', fund: 'Opus Income Plus', time: '15 Jul 2026' },
+  { action: 'Invested MYR 5,000', fund: 'Opus Income Plus', time: '10 Jul 2026' },
+];
+
 export default function RecentActivity() {
-	return (
-		<section style={{ padding: '16px', borderRadius: '8px', background: '#fff' }}>
-			<h3 style={{ margin: 0 }}>Recent Activity</h3>
-			<p style={{ marginTop: 8, color: '#666' }}>No recent activity — placeholder.</p>
-		</section>
-	);
+  return (
+    <section>
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-2xl font-semibold text-white">Recent Activity</h2>
+        <a href="#" className="text-xs  text-sky-300/80 hover:underline">
+          View All
+        </a>
+      </div>
+      <div className="flex flex-col gap-3">
+        {activities.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-between rounded-2xl bg-[#2e5d4e]/70 px-5 py-4 backdrop-blur-md border border-white/10 shadow-sm"
+          >
+            <div>
+              <p className="text-sm font-semibold text-white">{item.action}</p>
+              <p className="text-xs text-sky-300/80">{item.fund}</p>
+            </div>
+            <span className="text-xs font-medium text-white/80">{item.time}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

@@ -49,14 +49,14 @@ export default function Header() {
 	const useLandingHeaderStyle = !isInAppPage;
 
 	return (
-		<header className="bg-white px-6 py-4">
-			<div className="flex items-center justify-between border-b border-[#e7ecea] pb-4">
+		<header className="bg-white w-full px-6 py-4">
+			<div className="flex items-center justify-between">
 				<Brand />
 
 				{useLandingHeaderStyle ? (
 					<Link
 						to="/#login"
-						className="rounded-full border-2 border-[#2f8f79] bg-white px-5 py-1.75 text-sm leading-none text-[#1b1f24] no-underline"
+						className="rounded-full border-2 border-[#2f8f79]q bg-white px-5 py-1.75 text-sm leading-none text-[#1b1f24] no-underline"
 					>
 						Login
 					</Link>
