@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/Landing/LandingPage";
@@ -6,6 +5,9 @@ import LoginPage from "./pages/Login/LoginPage.tsx";
 import HomePage from "./pages/Home/HomePage.tsx";
 import Signup from "./pages/Login/Signup.tsx";
 import SignUpEmail from "./pages/Login/subpages/SignUpEmail.tsx";
+import SecretPhrasePage from "./pages/Login/subpages/SecretPhrase.tsx";
+import KYConboarding from "./pages/KYC/KYConboarding.tsx"; // Update path if your folder structure differs
+
 import Portfolio from "./pages/Portfolio/Portfolio.tsx";
 import Investment from "./pages/Invest/Investment.tsx";
 import Activity from "./pages/Activity/Activity.tsx";
@@ -40,8 +42,13 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
+        
+        {/* Onboarding Flow Routes */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/email" element={<SignUpEmail />} />
+        <Route path="/secret-phrase" element={<SecretPhrasePage />} />
+        <Route path="/kyc-onboarding" element={<KYConboarding />} />
+
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/invest" element={<Investment />} />
         <Route path="/activity" element={<Activity />} />
@@ -49,11 +56,11 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/terms-and-conditions" element={<TermsNConditions />} />
 
-        {/* profile pages */}
+        {/* Profile Pages */}
         <Route path="/settings/view-profile" element={<ViewProfile />} />
         <Route path="/settings/edit-profile" element={<EditProfile />} />
 
-        {/* security pages */}
+        {/* Security Pages */}
         <Route path="/settings/security" element={<Security />} />
         <Route path="/settings/change-password" element={<ChangePassword />} />
         <Route path="/settings/secret-phrase" element={<SecretPhrase />} />
@@ -62,7 +69,7 @@ function App() {
         <Route path="/settings/contact-us" element={<ContactUs />} />
         <Route path="/settings/about-opus-touch" element={<AboutOpusTouch />} />
 
-        {/* fund detail pages */}
+        {/* Fund Detail Pages */}
         <Route path="/funds/:id" element={<FundDetails />} />
         <Route path="/portfolio/fund-details" element={<FundDetails />} />
         <Route path="/invest/subpages/view-fund-details" element={<FundDetails />} />
@@ -71,7 +78,7 @@ function App() {
         <Route path="/invest/goal-details" element={<GoalDetails />} />
         <Route path="/invest/goals/:goalId" element={<GoalDetails />} />
 
-        {/* transaction pages */}
+        {/* Transaction Pages */}
         <Route path="/transactions/cooling-off" element={<CoolingOff />} />
         <Route path="/transactions/switching" element={<Switching />} />
         <Route path="/transactions/redemption" element={<Redemption />} />
