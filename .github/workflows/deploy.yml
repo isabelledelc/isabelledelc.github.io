@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [<your-edit-branch-name>]   # replace with your actual branch name
+    branches: [dev]   # replace with your actual branch name
   workflow_dispatch:
 
 permissions:
