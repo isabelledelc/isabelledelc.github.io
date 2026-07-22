@@ -4,16 +4,16 @@ import Header from '../../../components/shared/header';
 
 // Asset Imports
 
-import bagImg from '../../../assets/secretphrasePic/bag.png';
-import clockImg from '../../../assets/secretphrasePic/clock.png';
-import mouseImg from '../../../assets/secretphrasePic/mouse.png';
-import sunflowerImg from '../../../assets/secretphrasePic/flower.png';
-import appleImg from '../../../assets/secretphrasePic/apple.png';
-import chairImg from '../../../assets/secretphrasePic/chair.png';
-import headphoneImg from '../../../assets/secretphrasePic/earphone.png';
-import mugImg from '../../../assets/secretphrasePic/cup.png';
-import towersImg from '../../../assets/secretphrasePic/klcc.png';
-import catImg from '../../../assets/secretphrasePic/cat.png';
+import bagImg from '../../../assets/secretPhrasePic/bag.png';
+import clockImg from '../../../assets/secretPhrasePic/clock.png';
+import mouseImg from '../../../assets/secretPhrasePic/mouse.png';
+import sunflowerImg from '../../../assets/secretPhrasePic/flower.png';
+import appleImg from '../../../assets/secretPhrasePic/apple.png';
+import chairImg from '../../../assets/secretPhrasePic/chair.png';
+import headphoneImg from '../../../assets/secretPhrasePic/earphone.png';
+import mugImg from '../../../assets/secretPhrasePic/cup.png';
+import towersImg from '../../../assets/secretPhrasePic/klcc.png';
+import catImg from '../../../assets/secretPhrasePic/cat.png';
 
 interface ImageOption {
     id: string;
