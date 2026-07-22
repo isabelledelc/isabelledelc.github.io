@@ -20,6 +20,14 @@ import AboutOpusTouch from './pages/Settings/subpages/AboutOpusTouch.tsx';
 import FundDetails from './pages/Portfolio/subpages/FundDetails';
 import GoalDetails from './pages/Invest/subpages/GoalDetails';
 
+import CoolingOff from "./pages/Transactions/CoolingOff";
+import Switching from "./pages/Transactions/Switching";
+import Redemption from "./pages/Transactions/Redemption";
+import TopUp from "./pages/Transactions/TopUp";
+import RSP from "./pages/Transactions/RSP";
+import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -44,18 +52,22 @@ function App() {
         <Route path="/settings/secret-phrase" element={<SecretPhrase />} />
 
         <Route path="/settings/bank-account" element={<ViewBankAccount />} />
-
         <Route path="/settings/contact-us" element={<ContactUs />} />
-
         <Route path="/settings/about-opus-touch" element={<AboutOpusTouch />} />
 
         <Route path="/funds/:id" element={<FundDetails />} />
-
-        <Route path="/portfolio/fund-details" element={<FundDetails />}
-         />
+        <Route path="/portfolio/fund-details" element={<FundDetails />} />
         <Route path="/invest/goal-details" element={<GoalDetails />} />
         <Route path="/invest/goals/:goalId" element={<GoalDetails />} />
 
+        {/* transaction pages */}
+        <Route path="/transactions/cooling-off" element={<CoolingOff />} />
+        <Route path="/transactions/switching" element={<Switching />} />
+        <Route path="/transactions/redemption" element={<Redemption />} />
+        <Route path="/transactions/top-up" element={<TopUp />} />
+        <Route path="/transactions/rsp" element={<RSP />} />
+        <Route path="/transactions/payment-confirmation" element={<PaymentConfirmation />} />
+        
       </Routes>
     </BrowserRouter>
   );
