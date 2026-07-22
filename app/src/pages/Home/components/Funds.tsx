@@ -41,14 +41,14 @@ export default function Funds() {
             className="group relative rounded-2xl bg-[#4b7768]/70 p-4 backdrop-blur-md border border-white/10 shadow-md transition-all hover:bg-[#4b7768]/90 cursor-pointer"
           >
             <div className="mb-3 flex items-start justify-between">
-              <h3 className="text-base font-medium text-white">{fund.title}</h3>
-              <ChevronRight className="h-5 w-5 text-white/80 transition-transform group-hover:translate-x-0.5" />
+              <h3 className="text-base font-medium text-slate-900 dark:text-white">{fund.title}</h3>
+              <ChevronRight className="h-5 w-5 text-slate-400 dark:text-white/80 transition-transform group-hover:translate-x-0.5" />
             </div>
-            <p className="my-1 text-sm text-white/90">
-              <span className="font-semibold text-white">NAV:</span> {fund.nav}
+            <p className="my-1 text-sm text-slate-600 dark:text-white/90">
+              <span className="font-semibold text-slate-900 dark:text-white">NAV:</span> {fund.nav}
             </p>
-            <p className="my-1 text-sm text-white/90">
-              Daily Return: <span className="text-emerald-300">{fund.dailyReturn}</span>
+            <p className="my-1 text-sm text-slate-600 dark:text-white/90">
+              Daily Return: <span className="text-emerald-600 dark:text-emerald-300">{fund.dailyReturn}</span>
             </p>
             <button
               type="button"

@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ActivityItem {
   action: string;
   fund: string;
@@ -17,8 +15,8 @@ export default function RecentActivity() {
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-semibold text-white">Recent Activity</h2>
-        <a href="/activity" className="text-xs  text-sky-300/80 hover:underline">
+        <h2 className="text-2xl font-semibold text-slate-800 dark:text-white">Recent Activity</h2>
+        <a href="/activity" className="text-xs text-sky-600 dark:text-sky-300/80 hover:underline">
           View All
         </a>
       </div>
@@ -26,13 +24,13 @@ export default function RecentActivity() {
         {activities.map((item, index) => (
           <div
             key={index}
-            className="flex items-center justify-between rounded-2xl bg-[#2e5d4e]/70 px-5 py-4 backdrop-blur-md border border-white/10 shadow-sm"
+            className="flex items-center justify-between rounded-2xl border bg-white/80 border-slate-200/80 px-5 py-4 backdrop-blur-md shadow-md transition-all hover:bg-white dark:bg-[#48695e]/70 dark:border-white/10 dark:hover:bg-[#4b7768]/90"
           >
             <div>
-              <p className="text-sm font-semibold text-white">{item.action}</p>
-              <p className="text-xs text-sky-300/80">{item.fund}</p>
+              <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.action}</p>
+              <p className="text-xs text-sky-600 dark:text-sky-300/80">{item.fund}</p>
             </div>
-            <span className="text-xs font-medium text-white/80">{item.time}</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-white/80">{item.time}</span>
           </div>
         ))}
       </div>
