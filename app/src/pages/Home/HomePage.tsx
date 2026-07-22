@@ -1,12 +1,10 @@
 // DashboardPage.tsx
 import Header from '../../components/shared/header';
 import Navbar from '../../components/shared/navbar';
-import Footer from '../../components/shared/footer';
-
 import PortfolioCard from './components/PortfolioCard';
 import RecentActivity from './components/RecentActivity';
 import QuickActions from './components/QuickActions';
-import MarketUpdates from './components/MarketUpdates';
+import MarketUpdates from './components/MarketCommentary';
 import Funds from './components/Funds';
 
 export default function HomePage() {

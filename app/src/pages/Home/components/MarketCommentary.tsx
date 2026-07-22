@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight, ArrowDownRight, ArrowRight } from 'lucide-react';
+import ViewMarketCommentary from './ViewMarketCommentary';
 
 interface MarketIndicator {
   indicator: string;
@@ -15,10 +16,15 @@ const marketData: MarketIndicator[] = [
   { indicator: 'USD/MYR', value: 'X.xx%', trend: 'up' },
 ];
 
-export default function MarketUpdates() {
+export default function MarketCommentary() {
+  // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section>
-      <h2 className="mb-4 text-2xl font-semibold text-white">Market Updates</h2>
+      <h2 className="mb-4 text-2xl font-semibold text-white">Market Commentary</h2>
+      
+      {/* Table Card */}
       <div className="rounded-3xl bg-[#5d8b7b]/60 p-6 backdrop-blur-md border border-white/10 shadow-lg">
         <table className="w-full border-collapse">
           <thead>
@@ -45,11 +51,23 @@ export default function MarketUpdates() {
           </tbody>
         </table>
       </div>
+
+      {/* Trigger Button for Modal */}
       <div className="mt-3 text-center">
-        <a href="#" className="text-xs text-sky-300/80 hover:underline">
-          View the full report
-        </a>
+        <button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          className="text-xs text-sky-300/80 hover:underline bg-transparent border-0 cursor-pointer"
+        >
+          View All Market Commentary
+        </button>
       </div>
+
+      {/* Modal Popup Component */}
+      <ViewMarketCommentary
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

@@ -18,7 +18,7 @@ export default function RecentActivity() {
     <section>
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-2xl font-semibold text-white">Recent Activity</h2>
-        <a href="#" className="text-xs  text-sky-300/80 hover:underline">
+        <a href="/activity" className="text-xs  text-sky-300/80 hover:underline">
           View All
         </a>
       </div>
