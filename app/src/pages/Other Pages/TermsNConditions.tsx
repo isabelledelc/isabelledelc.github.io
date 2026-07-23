@@ -1,46 +1,61 @@
 import { Link } from 'react-router-dom';
-import Header from '../../components/shared/header';
+import { ArrowLeft } from 'lucide-react';
+// import Header from '../../components/shared/header';
 
-const rows = [
-	'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas',
-	'Molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et',
-	'Dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque',
-	'Nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus',
-	'Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet',
-	'Ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum',
-	'Rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias',
-	'Consequatur aut perferendis doloribus asperiores repellat',
-	'Rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias',
-	'Consequatur aut perferendis doloribus asperiores repellat',
-	'Rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias',
-	'Consequatur aut perferendis doloribus asperiores repellat',
-	'Rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias',
+const termsRows = [
+  'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.',
+  'Molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et.',
+  'Dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque.',
+  'Nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.',
+  'Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet.',
+  'Ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.',
+  'Rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis.',
+  'Consequatur aut perferendis doloribus asperiores repellat eaque ipsa quae ab illo inventore veritatis.',
+  'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
 ];
 
 export default function TermsNConditions() {
-	return (
-		<div className="h-screen overflow-hidden bg-[#e9e9e9]">
-			<div className="flex h-full w-full flex-col overflow-hidden bg-[#e9e9e9]">
-				<Header />
+  return (
+    <div className="h-screen overflow-hidden bg-gradient-to-br from-slate-100 via-[#E9F7E5]/30 to-slate-100 flex flex-col font-sans">
+      {/* <Header /> */}
 
-				<div className="flex min-h-0 flex-1 flex-col px-6 py-6">
-					<div className="mb-5 flex items-center gap-5 text-[#404046]">
-						<Link to="/signup" className="text-4xl leading-none no-underline">‹</Link>
-						<h1 className="text-5xl font-semibold">Terms and conditions</h1>
-					</div>
+      <main className="flex-1 min-h-0 max-w-5xl w-full mx-auto px-4 py-6 sm:px-8 flex flex-col">
+        {/* Header Bar */}
+        <div className="mb-6 flex items-center gap-4">
+          <Link
+            to="/signup"
+            className="p-2.5 rounded-xl bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 transition shadow-xs flex items-center justify-center"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-6 h-6 stroke-[2.5]" />
+          </Link>
+          <div>
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Terms & Conditions
+            </h1>
+            <p className="text-sm text-slate-500 font-medium">
+              Please review our user terms and operational guidelines carefully.
+            </p>
+          </div>
+        </div>
 
-					<div className="min-h-0 flex-1 rounded-lg border border-[#59cd85] p-6">
-						<div className="h-full overflow-y-auto pr-3">
-							<h2 className="mb-5 text-[36px] font-semibold text-[#34343a]">1. Introduction and Acceptance</h2>
-							<ol className="space-y-3 pl-6 text-[18px] leading-normal text-[#3b3b42]">
-								{rows.map((row, index) => (
-									<li key={`row-${index}`}>{row}</li>
-								))}
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+        {/* Scrollable Terms Card */}
+        <div className="flex-1 min-h-0 rounded-3xl bg-white border border-emerald-200/80 shadow-xl p-6 sm:p-8 flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-emerald-300 scrollbar-track-slate-100">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1F5C2E] mb-6 flex items-center gap-2 border-b border-slate-100 pb-3">
+              1. Introduction and Acceptance
+            </h2>
+            <ol className="space-y-4 pl-5 list-decimal text-slate-700 text-sm sm:text-base leading-relaxed font-normal">
+              {termsRows.map((row, index) => (
+                <li key={`term-${index}`} className="pl-2">
+                  {row}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 }

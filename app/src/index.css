@@ -1,15 +1,95 @@
 @import "tailwindcss";
 
+:root {
+  /* Page Background */
+  --bg-page: radial-gradient(circle at center, #E4EDE4 0%, #CAEBDC 75%, #8DC2AF 100%);
+  
+  /* Cards & Containers */
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-card-hover: rgba(255, 255, 255, 1);
+  --bg-container: rgba(255, 255, 255, 0.6);
+  --bg-modal: rgba(255, 255, 255, 0.95);
+  
+  /* Borders */
+  --border-app: rgba(226, 232, 240, 0.8);
+  --border-interactive: rgba(226, 232, 240, 0.8);
+  
+  /* Typography */
+  --text-main: #0f172a;
+  --text-heading: #1e293b;
+  --text-muted: #475569;
+  --text-accent: #0284c7;
+  
+  /* Interactive & Accents */
+  --color-primary: #2f8f79;
+  --color-primary-hover: #236c5b;
+  --bg-pill: #f1f5f9;
+  --bg-btn-secondary: #e2e8f0;
+  --bg-btn-secondary-hover: #cbd5e1;
+  --color-chart-stroke: #0284c7;
+  --color-chart-grid: #e2e8f0;
+}
+
+html.dark {
+  /* Page Background */
+  --bg-page: radial-gradient(circle at center, #2B4737 0%, #1B3226 50%, #3B5958 100%);
+  
+  /* Cards & Containers */
+  --bg-card: rgba(72, 105, 94, 0.7);
+  --bg-card-hover: rgba(75, 119, 104, 0.9);
+  --bg-container: rgba(40, 79, 64, 0.4);
+  --bg-modal: #1f3a2d;
+  
+  /* Borders */
+  --border-app: rgba(255, 255, 255, 0.1);
+  --border-interactive: rgba(255, 255, 255, 0.15);
+  
+  /* Typography */
+  --text-main: #ffffff;
+  --text-heading: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.8);
+  --text-accent: #7dd3fc;
+  
+  /* Interactive & Accents */
+  --color-primary: #34d399;
+  --color-primary-hover: #6ee7b7;
+  --bg-pill: rgba(255, 255, 255, 0.1);
+  --bg-btn-secondary: rgba(255, 255, 255, 0.1);
+  --bg-btn-secondary-hover: rgba(255, 255, 255, 0.2);
+  --color-chart-stroke: #38bdf8;
+  --color-chart-grid: rgba(255, 255, 255, 0.15);
+}
+
 @theme {
   --color-teal-dark: #0d2b2b;
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-mono-data: 'IBM Plex Mono', monospace;
+
+  /* Theme Mapping */
+  --color-app-card: var(--bg-card);
+  --color-app-card-hover: var(--bg-card-hover);
+  --color-app-container: var(--bg-container);
+  --color-app-modal: var(--bg-modal);
+  
+  --color-app-border: var(--border-app);
+  --color-app-border-interactive: var(--border-interactive);
+  
+  --color-app-main: var(--text-main);
+  --color-app-heading: var(--text-heading);
+  --color-app-muted: var(--text-muted);
+  --color-app-accent: var(--text-accent);
+  
+  --color-app-primary: var(--color-primary);
+  --color-app-primary-hover: var(--color-primary-hover);
+  --color-app-pill: var(--bg-pill);
+  --color-app-btn-sec: var(--bg-btn-secondary);
+  --color-app-btn-sec-hover: var(--bg-btn-secondary-hover);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Force browser engines to adapt to transparent tracks without default UI fills */
+/* Force browser engines to adapt to transparent tracks */
 html {
   color-scheme: light;
   scrollbar-width: thin;
@@ -22,62 +102,39 @@ html.dark,
   scrollbar-color: rgba(52, 211, 153, 0.4) transparent;
 }
 
-/* --- WebKit Custom Scrollbar (Chrome, Edge, Safari, Opera) --- */
-
-/* 1. Global scrollbar sizing */
+/* WebKit Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;
   background: transparent !important;
-  background-color: transparent !important;
 }
 
-/* 2. Force tracks, track pieces, and viewport corners to stay 100% transparent */
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar-corner,
 ::-webkit-resizer {
   background: transparent !important;
-  background-color: transparent !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-/* 3. Completely strip out native scrollbar arrow buttons */
-::-webkit-scrollbar-button,
-::-webkit-scrollbar-button:single-button,
-::-webkit-scrollbar-button:vertical,
-::-webkit-scrollbar-button:horizontal,
-::-webkit-scrollbar-button:start,
-::-webkit-scrollbar-button:end {
+::-webkit-scrollbar-button {
   display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
 }
 
-/* 4. Light mode scrollbar thumb (floats directly on top of page background) */
 ::-webkit-scrollbar-thumb {
   background: rgba(47, 143, 121, 0.4) !important;
   border-radius: 9999px !important;
-  border: none !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(47, 143, 121, 0.7) !important;
 }
 
-/* 5. Dark mode scrollbar thumb */
-.dark ::-webkit-scrollbar-thumb,
-html.dark ::-webkit-scrollbar-thumb,
-:root.dark ::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: rgba(52, 211, 153, 0.4) !important;
-  border-radius: 9999px !important;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover,
-html.dark ::-webkit-scrollbar-thumb:hover,
-:root.dark ::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(52, 211, 153, 0.7) !important;
 }
