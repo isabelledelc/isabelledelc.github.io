@@ -33,7 +33,6 @@ export default function FundDetails() {
   return (
     <div className="min-h-screen transition-colors duration-300 [background:var(--bg-page)] text-[var(--text-main)]">
       <Header />
-      <Navbar />
 
       <main className="mx-auto max-w-6xl p-4 sm:p-6 pb-20">
         <div className="overflow-hidden rounded-3xl bg-[var(--bg-card)] shadow-xl border border-[var(--border-app)] backdrop-blur-md">

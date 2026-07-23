@@ -13,7 +13,6 @@ export default function Switching() {
   return (
     <div className="min-h-screen w-full bg-[#9ED382]">
       <Header />
-      <Navbar />
 
       <main className="mx-auto max-w-5xl p-4 md:p-8">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">

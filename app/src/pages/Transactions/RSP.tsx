@@ -121,7 +121,6 @@ export default function RSP() {
   return (
     <div className="min-h-screen w-full bg-[#9ED382]">
       <Header />
-      <Navbar />
 
       <main className="mx-auto max-w-4xl p-3 sm:p-6 md:p-8">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">

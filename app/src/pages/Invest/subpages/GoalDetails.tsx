@@ -79,7 +79,7 @@ export default function GoalDetails() {
   return (
     <div className="min-h-screen w-full bg-[#9ED382]">
       <Header />
-      <Navbar />
+
 
       <main className="mx-auto max-w-5xl p-4 md:p-8 space-y-6 pb-16">
         <div className="flex items-center gap-3 pb-2 border-b border-slate-700/20">
