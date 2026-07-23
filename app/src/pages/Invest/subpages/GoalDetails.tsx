@@ -95,7 +95,7 @@ export default function GoalDetails() {
         <div className="rounded-3xl bg-[#EAF7E6] shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_280px]">
           <div className="p-6 md:p-8 space-y-6">
             <div className="flex items-start justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-extrabold italic text-slate-900 underline decoration-2 underline-offset-4">
+              <h2 className="text-2xl md:text-3xl font-extrabold italic text-slate-900  decoration-2 ">
                 {goal.title}
               </h2>
               <button
