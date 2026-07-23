@@ -17,7 +17,7 @@ export default function RecentActivity() {
     <section>
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-2xl font-semibold text-app-heading">Recent Activity</h2>
-        <a href="/activity" className="text-[14px] text-app-accent hover:underline">
+        <a href="/opustouch/activity" className="text-[14px] text-app-accent hover:underline">
           View All
         </a>
       </div>

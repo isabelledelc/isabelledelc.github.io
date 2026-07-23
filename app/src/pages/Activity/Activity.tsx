@@ -76,7 +76,6 @@ export default function Activity() {
   return (
     <div className="min-h-screen w-full bg-[#9ED382]">
       <Header />
-      <Navbar />
 
       <main className="mx-auto max-w-6xl p-4 md:p-8 space-y-6 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 items-start">

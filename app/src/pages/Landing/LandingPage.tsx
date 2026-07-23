@@ -13,7 +13,6 @@ export default function LandingPage() {
     <div style={{ width: '100%', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       {/* Shared Navigation */}
       <Header />
-      <Navbar variant="landing" />
 
       {/* Main Scrollable Sections */}
       <main>

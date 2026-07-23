@@ -10,23 +10,23 @@ export default function AccountBreakdown({
   breakdownData,
 }: AccountBreakdownProps) {
   return (
-    <div className="space-y-6 rounded-3xl bg-white/60 p-6 shadow-xs backdrop-blur-md">
-      <div className="rounded-2xl bg-white py-3.5 text-center shadow-xs">
-        <h3 className="text-lg font-bold text-slate-800">{analysisFilter} Breakdown</h3>
+    <div className="space-y-6 rounded-3xl bg-[var(--bg-container)] p-6 shadow-xs backdrop-blur-md border border-[var(--border-app)]">
+      <div className="rounded-2xl bg-[var(--bg-card)] py-3.5 text-center shadow-xs border border-[var(--border-app)]">
+        <h3 className="text-lg font-bold text-[var(--text-heading)]">{analysisFilter} Breakdown</h3>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {breakdownData[analysisFilter].map((item) => (
           <div
             key={item.id}
-            className="flex items-center justify-between rounded-2xl border border-slate-100 bg-white p-5 shadow-xs transition hover:shadow-md"
+            className="flex items-center justify-between rounded-2xl border border-[var(--border-app)] bg-[var(--bg-card)] p-5 shadow-xs transition hover:shadow-md"
           >
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{item.name}</p>
-              <p className="mt-2 text-lg font-extrabold text-slate-900">{item.value}</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-[var(--text-muted)]">{item.name}</p>
+              <p className="mt-2 text-lg font-extrabold text-[var(--text-heading)]">{item.value}</p>
             </div>
             <div className="text-right">
-              <span className="rounded-lg bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
+              <span className="rounded-lg bg-[var(--bg-pill)] px-3 py-1 text-xs font-bold text-[var(--text-main)]">
                 {item.code}
               </span>
             </div>
