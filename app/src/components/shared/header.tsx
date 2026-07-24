@@ -64,7 +64,7 @@ export default function Header() {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
 
-  const appRoutePrefixes = ['/home', '/portfolio', '/invest', '/activity', '/settings', '/market-commentary', '/transactions', '/fund-fact-sheet'];
+  const appRoutePrefixes = ['/home', '/portfolio', '/invest', '/activity', '/settings', '/market-commentary', '/transactions', '/fund-fact-sheet', '/funds'];
   const isInAppPage = appRoutePrefixes.some(
     (routePrefix) => location.pathname === routePrefix || location.pathname.startsWith(`${routePrefix}/`)
   );
