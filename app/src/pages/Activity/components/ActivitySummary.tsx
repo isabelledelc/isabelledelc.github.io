@@ -6,6 +6,8 @@ interface ActivitySummaryProps {
   onMonthChange: (direction: 'prev' | 'next') => void;
   totalAmount: string;
   progressPercentage: number;
+  canGoPrev: boolean;
+  canGoNext: boolean;
 }
 
 export default function ActivitySummary({
@@ -13,6 +15,8 @@ export default function ActivitySummary({
   onMonthChange,
   totalAmount,
   progressPercentage,
+  canGoPrev,
+  canGoNext,
 }: ActivitySummaryProps) {
   const strokeWidth = 16;
   const radius = 64;
@@ -20,23 +24,30 @@ export default function ActivitySummary({
   const strokeDashoffset = circumference - (progressPercentage / 100) * circumference;
 
   return (
-    <div className="rounded-3xl bg-[#EAF7E6] shadow-md overflow-hidden flex flex-col justify-between h-full">
+    <div className="rounded-3xl bg-app-card border border-app-border shadow-md overflow-hidden flex flex-col justify-between h-full transition-colors duration-300">
+      
       {/* Top Header Month Bar */}
-      <div className="bg-white px-5 py-4 flex items-center justify-between border-b border-slate-100">
+      <div className="bg-app-pill px-5 py-4 flex items-center justify-between border-b border-app-border">
         <button
+          type="button"
           onClick={() => onMonthChange('prev')}
-          className="p-1 rounded-full hover:bg-slate-100 transition cursor-pointer text-slate-700"
+          disabled={!canGoPrev}
+          className="p-1 rounded-full hover:bg-app-card transition cursor-pointer text-app-heading disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Previous Month"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        <span className="font-extrabold text-lg tracking-wider text-slate-900 uppercase">
+        <span className="font-extrabold text-lg tracking-wider text-app-heading uppercase">
           {selectedMonth}
         </span>
 
         <button
+          type="button"
           onClick={() => onMonthChange('next')}
-          className="p-1 rounded-full hover:bg-slate-100 transition cursor-pointer text-slate-700"
+          disabled={!canGoNext}
+          className="p-1 rounded-full hover:bg-app-card transition cursor-pointer text-app-heading disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Next Month"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
@@ -44,7 +55,7 @@ export default function ActivitySummary({
 
       {/* Monthly Chart Content */}
       <div className="p-8 flex flex-col items-center justify-center space-y-6 flex-1">
-        <h3 className="text-base font-bold text-slate-800 text-center">
+        <h3 className="text-base font-bold text-app-heading text-center">
           This Month’s Investment
         </h3>
 
@@ -56,7 +67,7 @@ export default function ActivitySummary({
               cx="80"
               cy="80"
               r={radius}
-              stroke="#111111"
+              className="stroke-app-border"
               strokeWidth={strokeWidth}
               fill="transparent"
             />
@@ -65,7 +76,7 @@ export default function ActivitySummary({
               cx="80"
               cy="80"
               r={radius}
-              stroke="#22C55E"
+              className="stroke-app-primary"
               strokeWidth={strokeWidth}
               fill="transparent"
               strokeDasharray={circumference}
@@ -76,12 +87,13 @@ export default function ActivitySummary({
 
           {/* Amount Badge inside Chart */}
           <div className="absolute inset-0 flex items-center justify-center text-center p-2">
-            <span className="font-extrabold text-slate-900 text-sm md:text-base">
+            <span className="font-extrabold text-app-heading text-sm md:text-base">
               {totalAmount}
             </span>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

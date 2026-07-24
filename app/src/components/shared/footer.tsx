@@ -2,198 +2,150 @@ import logo from '../../assets/logo.png';
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        padding: '60px 40px 40px',
-        background: '#ffffff',
-        fontFamily: 'sans-serif',
-      }}
-    >
-      {/* Top Section - Grid Columns */}
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '2fr 1fr 1fr 2fr',
-          gap: 40,
-          alignItems: 'start',
-        }}
-      >
-        {/* Brand Logo */}
-        <div>
-          <img
-            src={logo}
-            alt="TOUCH logo"
-            style={{
-              width: 220,
-              maxWidth: '100%',
-              display: 'block',
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-
-        {/* Sitemap Column */}
-        <div>
-          <h4 style={{ marginBottom: 20, fontSize: 15, fontWeight: 600, color: '#2c3e50' }}>
-            Sitemap
-          </h4>
-          <nav style={{ display: 'grid', gap: 12, fontSize: 13 }}>
-            <a href="/features" style={{ color: '#666', textDecoration: 'none' }}>
-              Features
-            </a>
-            <a href="/about" style={{ color: '#666', textDecoration: 'none' }}>
-              About Us
-            </a>
-            <a href="/get-started" style={{ color: '#666', textDecoration: 'none' }}>
-              Get Started
-            </a>
-            <a href="/login" style={{ color: '#666', textDecoration: 'none' }}>
-              Log In
-            </a>
-            <a href="/signup" style={{ color: '#666', textDecoration: 'none' }}>
-              Sign Up
-            </a>
-          </nav>
-        </div>
-
-        {/* Socials Column */}
-        <div>
-          <h4 style={{ marginBottom: 20, fontSize: 15, fontWeight: 600, color: '#2c3e50' }}>
-            Socials
-          </h4>
-          <div style={{ display: 'grid', gap: 12, fontSize: 13 }}>
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#666', textDecoration: 'none' }}
-            >
-              Facebook
-            </a>
-            <a
-              href="https://www.linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#666', textDecoration: 'none' }}
-            >
-              Linkedin
-            </a>
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#666', textDecoration: 'none' }}
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.x.com"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: '#666', textDecoration: 'none' }}
-            >
-              X
-            </a>
+    <footer className="w-full bg-app-card border-t border-app-border px-6 py-12 md:px-10 md:py-16 transition-colors duration-300">
+      <div className="mx-auto max-w-7xl">
+        {/* Top Section - Grid Columns */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_2fr] items-start">
+          
+          {/* Brand Logo */}
+          <div>
+            <img
+              src={logo}
+              alt="TOUCH logo"
+              className="w-52 max-w-full object-contain block dark:brightness-110"
+            />
           </div>
-        </div>
 
-        {/* Head Office Column */}
-        <div>
-          <h4 style={{ marginBottom: 20, fontSize: 15, fontWeight: 600, color: '#2c3e50' }}>
-            Head Office
-          </h4>
-          <p
-            style={{
-              margin: 0,
-              fontSize: 13,
-              lineHeight: 1.6,
-              color: '#666',
-            }}
-          >
-            Opus Asset Management Sdn Bhd<br />
-            199601042272 (414625-T)
-          </p>
+          {/* Sitemap Column */}
+          <div>
+            <h4 className="mb-5 text-sm font-semibold text-app-heading">
+              Sitemap
+            </h4>
+            <nav className="grid gap-3 text-xs md:text-sm">
+              <a href="/features" className="text-app-muted hover:text-app-heading transition-colors">
+                Features
+              </a>
+              <a href="/about" className="text-app-muted hover:text-app-heading transition-colors">
+                About Us
+              </a>
+              <a href="/get-started" className="text-app-muted hover:text-app-heading transition-colors">
+                Get Started
+              </a>
+              <a href="/login" className="text-app-muted hover:text-app-heading transition-colors">
+                Log In
+              </a>
+              <a href="/signup" className="text-app-muted hover:text-app-heading transition-colors">
+                Sign Up
+              </a>
+            </nav>
+          </div>
 
-          <p
-            style={{
-              margin: '16px 0 0',
-              fontSize: 13,
-              lineHeight: 1.6,
-              color: '#666',
-            }}
-          >
-            B-19-2 Northpoint Offices, 1, Medan Syed<br />
-            Putra Utara, Mid Valley City, 59200 Kuala<br />
-            Lumpur
-          </p>
-
-          <div style={{ marginTop: 24 }}>
-            <h5 style={{ fontSize: 14, fontWeight: 600, color: '#2c3e50', marginBottom: 12 }}>
-              Links
-            </h5>
-            <div style={{ display: 'grid', gap: 6, fontSize: 13 }}>
+          {/* Socials Column */}
+          <div>
+            <h4 className="mb-5 text-sm font-semibold text-app-heading">
+              Socials
+            </h4>
+            <div className="grid gap-3 text-xs md:text-sm">
               <a
-                href="https://opusasset.com"
+                href="https://www.facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: '#666', textDecoration: 'none' }}
+                className="text-app-muted hover:text-app-heading transition-colors"
               >
-                https://opusasset.com
+                Facebook
               </a>
               <a
-                href="https://opusserv.com"
+                href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: '#666', textDecoration: 'none' }}
+                className="text-app-muted hover:text-app-heading transition-colors"
               >
-                https://opusserv.com
+                LinkedIn
+              </a>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="text-app-muted hover:text-app-heading transition-colors"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.x.com"
+                target="_blank"
+                rel="noreferrer"
+                className="text-app-muted hover:text-app-heading transition-colors"
+              >
+                X
               </a>
             </div>
           </div>
+
+          {/* Head Office Column */}
+          <div>
+            <h4 className="mb-5 text-sm font-semibold text-app-heading">
+              Head Office
+            </h4>
+            <p className="text-xs md:text-sm leading-relaxed text-app-muted">
+              Opus Asset Management Sdn Bhd<br />
+              199601042272 (414625-T)
+            </p>
+
+            <p className="mt-4 text-xs md:text-sm leading-relaxed text-app-muted">
+              B-19-2 Northpoint Offices, 1, Medan Syed<br />
+              Putra Utara, Mid Valley City, 59200 Kuala<br />
+              Lumpur
+            </p>
+
+            <div className="mt-6">
+              <h5 className="mb-3 text-xs md:text-sm font-semibold text-app-heading">
+                Links
+              </h5>
+              <div className="grid gap-1.5 text-xs md:text-sm">
+                <a
+                  href="https://opusasset.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-app-muted hover:text-app-heading transition-colors"
+                >
+                  https://opusasset.com
+                </a>
+                <a
+                  href="https://opusserv.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-app-muted hover:text-app-heading transition-colors"
+                >
+                  https://opusserv.com
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
 
-      {/* Bottom Section - Contacts & Copyright */}
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: '80px auto 0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 20,
-          fontSize: 14,
-        }}
-      >
-        <a
-          href="mailto:clientservices@opusasset.com"
-          style={{
-            color: '#333333',
-            textDecoration: 'none',
-            borderBottom: '2px solid #528c68',
-            paddingBottom: 4,
-          }}
-        >
-          clientservices@opusasset.com
-        </a>
+        {/* Bottom Section - Contacts & Copyright */}
+        <div className="mt-16 pt-8 border-t border-app-border flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
+          <div className="flex flex-wrap items-center gap-6">
+            <a
+              href="mailto:clientservices@opusasset.com"
+              className="text-app-heading hover:text-app-primary border-b-2 border-app-primary pb-1 transition-colors"
+            >
+              clientservices@opusasset.com
+            </a>
 
-        <a
-          href="tel:+60322888833"
-          style={{
-            color: '#333333',
-            textDecoration: 'none',
-            borderBottom: '2px solid #528c68',
-            paddingBottom: 4,
-          }}
-        >
-          (+603) 2288-8833
-        </a>
+            <a
+              href="tel:+60322888833"
+              className="text-app-heading hover:text-app-primary border-b-2 border-app-primary pb-1 transition-colors"
+            >
+              (+603) 2288-8833
+            </a>
+          </div>
 
-        <span style={{ color: '#888888', fontSize: 12 }}>
-          © 2005 - 2026 Opus Asset Management Sdn Bhd 199601042272 (414625-T). All Rights Reserved.
-        </span>
+          <span className="text-xs text-app-muted text-center md:text-right">
+            © 2005 - 2026 Opus Asset Management Sdn Bhd 199601042272 (414625-T). All Rights Reserved.
+          </span>
+        </div>
       </div>
     </footer>
   );

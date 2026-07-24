@@ -25,7 +25,6 @@ export default function TransactionView({
   onViewMore,
   selectedMonth,
 }: TransactionViewProps) {
-  // Filter logic
   const filtered = transactions.filter((item) => {
     if (activeFilter === 'All') return true;
     return item.type === activeFilter;
@@ -43,14 +42,15 @@ export default function TransactionView({
   };
 
   return (
-    <div className="rounded-3xl bg-[#EAF7E6] p-6 shadow-md space-y-4">
+    <div className="rounded-3xl bg-app-card border border-app-border p-6 shadow-md space-y-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-base font-bold italic text-slate-800">
+        <h3 className="text-base font-bold italic text-app-heading">
           {selectedMonth} 2026
         </h3>
         <button
+          type="button"
           onClick={onViewMore}
-          className="text-xs font-bold text-indigo-600 italic hover:underline cursor-pointer"
+          className="text-xs font-bold text-app-primary italic hover:underline cursor-pointer"
         >
           View More
         </button>
@@ -61,26 +61,26 @@ export default function TransactionView({
           filtered.slice(0, 4).map((item) => (
             <div
               key={item.id}
-              className="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs flex items-center justify-between gap-3 hover:shadow-md transition"
+              className="p-4 rounded-2xl bg-app-pill border border-app-border shadow-xs flex items-center justify-between gap-3 hover:border-app-border-interactive transition"
             >
               <div className="flex items-center gap-3">
-                <div className="w-2 h-10 bg-[#22C55E] rounded-full" />
+                <div className="w-1.5 h-10 bg-app-primary rounded-full" />
                 <div>
                   <div className="flex items-center gap-1.5">
                     {getIcon(item.type)}
-                    <h4 className="text-sm font-bold text-slate-900">{item.type}</h4>
+                    <h4 className="text-sm font-bold text-app-heading">{item.type}</h4>
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-0.5">{item.subtitle}</p>
+                  <p className="text-[11px] text-app-muted mt-0.5">{item.subtitle}</p>
                 </div>
               </div>
 
               <div className="text-right">
-                <p className="text-[10px] text-slate-400">
+                <p className="text-[10px] text-app-muted">
                   {item.date} | {item.time}
                 </p>
                 <p
                   className={`text-xs font-extrabold mt-1 ${
-                    item.amount.startsWith('-') ? 'text-rose-600' : 'text-slate-900'
+                    item.amount.startsWith('-') ? 'text-rose-500' : 'text-app-heading'
                   }`}
                 >
                   {item.amount} MYR
@@ -89,7 +89,7 @@ export default function TransactionView({
             </div>
           ))
         ) : (
-          <div className="py-12 text-center text-xs font-semibold text-slate-500">
+          <div className="py-12 text-center text-xs font-semibold text-app-muted">
             No transactions found for "{activeFilter}".
           </div>
         )}

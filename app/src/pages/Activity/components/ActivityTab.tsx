@@ -23,40 +23,43 @@ export default function ActivityTab({
       {/* Top Main Tab Headers */}
       <div className="flex items-center justify-center gap-12 text-lg font-bold">
         <button
+          type="button"
           onClick={() => onTabChange('Transaction')}
           className={`pb-1 transition cursor-pointer relative ${
             activeTab === 'Transaction'
-              ? 'text-slate-900 font-extrabold border-b-2 border-slate-900'
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'text-app-heading font-extrabold border-b-2 border-app-heading'
+              : 'text-app-muted hover:text-app-heading'
           }`}
         >
           Transaction
         </button>
 
         <button
+          type="button"
           onClick={() => onTabChange('Statement')}
           className={`pb-1 transition cursor-pointer relative ${
             activeTab === 'Statement'
-              ? 'text-slate-900 font-extrabold border-b-2 border-slate-900'
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'text-app-heading font-extrabold border-b-2 border-app-heading'
+              : 'text-app-muted hover:text-app-heading'
           }`}
         >
           Statement
         </button>
       </div>
 
-      {/* White Filter Pills Container */}
-      <div className="rounded-2xl border border-white/80 p-2.5 flex items-center justify-around gap-2 bg-white/10 backdrop-blur-xs">
+      {/* Filter Pills Container */}
+      <div className="rounded-2xl border border-app-border p-2.5 flex items-center justify-around gap-2 bg-app-pill backdrop-blur-xs">
         {filterOptions.map((filter) => {
           const isSelected = activeFilter === filter;
           return (
             <button
               key={filter}
+              type="button"
               onClick={() => onFilterChange(filter)}
-              className={`px-5 py-2 rounded-full text-xs font-bold transition shadow-xs cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
                 isSelected
-                  ? 'bg-[#22C55E] text-white shadow-md'
-                  : 'bg-white text-slate-800 hover:bg-slate-100'
+                  ? 'bg-app-primary text-white shadow-md'
+                  : 'bg-app-card text-app-heading hover:border-app-border-interactive border border-app-border'
               }`}
             >
               {filter}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/shared/header';
-import Navbar from '../../components/shared/navbar';
+
 
 // Modular Components
 import ActivitySummary from './components/ActivitySummary';
@@ -12,8 +12,11 @@ import StatementView, { type Statement } from './components/StatementView';
 import ViewAllTransactions from './subpages/ViewAllTransactions';
 import ViewAllStatements from './subpages/ViewAllStatements';
 
-// Mock Data
-const months = ['MAY', 'JUN', 'JULY'];
+// Full 12 Months List
+const months = [
+  'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+  'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
+];
 
 const sampleTransactions: Transaction[] = [
   {
@@ -52,12 +55,13 @@ const sampleTransactions: Transaction[] = [
 
 const sampleStatements: Statement[] = [
   { id: 'st-1', title: 'Monthly Statement - July 2026', period: '01 Jul 2026 - 31 Jul 2026', fileSize: '1.2 MB' },
-  { id: 'st-[#st-2]', title: 'Monthly Statement - June 2026', period: '01 Jun 2026 - 30 Jun 2026', fileSize: '1.1 MB' },
+  { id: 'st-2', title: 'Monthly Statement - June 2026', period: '01 Jun 2026 - 30 Jun 2026', fileSize: '1.1 MB' },
   { id: 'st-3', title: 'Quarterly Report Q2 2026', period: '01 Apr 2026 - 30 Jun 2026', fileSize: '2.4 MB' },
 ];
 
 export default function Activity() {
-  const [monthIndex, setMonthIndex] = useState(1); // Defaults to JUN
+  // Defaults to JULY (Index 6)
+  const [monthIndex, setMonthIndex] = useState(6); 
   const [activeTab, setActiveTab] = useState<MainTab>('Transaction');
   const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
@@ -74,7 +78,8 @@ export default function Activity() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#9ED382]">
+    /* Changed bg-[#9ED382] to the theme design token class bg-app-card / bg-app-bg */
+    <div className="min-h-screen w-full bg-app-card transition-colors duration-300">
       <Header />
 
       <main className="mx-auto max-w-6xl p-4 md:p-8 space-y-6 pb-16">
@@ -87,6 +92,9 @@ export default function Activity() {
               onMonthChange={handleMonthChange}
               totalAmount="RM 12,450.00"
               progressPercentage={72}
+              /* Updated dynamically so the navigation buttons actually work */
+              canGoPrev={monthIndex > 0}
+              canGoNext={monthIndex < months.length - 1}
             />
           </div>
 
@@ -116,6 +124,8 @@ export default function Activity() {
           </div>
         </div>
       </main>
+
+     
 
       {/* Subpage Overlay Modals */}
       {showAllTx && (

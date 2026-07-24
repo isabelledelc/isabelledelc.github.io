@@ -1,13 +1,10 @@
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from "../../components/shared/header";
-import Navbar from "../../components/shared/navbar";
 
 export default function PaymentConfirmation() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Extract form state values passed from TopUp (with defaults)
   const amount = location.state?.amount || '250.00';
   const paymentMethod = location.state?.paymentMethod || 'Boost';
 
@@ -18,56 +15,60 @@ export default function PaymentConfirmation() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#9ED382]">
+    <div 
+      className="min-h-screen w-full transition-colors duration-300 text-app-main font-sans"
+      style={{ background: 'var(--bg-page)' }}
+    >
       <Header />
 
       <main className="mx-auto max-w-5xl p-4 md:p-8">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="bg-app-card backdrop-blur-md rounded-2xl shadow-xl border border-app-border overflow-hidden transition-colors duration-300">
+          
           {/* Header Bar */}
-          <div className="p-6 border-b border-gray-200 flex items-center space-x-4">
+          <div className="p-6 border-b border-app-border flex items-center space-x-4">
             <button 
               onClick={() => navigate(-1)}
-              className="text-xl font-bold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+              className="text-xl font-bold text-app-heading hover:bg-app-pill rounded-full w-9 h-9 flex items-center justify-center transition-colors cursor-pointer"
               title="Go Back"
             >
               &lt;
             </button>
-            <h1 className="text-2xl font-bold text-black">Payment Confirmation</h1>
+            <h1 className="text-2xl font-bold text-app-heading font-heading">Payment Confirmation</h1>
           </div>
 
           <div className="p-8 space-y-6">
-            <h2 className="text-xl font-bold text-black mb-6">Payment Details</h2>
+            <h2 className="text-xl font-bold text-app-heading font-heading mb-6">Payment Details</h2>
 
             {/* Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 text-sm">
               <div className="grid grid-cols-2">
-                <span className="font-semibold text-gray-600">Master Account</span>
-                <span className="text-gray-800 font-medium">A-908123-KYC</span>
+                <span className="font-semibold text-app-muted">Master Account</span>
+                <span className="text-app-heading font-mono-data font-medium">A-908123-KYC</span>
               </div>
               <div className="grid grid-cols-2">
-                <span className="font-semibold text-gray-600">Fund Name</span>
-                <span className="text-gray-800 uppercase font-medium">OPUS INCOME PLUS FUND</span>
-              </div>
-
-              <div className="grid grid-cols-2">
-                <span className="font-semibold text-gray-600">Account Holder(s)</span>
-                <span className="text-gray-800 font-medium">Alex Tan Jin Wei</span>
-              </div>
-              <div className="grid grid-cols-2">
-                <span className="font-semibold text-gray-600">Payment Amount</span>
-                <span className="text-emerald-600 font-bold text-base">MYR {amount}</span>
+                <span className="font-semibold text-app-muted">Fund Name</span>
+                <span className="text-app-heading uppercase font-medium">OPUS INCOME PLUS FUND</span>
               </div>
 
               <div className="grid grid-cols-2">
-                <span className="font-semibold text-gray-600">Goal</span>
-                <span className="text-gray-800 uppercase font-medium">RETIREMENT FUND</span>
+                <span className="font-semibold text-app-muted">Account Holder(s)</span>
+                <span className="text-app-heading font-medium">Alex Tan Jin Wei</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <span className="font-semibold text-app-muted">Payment Amount</span>
+                <span className="text-app-primary font-bold text-base font-mono-data">MYR {amount}</span>
+              </div>
+
+              <div className="grid grid-cols-2">
+                <span className="font-semibold text-app-muted">Goal</span>
+                <span className="text-app-heading uppercase font-medium">RETIREMENT FUND</span>
               </div>
               <div className="grid grid-cols-2 items-center">
-                <span className="font-semibold text-gray-600">Payment Method</span>
-                <div className={`border rounded-lg px-3 py-1 w-24 text-center font-bold text-sm shadow-sm ${
-                  paymentMethod === 'Boost' ? 'border-red-300 text-red-500 bg-red-50' : 
-                  paymentMethod === 'Offline' ? 'border-orange-300 text-orange-500 bg-orange-50' : 
-                  'border-blue-300 text-blue-800 bg-blue-50'
+                <span className="font-semibold text-app-muted">Payment Method</span>
+                <div className={`border rounded-lg px-3 py-1.5 w-24 text-center font-bold text-sm shadow-sm ${
+                  paymentMethod === 'Boost' ? 'border-red-400/40 text-red-500 bg-red-500/10' : 
+                  paymentMethod === 'Offline' ? 'border-amber-400/40 text-amber-500 bg-amber-500/10' : 
+                  'border-sky-400/40 text-sky-500 bg-sky-500/10'
                 }`}>
                   {paymentMethod}
                 </div>
@@ -75,8 +76,8 @@ export default function PaymentConfirmation() {
             </div>
 
             {/* Note Box */}
-            <div className="bg-[#EAF5E8] border border-emerald-100 rounded-2xl p-6 mt-8 space-y-3 text-xs text-gray-700 leading-relaxed">
-              <h3 className="font-bold text-sm text-black mb-2">Note :</h3>
+            <div className="bg-app-container border border-app-border rounded-2xl p-6 mt-8 space-y-3 text-xs text-app-muted leading-relaxed">
+              <h3 className="font-bold text-sm text-app-heading mb-2">Note :</h3>
               <p>• Any transactions made after 4:00 PM will be processed on the next business day.</p>
               <p>• Kindly ensure that your payment details match your registered account name.</p>
               <p>• Please take note that we do not allow 3rd party payment to make investment. We reserve the right to reject any 3rd party payment at our sole discretion.</p>
@@ -86,12 +87,13 @@ export default function PaymentConfirmation() {
             <div className="flex justify-center pt-6">
               <button 
                 onClick={handleProceed}
-                className="bg-[#28A745] hover:bg-[#218838] text-white font-semibold py-3 px-24 rounded-xl text-lg transition-colors shadow-sm active:scale-95"
+                className="bg-app-primary hover:bg-app-primary-hover text-white font-semibold py-3.5 px-24 rounded-xl text-lg transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 Proceed
               </button>
             </div>
           </div>
+
         </div>
       </main>
     </div>
