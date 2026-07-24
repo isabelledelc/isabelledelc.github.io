@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, FileText, Download } from "lucide-react";
+import { ChevronLeft, FileText, Download, X } from "lucide-react";
 import Header from "../../components/shared/header";
 
 export default function FundFactSheet() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"Objective" | "Fees" | "Documents">("Objective");
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -16,7 +17,11 @@ export default function FundFactSheet() {
   };
 
   const handleConfirm = () => {
-    
+    setShowTermsModal(true);
+  };
+
+  const handleAcceptTerms = () => {
+    setShowTermsModal(false);
     navigate("/funds/1");
   };
 
@@ -225,8 +230,74 @@ export default function FundFactSheet() {
             Confirm
           </button>
         </div>
-
       </main>
+
+      {/* Terms and Conditions Popup Modal themed with CSS variables */}
+      {showTermsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+          <div className="relative w-full max-w-2xl rounded-3xl bg-[var(--bg-modal)] p-8 shadow-2xl transition-all border border-[var(--border-app)] text-[var(--text-main)] backdrop-blur-md">
+            
+            {/* Header & Close Icon */}
+            <div className="flex items-center justify-between pb-4">
+              <h2 className="text-2xl font-bold tracking-tight text-[var(--text-heading)]">
+                Terms and Conditions
+              </h2>
+              <button
+                onClick={() => setShowTermsModal(false)}
+                type="button"
+                className="text-[var(--text-heading)] hover:opacity-75 transition-opacity cursor-pointer p-1"
+                aria-label="Close"
+              >
+                <X className="h-7 w-7 stroke-[3]" />
+              </button>
+            </div>
+
+            {/* Scrollable Terms Text */}
+            <div className="max-h-[340px] overflow-y-auto pr-3 text-sm text-[var(--text-main)] leading-relaxed space-y-4 my-2">
+              <p className="font-semibold text-[var(--text-heading)]">1. Introduction and Acceptance</p>
+
+              <p>
+                2. By registering to use OPUS TOUCH (“this Portal”), you agree to follow the Terms and
+                Conditions of Use Policy, to utilise this Portal only for bona fide and lawful purposes
+                permitted under the Terms and Conditions and to update your software and hardware if
+                necessary to use this Portal. Opus Asset Management Sdn. Bhd. (“OpusAsset”) shall
+                have the right at any time to change or discontinue any aspect or feature, of this Portal,
+                including, but not limited to, contents, hours of availability and software and hardware
+                requirements for access and utilisation.
+              </p>
+
+              <p className="font-semibold text-[var(--text-heading)]">3. Introduction and Acceptance</p>
+
+              <p>
+                4. By registering to use OPUS TOUCH (“this Portal”), you agree to follow the Terms and
+                Conditions of Use Policy, to utilise this Portal only for bona fide and lawful purposes
+                permitted under the Terms and Conditions and to update your software and hardware if
+                necessary to use this Portal.
+              </p>
+            </div>
+
+            {/* Modal Buttons */}
+            <div className="flex items-center justify-center gap-6 pt-6">
+              <button
+                type="button"
+                onClick={() => setShowTermsModal(false)}
+                className="w-36 py-2.5 rounded-xl bg-[var(--bg-btn-secondary)] hover:bg-[var(--bg-btn-secondary-hover)] text-[var(--text-heading)] font-semibold text-sm transition-all active:scale-95 cursor-pointer shadow-xs border border-[var(--border-app)]"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                onClick={handleAcceptTerms}
+                className="w-36 py-2.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-semibold text-sm transition-all active:scale-95 cursor-pointer shadow-xs"
+              >
+                Accept
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
