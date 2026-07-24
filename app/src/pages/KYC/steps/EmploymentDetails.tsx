@@ -1,6 +1,5 @@
 import type { KYCFormData } from "../KYConboarding";
 
-
 interface Props {
   formData: KYCFormData;
   updateFormData: (data: Partial<KYCFormData>) => void;
@@ -8,8 +7,23 @@ interface Props {
 }
 
 export default function EmploymentDetails({ formData, updateFormData, onNext }: Props) {
+  // Check if all fields are filled in
+  const isFormValid =
+    Boolean(formData.employmentType) &&
+    Boolean(formData.occupation) &&
+    Boolean(formData.companyName?.trim()) &&
+    Boolean(formData.industry) &&
+    Boolean(formData.sourceOfWealth);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isFormValid) {
+      onNext();
+    }
+  };
+
   return (
-    <div className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-[#1F5C2E]">Employment Details</h2>
         <p className="text-sm text-slate-600 mt-1">
@@ -20,13 +34,16 @@ export default function EmploymentDetails({ formData, updateFormData, onNext }: 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#E9F7E5]/50 p-6 rounded-3xl border border-emerald-100">
         {/* Employment Type */}
         <div className="space-y-1">
-          <label className="text-xs font-bold text-slate-700">Employment Type</label>
+          <label className="text-xs font-bold text-slate-700">Employment Type *</label>
           <select
-            value={formData.employmentType}
+            value={formData.employmentType || ""}
             onChange={(e) => updateFormData({ employmentType: e.target.value })}
-            className="w-full bg-white border border-emerald-500 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+            required
           >
-            <option value="">Please Select</option>
+            <option value="" disabled hidden>
+              Please Select
+            </option>
             <option value="Employed">Employed</option>
             <option value="Self-Employed">Self-Employed</option>
             <option value="Student">Student</option>
@@ -36,13 +53,16 @@ export default function EmploymentDetails({ formData, updateFormData, onNext }: 
 
         {/* Occupation */}
         <div className="space-y-1">
-          <label className="text-xs font-bold text-slate-700">Occupation</label>
+          <label className="text-xs font-bold text-slate-700">Occupation *</label>
           <select
-            value={formData.occupation}
+            value={formData.occupation || ""}
             onChange={(e) => updateFormData({ occupation: e.target.value })}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+            required
           >
-            <option value="">Please Select</option>
+            <option value="" disabled hidden>
+              Please Select
+            </option>
             <option value="Executive / Manager">Executive / Manager</option>
             <option value="Professional">Professional</option>
             <option value="Business Owner">Business Owner</option>
@@ -51,25 +71,29 @@ export default function EmploymentDetails({ formData, updateFormData, onNext }: 
 
         {/* Company Name */}
         <div className="space-y-1">
-          <label className="text-xs font-bold text-slate-700">Company/Organization/University Name</label>
+          <label className="text-xs font-bold text-slate-700">Company/Organization/University Name *</label>
           <input
             type="text"
-            value={formData.companyName}
+            value={formData.companyName || ""}
             placeholder="Company name"
             onChange={(e) => updateFormData({ companyName: e.target.value })}
             className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            required
           />
         </div>
 
         {/* Industry */}
         <div className="space-y-1">
-          <label className="text-xs font-bold text-slate-700">Industry</label>
+          <label className="text-xs font-bold text-slate-700">Industry *</label>
           <select
-            value={formData.industry}
+            value={formData.industry || ""}
             onChange={(e) => updateFormData({ industry: e.target.value })}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+            required
           >
-            <option value="">Please Select</option>
+            <option value="" disabled hidden>
+              Please Select
+            </option>
             <option value="Technology">Technology</option>
             <option value="Financial Services">Financial Services</option>
             <option value="Healthcare">Healthcare</option>
@@ -79,13 +103,16 @@ export default function EmploymentDetails({ formData, updateFormData, onNext }: 
 
         {/* Source of Wealth */}
         <div className="space-y-1">
-          <label className="text-xs font-bold text-slate-700">Source of Wealth</label>
+          <label className="text-xs font-bold text-slate-700">Source of Wealth *</label>
           <select
-            value={formData.sourceOfWealth}
+            value={formData.sourceOfWealth || ""}
             onChange={(e) => updateFormData({ sourceOfWealth: e.target.value })}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+            required
           >
-            <option value="">Please Select</option>
+            <option value="" disabled hidden>
+              Please Select
+            </option>
             <option value="Salary">Salary</option>
             <option value="Savings / Investments">Savings / Investments</option>
             <option value="Business Profits">Business Profits</option>
@@ -94,15 +121,20 @@ export default function EmploymentDetails({ formData, updateFormData, onNext }: 
         </div>
       </div>
 
+      {/* Action Button */}
       <div className="flex justify-end pt-4">
         <button
-          type="button"
-          onClick={onNext}
-          className="bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-12 py-3 rounded-xl transition cursor-pointer"
+          type="submit"
+          disabled={!isFormValid}
+          className={`font-bold px-12 py-3 rounded-xl transition ${
+            isFormValid
+              ? "bg-[#22C55E] hover:bg-emerald-600 text-white cursor-pointer"
+              : "bg-slate-300 text-slate-500 cursor-not-allowed opacity-70"
+          }`}
         >
           Next
         </button>
       </div>
-    </div>
+    </form>
   );
 }

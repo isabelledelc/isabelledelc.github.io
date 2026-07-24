@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Info } from "lucide-react";
 import type { KYCFormData } from "../KYConboarding";
-
 
 interface Props {
   formData: KYCFormData;
@@ -8,7 +8,36 @@ interface Props {
   onNext: () => void;
 }
 
+const nationalityOptions = [
+  "Malaysian",
+  "Singaporean",
+  "Indonesian",
+  "Chinese",
+  "Indian",
+  "British",
+  "Australian",
+  "American",
+  "Japanese",
+  "Korean",
+  "Filipino",
+  "Thai",
+  "Vietnamese",
+  "Other",
+];
+
 export default function PersonalDetails({ formData, updateFormData, onNext }: Props) {
+  const [error, setError] = useState("");
+
+  const handleNext = () => {
+    if (!formData.nationality || !formData.gender || !formData.race || !formData.isRelatedToOpus) {
+      setError("Please complete all fields before moving to the next step.");
+      return;
+    }
+
+    setError("");
+    onNext();
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -24,11 +53,18 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
           <label className="text-xs font-bold text-slate-700">Nationality</label>
           <select
             value={formData.nationality}
-            onChange={(e) => updateFormData({ nationality: e.target.value })}
+            onChange={(e) => {
+              updateFormData({ nationality: e.target.value });
+              setError("");
+            }}
             className="w-full bg-white border border-emerald-500 rounded-2xl p-4 text-sm focus:outline-none"
           >
-            <option value="Malaysian">Malaysian</option>
-            <option value="Other">Other</option>
+            <option value="">Select nationality</option>
+            {nationalityOptions.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -37,12 +73,16 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
           <label className="text-xs font-bold text-slate-700">Gender</label>
           <select
             value={formData.gender}
-            onChange={(e) => updateFormData({ gender: e.target.value })}
+            onChange={(e) => {
+              updateFormData({ gender: e.target.value });
+              setError("");
+            }}
             className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
           >
-            <option value="">Male/Female/Rather not say</option>
+            <option value="">Select gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+            <option value="Rather not say">Rather not say</option>
           </select>
         </div>
 
@@ -51,10 +91,13 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
           <label className="text-xs font-bold text-slate-700">Race</label>
           <select
             value={formData.race}
-            onChange={(e) => updateFormData({ race: e.target.value })}
+            onChange={(e) => {
+              updateFormData({ race: e.target.value });
+              setError("");
+            }}
             className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
           >
-            <option value="">Bumiputera/CN/BM/IND</option>
+            <option value="">Select race</option>
             <option value="Malay">Malay (Bumiputera)</option>
             <option value="Chinese">Chinese</option>
             <option value="Indian">Indian</option>
@@ -69,14 +112,22 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
           </label>
           <select
             value={formData.isRelatedToOpus}
-            onChange={(e) => updateFormData({ isRelatedToOpus: e.target.value })}
+            onChange={(e) => {
+              updateFormData({ isRelatedToOpus: e.target.value });
+              setError("");
+            }}
             className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
           >
+            <option value="">Select an option</option>
             <option value="No">No</option>
             <option value="Yes">Yes</option>
           </select>
         </div>
       </div>
+
+      {error && (
+        <p className="text-sm font-medium text-red-600">{error}</p>
+      )}
 
       <div className="flex items-center justify-between pt-4">
         <p className="text-xs text-slate-500">
@@ -84,7 +135,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
         </p>
         <button
           type="button"
-          onClick={onNext}
+          onClick={handleNext}
           className="bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-12 py-3 rounded-xl transition cursor-pointer"
         >
           Next
