@@ -28,6 +28,13 @@
   --bg-btn-secondary-hover: #cbd5e1;
   --color-chart-stroke: #0284c7;
   --color-chart-grid: #e2e8f0;
+
+  /* Chart Allocation Tokens (Light Mode - High Contrast) */
+  --chart-1: #10B981; /* Emerald Green */
+  --chart-2: #F59E0B; /* Warm Amber */
+  --chart-3: #06B6D4; /* Cyan */
+  --chart-4: #8B5CF6; /* Violet */
+  --chart-5: #EC4899; /* Bright Pink */
 }
 
 html.dark {
@@ -58,6 +65,13 @@ html.dark {
   --bg-btn-secondary-hover: rgba(255, 255, 255, 0.2);
   --color-chart-stroke: #38bdf8;
   --color-chart-grid: rgba(255, 255, 255, 0.15);
+
+  /* Chart Allocation Tokens (Dark Mode - Vibrant Contrast) */
+  --chart-1: #34D399; /* Mint Emerald */
+  --chart-2: #FBBF24; /* Golden Amber */
+  --chart-3: #38BDF8; /* Bright Sky Blue */
+  --chart-4: #A78BFA; /* Lavender */
+  --chart-5: #F472B6; /* Vibrant Pink */
 }
 
 @theme {
@@ -85,6 +99,13 @@ html.dark {
   --color-app-pill: var(--bg-pill);
   --color-app-btn-sec: var(--bg-btn-secondary);
   --color-app-btn-sec-hover: var(--bg-btn-secondary-hover);
+
+  /* Chart Theme Mappings */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
