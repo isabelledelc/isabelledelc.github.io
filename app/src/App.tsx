@@ -33,7 +33,7 @@ import Redemption from "./pages/Transactions/Redemption";
 import TopUp from "./pages/Transactions/TopUp";
 import RSP from "./pages/Transactions/RSP";
 import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
-
+import FundFactSheet from "./pages/Other Pages/FundFactSheet";
 import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
 function App() {
@@ -79,6 +79,8 @@ function App() {
 
         <Route path="/invest/goal-details" element={<GoalDetails />} />
         <Route path="/invest/goals/:goalId" element={<GoalDetails />} />
+        <Route path="/fund-fact-sheet" element={<FundFactSheet />} />
+        <Route path="/fund-fact-sheet/:fundId" element={<FundFactSheet />} />
 
         {/* Transaction Pages */}
         <Route path="/transactions/cooling-off" element={<CoolingOff />} />
