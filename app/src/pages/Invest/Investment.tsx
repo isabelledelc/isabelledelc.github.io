@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FileText, ChevronRight } from 'lucide-react';
-
 import Header from '../../components/shared/header';
-import Navbar from '../../components/shared/navbar';
 
 // Custom components
 import TotalGoalSummary from './components/TotalGoalSummary';
@@ -31,21 +27,15 @@ const wholesaleFunds = [
   { id: 'fund-4', name: 'OPUS GLOBAL VALUE', code: 'GVF' },
 ];
 
-const marketCommentary = [
-  { id: 'comm-1', title: 'OPUSAM Weekly', date: '6th July 2026' },
-  { id: 'comm-2', title: 'Market Outlook', date: '1st July 2026' },
-  { id: 'comm-3', title: 'Fixed Income Review', date: '28th June 2026' },
-];
-
 export default function Investment() {
-  const navigate = useNavigate();
-
   const [showGoalsModal, setShowGoalsModal] = useState(false);
   const [showFundsModal, setShowFundsModal] = useState(false);
-  const [showMarketModal, setShowMarketModal] = useState(false);
 
   return (
-    <div className="min-h-screen w-full bg-[#9ED382]">
+    <div
+      className="min-h-screen w-full transition-colors duration-300 text-app-main"
+      style={{ background: 'var(--bg-page)' }}
+    >
       <Header />
 
       <main className="mx-auto max-w-6xl p-4 md:p-8 space-y-6 pb-16">
@@ -64,7 +54,6 @@ export default function Investment() {
             onViewAllClick={() => setShowFundsModal(true)}
           />
         </div>
-
       </main>
 
       {/* Pop-up Modals / Overlay Subpages */}
@@ -82,7 +71,6 @@ export default function Investment() {
           onClose={() => setShowFundsModal(false)}
         />
       )}
-
     </div>
   );
 }

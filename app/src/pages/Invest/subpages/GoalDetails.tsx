@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeft, Pencil, ArrowUpRight } from 'lucide-react';
 import Header from '../../../components/shared/header';
-import Navbar from '../../../components/shared/navbar';
+
 
 interface Fund {
   id: string;
@@ -72,76 +72,90 @@ export default function GoalDetails() {
   const goal = goalsData[goalKey] ?? goalsData['goal-1'];
 
   const strokeWidth = 14;
-  const radius = 60;
+  const radius = 80;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (goal.progressPercentage / 100) * circumference;
 
   return (
-    <div className="min-h-screen w-full bg-[#9ED382]">
+    <div className="min-h-screen w-full bg-app-card transition-colors duration-300">
       <Header />
+      
 
-
-      <main className="mx-auto max-w-5xl p-4 md:p-8 space-y-6 pb-16">
-        <div className="flex items-center gap-3 pb-2 border-b border-slate-700/20">
+      <main className="mx-auto max-w-5xl p-4 md:p-10 space-y-8 pb-16">
+        
+        {/* Top Header Navigation */}
+        <div className="flex items-center gap-4 pb-4 border-b border-app-border">
           <button
+            type="button"
             onClick={() => navigate(-1)}
-            className="p-1 rounded-xl hover:bg-black/10 transition"
+            className="w-10 h-10 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive flex items-center justify-center text-app-heading hover:text-app-primary transition-all duration-200 cursor-pointer shadow-sm active:scale-95"
+            title="Go Back"
           >
-            <ChevronLeft className="w-7 h-7 text-slate-900" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-2xl font-bold text-slate-900">View Goal Details</h1>
+          <div>
+            <h1 className="text-2xl font-bold text-app-heading">View Goal Details</h1>
+            <p className="text-xs font-semibold text-app-muted mt-0.5">Track your target progress and allocations</p>
+          </div>
         </div>
 
-        <div className="rounded-3xl bg-[#EAF7E6] shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_280px]">
+        {/* Goal Overview Card */}
+        <div className="rounded-[32px] bg-app-card border border-app-border shadow-xl backdrop-blur-md overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_340px] transition-colors duration-300">
+          
+          {/* Main Info Section */}
           <div className="p-6 md:p-8 space-y-6">
             <div className="flex items-start justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-extrabold italic text-slate-900  decoration-2 ">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-app-heading">
                 {goal.title}
               </h2>
               <button
+                type="button"
                 onClick={() => navigate(`/invest/subpages/edit-goal?goalId=${goal.id}`)}
-                className="w-10 h-10 rounded-full bg-[#22C55E] hover:bg-emerald-600 transition flex items-center justify-center text-white shadow-sm"
+                className="w-10 h-10 rounded-2xl bg-app-primary hover:opacity-90 transition-all flex items-center justify-center text-white shadow-md active:scale-95 cursor-pointer"
+                title="Edit Goal"
               >
-                <Pencil className="w-5 h-5" />
+                <Pencil className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="grid gap-4 text-sm md:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-white p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Target Goal Amount</p>
-                <p className="mt-2 font-bold text-slate-900">{goal.targetAmount}</p>
+            {/* Metrics Grid */}
+            <div className="grid gap-4 text-sm grid-cols-1 sm:grid-cols-2">
+              <div className="rounded-2xl border border-app-border bg-app-pill/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-app-muted">Target Goal Amount</p>
+                <p className="mt-2 text-base font-bold text-app-heading">{goal.targetAmount}</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Time To Goal</p>
-                <p className="mt-2 font-bold text-slate-900">{goal.timeToGoal}</p>
+              <div className="rounded-2xl border border-app-border bg-app-pill/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-app-muted">Time To Goal</p>
+                <p className="mt-2 text-base font-bold text-app-heading">{goal.timeToGoal}</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Remaining Amount</p>
-                <p className="mt-2 font-bold text-slate-900">{goal.remainingAmount}</p>
+              <div className="rounded-2xl border border-app-border bg-app-pill/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-app-muted">Remaining Amount</p>
+                <p className="mt-2 text-base font-bold text-app-heading">{goal.remainingAmount}</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Estimate Date</p>
-                <p className="mt-2 font-bold text-slate-900">{goal.estimateDate}</p>
+              <div className="rounded-2xl border border-app-border bg-app-pill/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-app-muted">Estimate Date</p>
+                <p className="mt-2 text-base font-bold text-app-heading">{goal.estimateDate}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 border-t md:border-t-0 md:border-l border-slate-100 flex flex-col items-center justify-center">
-            <div className="relative w-40 h-40">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
+          {/* Expanded Radial Progress Graphic */}
+          <div className="bg-app-pill/30 p-8 border-t md:border-t-0 md:border-l border-app-border flex flex-col items-center justify-center">
+            <div className="relative w-56 h-56">
+              <svg className="w-full h-full -rotate-90" viewBox="0 0 200 200">
                 <circle
-                  cx="80"
-                  cy="80"
+                  cx="100"
+                  cy="100"
                   r={radius}
-                  stroke="#E5E7EB"
+                  className="stroke-app-border"
                   strokeWidth={strokeWidth}
                   fill="transparent"
                 />
                 <circle
-                  cx="80"
-                  cy="80"
+                  cx="100"
+                  cy="100"
                   r={radius}
-                  stroke="#C8383A"
+                  className="stroke-app-primary"
                   strokeWidth={strokeWidth}
                   fill="transparent"
                   strokeDasharray={circumference}
@@ -149,18 +163,19 @@ export default function GoalDetails() {
                   strokeLinecap="round"
                 />
               </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="text-[12px] font-semibold text-slate-900">{goal.savedAmount}</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 mt-1">of</span>
-                <span className="text-[12px] font-semibold text-slate-900 mt-1">{goal.targetAmount}</span>
-                <span className="mt-3 text-sm font-semibold text-slate-900">{goal.progressPercentage}%</span>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                <span className="text-sm font-bold text-app-heading tracking-tight">{goal.savedAmount}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-app-muted my-1">of</span>
+                <span className="text-sm font-bold text-app-heading tracking-tight">{goal.targetAmount}</span>
+                <span className="mt-3 text-xl font-extrabold text-app-primary">{goal.progressPercentage}%</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="rounded-3xl border-2 border-white/80 p-6 min-h-55 space-y-4">
-          <h3 className="text-xl font-bold text-white">Funds Under Goal</h3>
+        {/* Funds Under Goal Section */}
+        <div className="rounded-[32px] bg-app-card border border-app-border p-6 md:p-8 space-y-6 shadow-xl transition-colors duration-300">
+          <h3 className="text-xl font-bold text-app-heading">Funds Under Goal</h3>
           {goal.funds.length > 0 ? (
             <div className="grid gap-4 md:grid-cols-2">
               {goal.funds.map((fund) => (
@@ -168,18 +183,20 @@ export default function GoalDetails() {
                   key={fund.id}
                   type="button"
                   onClick={() => navigate(`/invest/subpages/view-fund-details?fundId=${fund.id}`)}
-                  className="w-full rounded-3xl bg-white p-4 text-left shadow-sm transition hover:shadow-md"
+                  className="w-full rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive p-5 text-left transition-all duration-200 hover:shadow-md cursor-pointer group"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900">{fund.name}</h4>
-                      <p className="text-xs text-slate-500">{fund.code}</p>
+                      <h4 className="text-sm font-bold text-app-heading group-hover:text-app-primary transition-colors">
+                        {fund.name}
+                      </h4>
+                      <p className="text-xs font-semibold text-app-muted mt-1">{fund.code}</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-xs font-semibold text-slate-900">{fund.allocatedAmount}</span>
-                      <div className="mt-2 flex items-center justify-end gap-1 text-[11px] font-bold text-emerald-600">
+                      <span className="text-xs font-bold text-app-heading">{fund.allocatedAmount}</span>
+                      <div className="mt-2 flex items-center justify-end gap-1 text-[11px] font-bold text-app-primary">
                         <span>View Fund</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
+                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </div>
                     </div>
                   </div>
@@ -187,11 +204,12 @@ export default function GoalDetails() {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-32 text-white/80 text-sm font-semibold">
+            <div className="flex items-center justify-center h-32 text-app-muted text-sm font-semibold border border-dashed border-app-border rounded-2xl">
               No funds currently linked to this goal.
             </div>
           )}
         </div>
+
       </main>
     </div>
   );

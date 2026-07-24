@@ -138,3 +138,8 @@ html.dark,
 .dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(52, 211, 153, 0.7) !important;
 }
+
+select option {
+  background-color: var(--color-app-card, #1e293b);
+  color: var(--color-app-heading, #ffffff);
+}

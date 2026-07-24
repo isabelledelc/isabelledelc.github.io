@@ -1,29 +1,13 @@
-// import { useNavigate } from 'react-router-dom';
-
-// export default function CreateGoals() {
-//   const navigate = useNavigate();
-//   return (
-//     <div className="p-8 max-w-xl mx-auto bg-white rounded-2xl mt-10 shadow-md">
-//       <h1 className="text-2xl font-bold mb-4">Create New Goal</h1>
-//       <p className="text-slate-600 mb-6">Setup your new target investment goal here.</p>
-//       <button onClick={() => navigate(-1)} className="px-4 py-2 bg-slate-200 rounded-lg text-sm font-semibold">
-//         Go Back
-//       </button>
-//     </div>
-//   );
-// }
-
-
-
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Target, Wallet, Calendar, PiggyBank, CreditCard, Building2 } from 'lucide-react';
 import Header from '../../../components/shared/header';
 import Navbar from '../../../components/shared/navbar';
 
 export default function CreateGoal() {
   const navigate = useNavigate();
 
-  // Mock Form State
+  // Form State
   const [goalName, setGoalName] = useState('RETIREMENT FUND');
   const [accountName] = useState('RYAN TEH RAY KHANG');
   const [targetAmount, setTargetAmount] = useState('100,000');
@@ -36,7 +20,6 @@ export default function CreateGoal() {
   const [chosenBank, setChosenBank] = useState('MAYBANK BERHAD');
 
   const handleProceed = () => {
-    // Navigates to Payment Confirmation with the created goal state data
     navigate('/transactions/payment-confirmation', {
       state: {
         goalName,
@@ -50,155 +33,190 @@ export default function CreateGoal() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#9ED382]">
+    <div className="min-h-screen w-full bg-app-card transition-colors duration-300">
       <Header />
       <Navbar />
 
-      <main className="mx-auto max-w-5xl p-4 md:p-8">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <main className="mx-auto max-w-5xl p-4 md:p-10">
+        <div className="rounded-[32px] bg-app-card border border-app-border shadow-xl backdrop-blur-md overflow-hidden transition-colors duration-300">
+          
           {/* Header Bar */}
-          <div className="p-6 border-b border-gray-200 flex items-center space-x-4">
+          <div className="p-6 md:p-8 border-b border-app-border flex items-center gap-4">
             <button
+              type="button"
               onClick={() => navigate(-1)}
-              className="text-xl font-bold text-gray-700 hover:text-black hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+              className="w-10 h-10 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive flex items-center justify-center text-app-heading hover:text-app-primary transition-all duration-200 cursor-pointer shadow-sm active:scale-95"
               title="Go Back"
             >
-              &lt;
+              <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-2xl font-bold text-black">Create Goal</h1>
+            <div>
+              <h1 className="text-2xl font-bold text-app-heading">Create New Goal</h1>
+              <p className="text-xs font-semibold text-app-muted mt-1">Set up your target investment roadmap</p>
+            </div>
           </div>
 
           {/* Form Content */}
-          <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-700">
-            {/* Left Column */}
-            <div className="space-y-6">
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Goal Name</label>
+          <div className="p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 text-sm">
+            
+            {/* Left Column Section */}
+            <div className="space-y-8">
+              
+              {/* Goal Name */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <Target className="w-4 h-4 text-app-primary" />
+                  Goal Name
+                </label>
                 <select
                   value={goalName}
                   onChange={(e) => setGoalName(e.target.value)}
-                  className="border-2 border-emerald-500 rounded-lg p-2.5 outline-none bg-white font-medium text-gray-700 cursor-pointer"
+                  className="w-full rounded-2xl bg-app-pill border border-app-border focus:border-app-border-interactive px-4 py-3.5 text-app-heading font-medium outline-none cursor-pointer transition-all duration-200"
                 >
-                  <option value="RETIREMENT FUND">Retirement Fund</option>
-                  <option value="EDUCATION FUND">Education Fund</option>
-                  <option value="HOUSE DEPOSIT">House Deposit</option>
-                  <option value="WEALTH BUILDER">Wealth Builder</option>
+                  <option className="bg-app-card text-app-heading" value="RETIREMENT FUND">Retirement Fund</option>
+                  <option className="bg-app-card text-app-heading" value="EDUCATION FUND">Education Fund</option>
+                  <option className="bg-app-card text-app-heading" value="HOUSE DEPOSIT">House Deposit</option>
+                  <option className="bg-app-card text-app-heading" value="WEALTH BUILDER">Wealth Builder</option>
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Account Name</label>
-                <span className="text-gray-800 font-bold uppercase">{accountName}</span>
+              {/* Account Name */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <Wallet className="w-4 h-4 text-app-primary" />
+                  Account Name
+                </label>
+                <div className="px-4 py-3.5 rounded-2xl bg-app-pill/60 border border-app-border text-app-heading font-bold uppercase tracking-wide">
+                  {accountName}
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 items-start">
-                <label className="font-semibold text-gray-600 pt-2">Target Amount</label>
-                <div className="border-2 border-emerald-500 rounded-lg p-2.5 flex items-center bg-white">
-                  <span className="text-gray-400 mr-2 font-medium">MYR</span>
+              {/* Target Amount */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <PiggyBank className="w-4 h-4 text-app-primary" />
+                  Target Amount
+                </label>
+                <div className="rounded-2xl bg-app-pill border border-app-border focus-within:border-app-border-interactive px-4 py-3 flex items-center gap-2.5 transition-all duration-200">
+                  <span className="text-xs font-bold text-app-muted">MYR</span>
                   <input
                     type="text"
                     value={targetAmount}
                     onChange={(e) => setTargetAmount(e.target.value)}
-                    className="w-full font-medium text-gray-800 outline-none"
+                    className="w-full bg-transparent font-bold text-app-heading outline-none text-base"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Goal Achievement Date</label>
+              {/* Goal Achievement Date */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-app-primary" />
+                  Goal Achievement Date
+                </label>
                 <input
                   type="date"
                   value={achievementDate}
                   onChange={(e) => setAchievementDate(e.target.value)}
-                  className="border-2 border-emerald-500 rounded-lg p-2 outline-none bg-white font-medium text-gray-700 cursor-pointer"
+                  className="w-full rounded-2xl bg-app-pill border border-app-border focus:border-app-border-interactive px-4 py-3.5 text-app-heading font-medium outline-none cursor-pointer transition-all duration-200"
                 />
               </div>
 
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Select Fund</label>
+              {/* Select Fund */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider">Select Fund</label>
                 <select
                   value={selectedFund}
                   onChange={(e) => setSelectedFund(e.target.value)}
-                  className="border-2 border-emerald-500 rounded-lg p-2 text-xs outline-none bg-white font-medium text-gray-700 cursor-pointer"
+                  className="w-full rounded-2xl bg-app-pill border border-app-border focus:border-app-border-interactive px-4 py-3.5 text-app-heading font-medium outline-none cursor-pointer transition-all duration-200"
                 >
-                  <option value="OPUS Income Plus Fund (IPF)">Auto (IPF, SIPF, MPF)</option>
-                  <option value="OPUS Cash Extra Fund">IPF</option>
-                  <option value="OPUS Shariah Income Fund">SIPF</option>
-                   <option value="OPUS Shariah Income Fund">MPF</option>
+                  <option className="bg-app-card text-app-heading" value="OPUS Income Plus Fund (IPF)">
+                    Auto (IPF, SIPF, MPF)
+                  </option>
+                  <option className="bg-app-card text-app-heading" value="OPUS Cash Extra Fund">
+                    IPF
+                  </option>
+                  <option className="bg-app-card text-app-heading" value="OPUS Shariah Income Fund">
+                    SIPF
+                  </option>
+                  <option className="bg-app-card text-app-heading" value="OPUS Shariah Income Fund MPF">
+                    MPF
+                  </option>
                 </select>
               </div>
+
             </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
-              <div className="grid grid-cols-2 items-start">
-                <label className="font-semibold text-gray-600 pt-2">Initial Investment Amount</label>
-                <div className="border-2 border-emerald-500 rounded-lg p-2.5 flex items-center bg-white">
-                  <span className="text-gray-400 mr-2 font-medium">MYR</span>
+            {/* Right Column Section */}
+            <div className="space-y-8">
+              
+              {/* Initial Investment Amount */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider">Initial Investment Amount</label>
+                <div className="rounded-2xl bg-app-pill border border-app-border focus-within:border-app-border-interactive px-4 py-3 flex items-center gap-2.5 transition-all duration-200">
+                  <span className="text-xs font-bold text-app-muted">MYR</span>
                   <input
                     type="text"
                     value={investmentAmount}
                     onChange={(e) => setInvestmentAmount(e.target.value)}
-                    className="w-full font-medium text-gray-800 outline-none"
+                    className="w-full bg-transparent font-bold text-app-heading outline-none text-base"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Enable RSP</label>
-                <div className="flex space-x-4">
-                  <button
-                    type="button"
-                    onClick={() => setEnableRSP('Yes')}
-                    className={`px-4 py-1.5 rounded-lg border font-semibold transition-all ${
-                      enableRSP === 'Yes'
-                        ? 'bg-emerald-500 text-white border-emerald-500'
-                        : 'border-gray-300 text-gray-600 hover:border-emerald-400'
-                    }`}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEnableRSP('No')}
-                    className={`px-4 py-1.5 rounded-lg border font-semibold transition-all ${
-                      enableRSP === 'No'
-                        ? 'bg-emerald-500 text-white border-emerald-500'
-                        : 'border-gray-300 text-gray-600 hover:border-emerald-400'
-                    }`}
-                  >
-                    No
-                  </button>
+              {/* Enable RSP Switcher */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider">Enable RSP (Regular Savings Plan)</label>
+                <div className="grid grid-cols-2 p-1.5 rounded-2xl bg-app-pill border border-app-border gap-2">
+                  {(['Yes', 'No'] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setEnableRSP(option)}
+                      className={`py-2.5 text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer ${
+                        enableRSP === option
+                          ? 'bg-app-primary text-white shadow-md scale-[1.02]'
+                          : 'text-app-muted hover:text-app-heading hover:bg-app-card/40'
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  ))}
                 </div>
               </div>
 
+              {/* Monthly Investment Amount (RSP Conditional) */}
               {enableRSP === 'Yes' && (
-                <div className="grid grid-cols-2 items-start">
-                  <label className="font-semibold text-gray-600 pt-2">Monthly Investment Amount</label>
-                  <div className="border-2 border-emerald-500 rounded-lg p-2.5 flex items-center bg-white">
-                    <span className="text-gray-400 mr-2 font-medium">MYR</span>
+                <div className="space-y-2.5 animate-fadeIn">
+                  <label className="text-xs font-bold text-app-muted uppercase tracking-wider">Monthly Investment Amount</label>
+                  <div className="rounded-2xl bg-app-pill border border-app-border focus-within:border-app-border-interactive px-4 py-3 flex items-center gap-2.5 transition-all duration-200">
+                    <span className="text-xs font-bold text-app-muted">MYR</span>
                     <input
                       type="text"
                       value={monthlyAmount}
                       onChange={(e) => setMonthlyAmount(e.target.value)}
-                      className="w-full font-medium text-gray-800 outline-none"
+                      className="w-full bg-transparent font-bold text-app-heading outline-none text-base"
                     />
                   </div>
                 </div>
               )}
 
-              <div className="grid grid-cols-2 items-start">
-                <label className="font-semibold text-gray-600 pt-2">Payment Method</label>
-                <div className="border-2 border-emerald-500 rounded-xl p-3 space-y-2 bg-white flex flex-col items-center">
+              {/* Payment Method Selector */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <CreditCard className="w-4 h-4 text-app-primary" />
+                  Payment Method
+                </label>
+                <div className="grid grid-cols-3 gap-3">
                   {(['FPX', 'Boost', 'Offline'] as const).map((method) => (
                     <button
                       key={method}
                       type="button"
                       onClick={() => setPaymentMethod(method)}
-                      className={`border rounded-lg py-1.5 w-32 text-center font-bold transition-all ${
+                      className={`py-3 px-3 rounded-2xl border text-xs font-bold transition-all duration-200 cursor-pointer text-center ${
                         paymentMethod === method
-                          ? 'border-emerald-600 bg-emerald-50 text-emerald-700 ring-2 ring-emerald-400'
-                          : 'border-gray-200 text-gray-400 hover:border-emerald-300'
+                          ? 'bg-app-primary text-white border-app-primary shadow-md scale-[1.02]'
+                          : 'bg-app-pill border-app-border text-app-muted hover:text-app-heading hover:border-app-border-interactive'
                       }`}
                     >
                       {method}
@@ -207,32 +225,39 @@ export default function CreateGoal() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 items-center">
-                <label className="font-semibold text-gray-600">Choose Your Bank</label>
+              {/* Choose Your Bank */}
+              <div className="space-y-2.5">
+                <label className="text-xs font-bold text-app-muted uppercase tracking-wider flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-app-primary" />
+                  Choose Your Bank
+                </label>
                 <select
                   value={chosenBank}
                   onChange={(e) => setChosenBank(e.target.value)}
-                  className="border-2 border-emerald-500 rounded-lg p-2 outline-none bg-white text-xs font-medium text-gray-700 cursor-pointer"
+                  className="w-full rounded-2xl bg-app-pill border border-app-border focus:border-app-border-interactive px-4 py-3.5 text-app-heading font-medium outline-none cursor-pointer transition-all duration-200"
                 >
-                  <option value="MAYBANK BERHAD">MAYBANK BERHAD</option>
-                  <option value="CIMB BANK">CIMB BANK BERHAD</option>
-                  <option value="PUBLIC BANK">PUBLIC BANK BERHAD</option>
-                  <option value="RHB BANK">RHB BANK BERHAD</option>
-                  <option value="HONG LEONG BANK">HONG LEONG BANK</option>
+                  <option className="bg-app-card text-app-heading" value="MAYBANK BERHAD">MAYBANK BERHAD</option>
+                  <option className="bg-app-card text-app-heading" value="CIMB BANK">CIMB BANK BERHAD</option>
+                  <option className="bg-app-card text-app-heading" value="PUBLIC BANK">PUBLIC BANK BERHAD</option>
+                  <option className="bg-app-card text-app-heading" value="RHB BANK">RHB BANK BERHAD</option>
+                  <option className="bg-app-card text-app-heading" value="HONG LEONG BANK">HONG LEONG BANK</option>
                 </select>
               </div>
+
             </div>
           </div>
 
-          {/* Action Button */}
-          <div className="p-8 flex justify-center pt-2">
+          {/* Action Button Footer */}
+          <div className="p-8 md:p-10 border-t border-app-border flex justify-center bg-app-card/40">
             <button
+              type="button"
               onClick={handleProceed}
-              className="bg-[#28A745] hover:bg-[#218838] text-white font-semibold py-3 px-16 rounded-xl text-lg transition-colors shadow-sm active:scale-95"
+              className="w-full md:w-auto px-16 py-4 bg-app-primary text-white font-bold text-base rounded-2xl hover:opacity-90 active:scale-95 transition-all shadow-lg cursor-pointer"
             >
               Proceed to Payment
             </button>
           </div>
+
         </div>
       </main>
     </div>
