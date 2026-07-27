@@ -22,7 +22,7 @@ export default function FundFactSheet() {
 
   const handleAcceptTerms = () => {
     setShowTermsModal(false);
-    navigate("/funds/1");
+    navigate("/top-up");
   };
 
   return (

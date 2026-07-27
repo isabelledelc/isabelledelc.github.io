@@ -35,7 +35,7 @@ export default function FundCard({ fund, onClick }: FundCardProps) {
           <div className="text-sm font-semibold text-[var(--text-main)]">{fund.amount}</div>
           <div className="text-xs text-[var(--color-primary)] font-bold">{fund.returnVal}</div>
         </div>
-        <div className="text-right text-xs text-[var(--text-muted)]">Units: —</div>
+        <div className="text-right text-xs text-[var(--text-muted)]">Units: 90.53</div>
       </div>
     </article>
   );

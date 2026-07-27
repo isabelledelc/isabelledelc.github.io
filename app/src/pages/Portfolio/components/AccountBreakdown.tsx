@@ -10,7 +10,7 @@ export default function AccountBreakdown({
   breakdownData,
 }: AccountBreakdownProps) {
   return (
-    <div className="space-y-6 rounded-3xl bg-[var(--bg-container)] p-6 shadow-xs backdrop-blur-md border border-[var(--border-app)]">
+    <div className="space-y-6 rounded-3xl bg-(--bg-container) p-6 shadow-xs backdrop-blur-md border border-(--border-app)">
       <div className="rounded-2xl bg-[var(--bg-card)] py-3.5 text-center shadow-xs border border-[var(--border-app)]">
         <h3 className="text-lg font-bold text-[var(--text-heading)]">{analysisFilter} Breakdown</h3>
       </div>

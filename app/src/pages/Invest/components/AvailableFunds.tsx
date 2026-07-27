@@ -29,6 +29,14 @@ export default function AvailableFunds({
     navigate('/top-up', { state: { selectedFund: fund } });
   };
 
+  const handleCardClick = (fundId: string) => {
+    if (activeTab === 'Wholesale') {
+      navigate('/placeholder');
+    } else {
+      navigate(`/invest/subpages/view-fund-details?fundId=${fundId}`);
+    }
+  };
+
   return (
     <div className="rounded-[32px] bg-app-card border border-app-border p-6 shadow-xl backdrop-blur-md flex flex-col justify-between space-y-6 transition-colors duration-300">
       <div>
@@ -66,9 +74,7 @@ export default function AvailableFunds({
           {funds.slice(0, 3).map((fund) => (
             <div
               key={fund.id}
-              onClick={() =>
-                navigate(`/invest/subpages/view-fund-details?fundId=${fund.id}`)
-              }
+              onClick={() => handleCardClick(fund.id)}
               className="p-4 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive hover:bg-app-card/60 transition-all duration-200 cursor-pointer flex items-center justify-between group shadow-sm hover:shadow-md"
             >
               {/* Left Side: Icon & Info */}
