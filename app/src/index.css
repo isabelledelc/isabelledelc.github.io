@@ -29,12 +29,42 @@
   --color-chart-stroke: #0284c7;
   --color-chart-grid: #e2e8f0;
 
-  /* Chart Allocation Tokens (Light Mode - High Contrast) */
-  --chart-1: #10B981; /* Emerald Green */
-  --chart-2: #F59E0B; /* Warm Amber */
-  --chart-3: #06B6D4; /* Cyan */
-  --chart-4: #8B5CF6; /* Violet */
-  --chart-5: #EC4899; /* Bright Pink */
+  /* Chart Allocation Tokens (Light Mode) */
+  --chart-1: #10B981;
+  --chart-2: #F59E0B;
+  --chart-3: #06B6D4;
+  --chart-4: #8B5CF6;
+  --chart-5: #EC4899;
+
+  /* Landing / Hero Section Tokens */
+  --bg-hero-overlay: rgba(0, 0, 0, 0.3);
+  --bg-glass-card: rgba(255, 255, 255, 0.15);
+  --border-glass-card: rgba(255, 255, 255, 0.28);
+  --bg-input-glass: rgba(255, 255, 255, 0.18);
+  --text-hero-accent: #a7f3d0;
+  --text-hero-subtext: #f3f4f6;
+
+  /* Stats Pill Tokens */
+  --bg-stats-pill: #ffffff;
+  --border-stats-pill: #22a36b;
+  --text-stats-number: #4b5563;
+  --text-stats-label: #1f2937;
+
+  /* Features Section Theme Colors */
+  --bg-features-section: #c2d8cc;       /* Sage green background */
+  --bg-feature-card: #f7f3e9;            /* Off-white/cream card background */
+  --text-feature-heading: #4a554a;        /* Muted dark green title */
+  --text-feature-card-title: #4a4a4a;     /* Card title text */
+  --text-feature-card-desc: #6b6b6b;      /* Card description text */
+
+  /* Feature Icon Circle Colors */
+  --bg-feature-icon-globe: #8eadae;     /* Muted teal */
+  --bg-feature-icon-card: #be9d9d;      /* Muted rose/dusty pink */
+  --bg-feature-icon-wallet: #baaf96;    /* Muted beige/taupe */
+  --bg-feature-icon-lock: #9faec2;      /* Muted slate blue */
+
+  /* Benefits Section Tokens */
+  --bg-benefits-section: #2e5142;
 }
 
 html.dark {
@@ -66,12 +96,36 @@ html.dark {
   --color-chart-stroke: #38bdf8;
   --color-chart-grid: rgba(255, 255, 255, 0.15);
 
-  /* Chart Allocation Tokens (Dark Mode - Vibrant Contrast) */
-  --chart-1: #34D399; /* Mint Emerald */
-  --chart-2: #FBBF24; /* Golden Amber */
-  --chart-3: #38BDF8; /* Bright Sky Blue */
-  --chart-4: #A78BFA; /* Lavender */
-  --chart-5: #F472B6; /* Vibrant Pink */
+  /* Chart Allocation Tokens (Dark Mode) */
+  --chart-1: #34D399;
+  --chart-2: #FBBF24;
+  --chart-3: #38BDF8;
+  --chart-4: #A78BFA;
+  --chart-5: #F472B6;
+
+  /* Landing / Hero Tokens (Dark Mode Adjustments) */
+  --bg-hero-overlay: rgba(0, 0, 0, 0.5);
+  --bg-glass-card: rgba(30, 41, 59, 0.45);
+  --border-glass-card: rgba(255, 255, 255, 0.18);
+  --bg-input-glass: rgba(255, 255, 255, 0.12);
+  --text-hero-accent: #6ee7b7;
+  --text-hero-subtext: #e5e7eb;
+
+  /* Stats Pill Tokens (Dark Mode) */
+  --bg-stats-pill: #1e293b;
+  --border-stats-pill: #34d399;
+  --text-stats-number: #cbd5e1;
+  --text-stats-label: #f8fafc;
+
+  /* Features Section (Dark Mode Adjustments) */
+  --bg-features-section: #1b3226;
+  --bg-feature-card: #233e31;
+  --text-feature-heading: #d1fae5;
+  --text-feature-card-title: #f3f4f6;
+  --text-feature-card-desc: #9ca3af;
+
+  /* Benefits Section (Dark Mode) */
+  --bg-benefits-section: #182d24;
 }
 
 @theme {
