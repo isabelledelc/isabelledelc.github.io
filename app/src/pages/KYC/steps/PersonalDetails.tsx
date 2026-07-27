@@ -39,15 +39,15 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8 px-4 sm:px-0">
       <div>
-        <h2 className="text-2xl font-bold text-[#1F5C2E]">Personal Details</h2>
-        <p className="text-sm text-slate-600 mt-1">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#1F5C2E]">Personal Details</h2>
+        <p className="text-xs sm:text-sm text-slate-600 mt-1">
           Please provide your general personal profile information.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#E9F7E5]/50 p-6 rounded-3xl border border-emerald-100">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 bg-[#E9F7E5]/50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-emerald-100">
         {/* Nationality */}
         <div className="space-y-1">
           <label className="text-xs font-bold text-slate-700">Nationality</label>
@@ -57,7 +57,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
               updateFormData({ nationality: e.target.value });
               setError("");
             }}
-            className="w-full bg-white border border-emerald-500 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-emerald-500 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 text-sm focus:outline-none"
           >
             <option value="">Select nationality</option>
             {nationalityOptions.map((country) => (
@@ -77,7 +77,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
               updateFormData({ gender: e.target.value });
               setError("");
             }}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 text-sm focus:outline-none"
           >
             <option value="">Select gender</option>
             <option value="Male">Male</option>
@@ -95,7 +95,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
               updateFormData({ race: e.target.value });
               setError("");
             }}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 text-sm focus:outline-none"
           >
             <option value="">Select race</option>
             <option value="Malay">Malay (Bumiputera)</option>
@@ -108,7 +108,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
         {/* Related Party Check */}
         <div className="space-y-1">
           <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-            Are you related party to Opus <Info className="w-3.5 h-3.5 text-slate-400" />
+            Are you related party to Opus <Info className="w-3.5 h-3.5 text-slate-400 shrink-0" />
           </label>
           <select
             value={formData.isRelatedToOpus}
@@ -116,7 +116,7 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
               updateFormData({ isRelatedToOpus: e.target.value });
               setError("");
             }}
-            className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm focus:outline-none"
+            className="w-full bg-white border border-slate-300 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 text-sm focus:outline-none"
           >
             <option value="">Select an option</option>
             <option value="No">No</option>
@@ -126,17 +126,18 @@ export default function PersonalDetails({ formData, updateFormData, onNext }: Pr
       </div>
 
       {error && (
-        <p className="text-sm font-medium text-red-600">{error}</p>
+        <p className="text-xs sm:text-sm font-medium text-red-600">{error}</p>
       )}
 
-      <div className="flex items-center justify-between pt-4">
-        <p className="text-xs text-slate-500">
+      {/* Footer / Actions */}
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between pt-2 sm:pt-4 gap-4 sm:gap-0">
+        <p className="text-xs text-slate-500 text-center sm:text-left">
           Click <a href="#" className="underline font-bold text-emerald-600">here</a> to view Information Notice
         </p>
         <button
           type="button"
           onClick={handleNext}
-          className="bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-12 py-3 rounded-xl transition cursor-pointer"
+          className="w-full sm:w-auto bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-12 py-3.5 sm:py-3 rounded-xl transition cursor-pointer text-center"
         >
           Next
         </button>

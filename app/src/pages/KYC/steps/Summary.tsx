@@ -22,59 +22,66 @@ export default function Summary({ formData, onComplete }: Props) {
   const returnRange = getReturnRange();
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-6 sm:space-y-8 max-w-4xl mx-auto px-4 sm:px-0">
+      {/* Header Section */}
       <div>
-        <h2 className="text-2xl font-bold text-[#1F5C2E]">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#1F5C2E]">
           Setting up your investor profile
         </h2>
-        <p className="text-sm text-slate-600 mt-1">
+        <p className="text-xs sm:text-sm text-slate-600 mt-1">
           Please review your information below before submitting.
         </p>
       </div>
 
       {/* Summary Container */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
-        <div className="space-y-4 divide-y divide-slate-100 text-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 md:p-8 shadow-xs space-y-6">
+        <div className="space-y-3 sm:space-y-4 divide-y divide-slate-100 text-sm">
           {/* Age */}
-          <div className="flex justify-between items-center pt-2">
-            <span className="text-slate-600 font-medium">Age</span>
-            <span className="font-bold text-slate-900">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-2 gap-1 sm:gap-4">
+            <span className="text-slate-500 sm:text-slate-600 font-medium text-xs sm:text-sm">
+              Age
+            </span>
+            <span className="font-bold text-slate-900 text-sm sm:text-base">
               {formData.age || "Below 30"}
             </span>
           </div>
 
           {/* Investment Objective */}
-          <div className="flex justify-between items-center pt-3">
-            <span className="text-slate-600 font-medium">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 gap-1 sm:gap-4">
+            <span className="text-slate-500 sm:text-slate-600 font-medium text-xs sm:text-sm">
               Investment objective
             </span>
-            <span className="font-bold text-slate-900">
+            <span className="font-bold text-slate-900 text-sm sm:text-base">
               {formData.investmentObjective || "Capital Preservation"}
             </span>
           </div>
 
           {/* Intends to invest for */}
-          <div className="flex justify-between items-center pt-3">
-            <span className="text-slate-600 font-medium">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 gap-1 sm:gap-4">
+            <span className="text-slate-500 sm:text-slate-600 font-medium text-xs sm:text-sm">
               Intends to invest for
             </span>
-            <span className="font-bold text-slate-900">
+            <span className="font-bold text-slate-900 text-sm sm:text-base">
               {formData.investmentHorizon || "Less than 1 year"}
             </span>
           </div>
 
           {/* Annual income */}
-          <div className="flex justify-between items-center pt-3">
-            <span className="text-slate-600 font-medium">Annual income</span>
-            <span className="font-bold text-slate-900">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 gap-1 sm:gap-4">
+            <span className="text-slate-500 sm:text-slate-600 font-medium text-xs sm:text-sm">
+              Annual income
+            </span>
+            <span className="font-bold text-slate-900 text-sm sm:text-base">
               {formData.income || "RM 20,001 to RM 50,000"}
             </span>
           </div>
 
           {/* Risk profile */}
-          <div className="flex justify-between items-center pt-3">
-            <span className="text-slate-600 font-medium">Risk profile</span>
-            <span className="font-bold text-slate-900">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 gap-1 sm:gap-4">
+            <span className="text-slate-500 sm:text-slate-600 font-medium text-xs sm:text-sm">
+              Risk profile
+            </span>
+            <span className="font-bold text-slate-900 text-sm sm:text-base">
               {formData.riskProfile === "High"
                 ? "Aggressive"
                 : formData.riskProfile || "Aggressive"}
@@ -89,7 +96,7 @@ export default function Summary({ formData, onComplete }: Props) {
             <div>Average</div>
             <div>High</div>
           </div>
-          <div className="grid grid-cols-3 text-center py-3.5 text-sm font-bold text-slate-900 divide-x divide-slate-200 bg-white">
+          <div className="grid grid-cols-3 text-center py-3.5 text-sm sm:text-base font-bold text-slate-900 divide-x divide-slate-200 bg-white">
             <div>{returnRange.low}</div>
             <div>{returnRange.avg}</div>
             <div>{returnRange.high}</div>
@@ -98,11 +105,11 @@ export default function Summary({ formData, onComplete }: Props) {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-end pt-4">
+      <div className="flex justify-end pt-2 sm:pt-4">
         <button
           type="button"
           onClick={onComplete}
-          className="bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-12 py-3 rounded-xl transition cursor-pointer shadow-sm"
+          className="w-full sm:w-auto bg-[#22C55E] hover:bg-emerald-600 text-white font-bold px-8 sm:px-12 py-3.5 sm:py-3 rounded-xl transition cursor-pointer shadow-sm text-center"
         >
           Complete
         </button>
