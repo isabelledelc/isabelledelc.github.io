@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
 import Navbar from '../shared/navbar'; // Adjust path if needed
 import logo from '../../assets/logo.png';
+import { Bell, Search, Menu } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 const NavbarComponent = Navbar as ComponentType<{ variant: 'landing' | 'app' }>;
 
@@ -72,7 +74,7 @@ function LogoutIcon() {
   );
 }
 
-export default function Header() {
+export default function Header({ variant = 'app' }: HeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
@@ -216,3 +218,8 @@ export default function Header() {
     </>
   );
 }
+
+// Define HeaderProps to satisfy TypeScript
+type HeaderProps = {
+  variant?: 'landing' | 'app';
+};
