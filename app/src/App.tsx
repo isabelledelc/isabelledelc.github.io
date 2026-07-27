@@ -6,7 +6,7 @@ import HomePage from "./pages/Home/HomePage.tsx";
 import Signup from "./pages/Login/Signup.tsx";
 import SignUpEmail from "./pages/Login/subpages/SignUpEmail.tsx";
 import SecretPhrasePage from "./pages/Login/subpages/SecretPhrase.tsx";
-import KYConboarding from "./pages/KYC/KYConboarding.tsx"; // Update path if your folder structure differs
+import KYConboarding from "./pages/KYC/KYConboarding.tsx";
 
 import Portfolio from "./pages/Portfolio/Portfolio.tsx";
 import Investment from "./pages/Invest/Investment.tsx";
@@ -33,6 +33,7 @@ import Redemption from "./pages/Transactions/Redemption";
 import TopUp from "./pages/Transactions/TopUp";
 import RSP from "./pages/Transactions/RSP";
 import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
+import TransactionConfirm from "./pages/Transactions/TransactionConfirm"; 
 import FundFactSheet from "./pages/Other Pages/FundFactSheet";
 import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
@@ -92,6 +93,7 @@ function App() {
         <Route path="/top-up" element={<TopUp />} />
         <Route path="/transactions/rsp" element={<RSP />} />
         <Route path="/transactions/payment-confirmation" element={<PaymentConfirmation />} />
+        <Route path="/transactions/transaction-confirmation" element={<TransactionConfirm />} />
 
         <Route path="/invest/create-goal" element={<CreateGoal />} />
 

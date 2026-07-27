@@ -74,6 +74,24 @@
   --text-signup-subtitle: #838894;
   --text-signup-label: #838894;
   --border-signup-google: #e2e8f0;
+
+  /* Gateway Theme Variables */
+  --bg-boost-primary: #e1251b;
+  --bg-boost-hover: #c81e15;
+  --bg-boost-cancel: #f87171;
+  --bg-boost-cancel-hover: #ef4444;
+
+  --bg-fpx-primary: #0e1b6b;
+  --bg-fpx-btn: #4f649e;
+  --bg-fpx-btn-hover: #3d5087;
+  --bg-fpx-cancel: #8fa1b9;
+  --bg-fpx-cancel-hover: #7a8fa9;
+
+  --bg-offline-primary: #c2a393;
+  --bg-offline-btn: #bba296;
+  --bg-offline-btn-hover: #a68c80;
+  --bg-offline-cancel: #f1d0c5;
+  --bg-offline-cancel-hover: #e4be11;
 }
 
 html.dark {

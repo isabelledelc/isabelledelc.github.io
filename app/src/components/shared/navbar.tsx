@@ -1,73 +1,33 @@
 import { NavLink } from 'react-router-dom';
 
-type NavbarVariant = 'app' | 'landing';
-
-type NavbarProps = {
-    variant?: NavbarVariant;
-};
-
-// Kept intact: exactly your 5 items
-const appNavItems = [
-    { label: 'Dashboard', to: '/home' },
-    { label: 'Portfolio', to: '/portfolio' },
-    { label: 'Invest', to: '/invest' },
-    { label: 'Activity', to: '/activity' },
-    { label: 'Settings', to: '/settings' },
+const navItems = [
+  { label: 'Dashboard', path: '/home' },
+  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Invest', path: '/invest' },
+  { label: 'Activity', path: '/activity' },
+  { label: 'Settings', path: '/settings' },
 ];
 
-const landingItems = [
-    { label: 'Features', href: '#features' },
-    { label: 'Get Started', href: '#get-started' },
-    { label: 'Why Us?', href: '#why-us' },
-    { label: 'FAQ', href: '#faq' },
-];
-
-export default function Navbar({ variant = 'app' }: NavbarProps) {
-    if (variant === 'landing') {
-        return (
-            <div className="mt-4 flex justify-center px-6">
-                {/* Changed to inline-flex without max-w-215 so width dynamically shrinks to content */}
-                <nav
-                    aria-label="Landing"
-                    className="inline-flex flex-wrap items-center justify-center gap-1.5 rounded-full bg-white/30 dark:bg-white/10 p-1.5 backdrop-blur-xl border border-white/40 dark:border-white/20 shadow-lg transition-colors duration-200"
-                >
-                    {landingItems.map((item) => (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            className="rounded-full px-5 py-2 text-sm font-medium text-slate-800 dark:text-white no-underline transition hover:bg-white/40 dark:hover:bg-white/20"
-                        >
-                            {item.label}
-                        </a>
-                    ))}
-                </nav>
-            </div>
-        );
-    }
-
-    return (
-        <div className="mt-5 flex justify-center px-6">
-            {/* Translucent pill bar that adjusts for light & dark themes */}
-            <nav
-                aria-label="Primary"
-                className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-white/35 dark:bg-white/12 p-1.5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg transition-colors duration-200"
-            >
-                {appNavItems.map((item) => (
-                    <NavLink
-                        key={item.to}
-                        to={item.to}
-                        className={({ isActive }) =>
-                            `rounded-full px-5 py-2 text-sm font-medium no-underline transition-all duration-200 ${
-                                isActive
-                                    ? 'bg-white/90 dark:bg-white/90 text-slate-900 dark:text-slate-900 shadow-md font-semibold'
-                                    : 'text-slate-800 hover:bg-white/30 dark:text-white dark:hover:bg-white/20 dark:hover:text-white'
-                            }`
-                        }
-                    >
-                        {item.label}
-                    </NavLink>
-                ))}
-            </nav>
-        </div>
-    );
+export default function Navbar() {
+  return (
+    /* flex-row keeps everything horizontal; overflow-x-auto handles smaller displays gracefully */
+    <nav className="flex flex-row items-center justify-between w-full max-w-full gap-1 overflow-x-auto px-1 py-1 no-scrollbar">
+      {navItems.map((item) => (
+        <NavLink
+          key={item.path}
+          to={item.path}
+          className={({ isActive }) =>
+            /* Responsive text sizes (10px on small mobile, 12px/14px on larger screens) */
+            `whitespace-nowrap shrink-0 rounded-full px-2.5 py-1.5 text-[10px] sm:text-xs md:text-sm font-semibold transition-all duration-200 ${
+              isActive
+                ? 'bg-white text-slate-900 shadow-md dark:bg-slate-700 dark:text-white'
+                : 'text-slate-300 hover:text-white'
+            }`
+          }
+        >
+          {item.label}
+        </NavLink>
+      ))}
+    </nav>
+  );
 }
