@@ -1,6 +1,4 @@
-// LandingPage.tsx
 import Header from '../../components/shared/header';
-import Navbar from '../../components/shared/navbar';
 import Footer from '../../components/shared/footer';
 
 import LoginHeroSection from './components/LoginHeroSection';
@@ -10,19 +8,27 @@ import BenefitsSection from './components/BenefitsSection';
 
 export default function LandingPage() {
   return (
-    <div style={{ width: '100%', minHeight: '100vh', fontFamily: 'sans-serif' }}>
-      {/* Shared Navigation */}
-      <Header />
+    <div className="relative w-full min-h-screen font-sans">
+      {/* 
+        Position Header absolutely over the hero section so the background 
+        image extends all the way to the top.
+      */}
+      <div className="absolute top-0 left-0 right-0 z-50 bg-transparent">
+        <Header />
+      </div>
 
-      {/* Main Scrollable Sections */}
+      {/* Main Content */}
       <main>
         <LoginHeroSection />
+
         <section id="features">
           <FeaturesSection />
         </section>
+
         <section id="get-started">
           <GettingStartedSection />
         </section>
+
         <section id="why-us">
           <BenefitsSection />
         </section>
