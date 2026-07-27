@@ -36,6 +36,8 @@ import PaymentConfirmation from "./pages/Transactions/PaymentConfirmation";
 import FundFactSheet from "./pages/Other Pages/FundFactSheet";
 import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
+import Placeholder from "./pages/Other Pages/Placeholder";
+
 function App() {
   return (
     <BrowserRouter basename="/opustouch">
@@ -92,6 +94,9 @@ function App() {
         <Route path="/transactions/payment-confirmation" element={<PaymentConfirmation />} />
 
         <Route path="/invest/create-goal" element={<CreateGoal />} />
+
+        {/* Placeholder Page */}
+        <Route path="/placeholder" element={<Placeholder />} />
       </Routes>
     </BrowserRouter>
   );

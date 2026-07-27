@@ -1,6 +1,5 @@
-
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowUpRight, X } from 'lucide-react';
+import { ChevronRight, ArrowUpRight, X } from 'lucide-react';
 
 interface Fund {
   id: string;
@@ -17,9 +16,15 @@ interface ViewAllFundsProps {
 export default function ViewAllFunds({ retailFunds, wholesaleFunds, onClose }: ViewAllFundsProps) {
   const navigate = useNavigate();
 
-  const handleFundClick = (fundId: string) => {
+  const handleFundClick = (fundId: string, type: 'retail' | 'wholesale') => {
     onClose();
-    navigate(`/invest/subpages/view-fund-details?fundId=${fundId}`);
+    if (type === 'wholesale') {
+      // Placeholder for external website link
+      navigate(`/placeholder`); // Navigate to a placeholder page for wholesale funds
+      // window.location.href = '#'; Replace '#' with actual external URL when available (e.g. 'https://example.com')
+    } else {
+      navigate(`/fund-fact-sheet/${fundId}`);
+    }
   };
 
   return (
@@ -29,14 +34,6 @@ export default function ViewAllFunds({ retailFunds, wholesaleFunds, onClose }: V
         {/* Modal Header */}
         <div className="p-5 md:p-6 border-b border-app-border flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-10 h-10 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive flex items-center justify-center text-app-heading hover:text-app-primary transition-all duration-200 cursor-pointer shadow-sm active:scale-95"
-              title="Go Back"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
             <div>
               <h2 className="text-xl font-bold text-app-heading">View Available Funds</h2>
               <p className="text-xs font-semibold text-app-muted mt-0.5">Explore retail and wholesale investment funds</p>
@@ -67,7 +64,7 @@ export default function ViewAllFunds({ retailFunds, wholesaleFunds, onClose }: V
               {retailFunds.map((fund) => (
                 <div
                   key={fund.id}
-                  onClick={() => handleFundClick(fund.id)}
+                  onClick={() => handleFundClick(fund.id, 'retail')}
                   className="p-4 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive transition-all duration-200 cursor-pointer flex justify-between items-end group hover:shadow-md"
                 >
                   <div>
@@ -97,7 +94,7 @@ export default function ViewAllFunds({ retailFunds, wholesaleFunds, onClose }: V
               {wholesaleFunds.map((fund) => (
                 <div
                   key={fund.id}
-                  onClick={() => handleFundClick(fund.id)}
+                  onClick={() => handleFundClick(fund.id, 'wholesale')}
                   className="p-4 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive transition-all duration-200 cursor-pointer flex justify-between items-center group hover:shadow-md"
                 >
                   <div>
@@ -117,4 +114,3 @@ export default function ViewAllFunds({ retailFunds, wholesaleFunds, onClose }: V
     </div>
   );
 }
-

@@ -35,7 +35,7 @@ export default function AccountSummary({ showBalance, onToggleBalance }: Account
         </div>
       </div>
 
-      <div className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
+      {/* <div className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
         <div className="flex items-center justify-between">
           <span>Last update</span>
           <span className="font-medium text-[var(--text-main)]">10 Jul 2026</span>
@@ -44,7 +44,7 @@ export default function AccountSummary({ showBalance, onToggleBalance }: Account
           <span>Account no</span>
           <span className="font-medium text-[var(--text-main)]">00108048</span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
