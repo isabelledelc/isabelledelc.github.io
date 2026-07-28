@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import loginHeroBg from '../../../assets/LoginHeroSectionPic.png';
+import forgotPasswordPic from '../../../assets/forgotPasswordPic.jpg';
 
-// ==========================================
-// 1. ANIMATED COUNTER HOOK & COMPONENT
-// ==========================================
 function useAnimatedCounter(endValue: number, duration: number = 2000) {
   const [count, setCount] = useState(0);
 
@@ -15,8 +13,6 @@ function useAnimatedCounter(endValue: number, duration: number = 2000) {
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      
-      // Smooth ease-out cubic curve
       const easeOutProgress = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(easeOutProgress * endValue));
 
@@ -39,22 +35,21 @@ function AnimatedStatsPill() {
 
   return (
     <div className="absolute bottom-0 translate-y-1/2 z-20 left-1/2 -translate-x-1/2 w-full max-w-3xl px-4">
-      <div 
+      <div
         className="rounded-[50px] py-6 sm:py-8 px-6 sm:px-10 shadow-xl flex items-center justify-around text-center border-[3px] transition-colors"
         style={{
           backgroundColor: 'var(--bg-stats-pill)',
           borderColor: 'var(--border-stats-pill)',
         }}
       >
-        {/* Assets Under Management Counter */}
         <div className="flex flex-col items-center">
-          <span 
+          <span
             className="text-3xl sm:text-4xl font-light tracking-tight min-w-[140px]"
             style={{ color: 'var(--text-stats-number)' }}
           >
             RM{aumCount}B+
           </span>
-          <span 
+          <span
             className="text-xs sm:text-sm font-bold mt-2"
             style={{ color: 'var(--text-stats-label)' }}
           >
@@ -62,15 +57,14 @@ function AnimatedStatsPill() {
           </span>
         </div>
 
-        {/* Year Founded Counter */}
         <div className="flex flex-col items-center">
-          <span 
+          <span
             className="text-3xl sm:text-4xl font-light tracking-tight min-w-[100px]"
             style={{ color: 'var(--text-stats-number)' }}
           >
             {yearCount}
           </span>
-          <span 
+          <span
             className="text-xs sm:text-sm font-bold mt-2"
             style={{ color: 'var(--text-stats-label)' }}
           >
@@ -82,28 +76,28 @@ function AnimatedStatsPill() {
   );
 }
 
-// ==========================================
-// 2. HERO SECTION COMPONENT
-// ==========================================
 export default function LoginHeroSection() {
   const [accountType, setAccountType] = useState<'individual' | 'corporate'>('individual');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showForgotModal, setShowForgotModal] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+
+  const handleForgotSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // TODO: send reset email request
+    setShowForgotModal(false);
+  };
 
   return (
     <section id="login" className="relative w-full font-sans">
-      <div 
+      <div
         className="relative min-h-[85vh] w-full bg-cover bg-center pt-36 sm:pt-44 pb-28 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
         style={{ backgroundImage: `url(${loginHeroBg})` }}
       >
-        {/* Darkening tint overlay */}
-        <div 
-          className="absolute inset-0 z-0" 
-          style={{ backgroundColor: 'var(--bg-hero-overlay)' }}
-        />
+        <div className="absolute inset-0 z-0" style={{ backgroundColor: 'var(--bg-hero-overlay)' }} />
 
-        {/* Glassmorphism Login Card */}
-        <div 
+        <div
           className="relative z-10 w-full max-w-xl rounded-3xl p-6 sm:p-10 text-white shadow-2xl backdrop-blur-md transition-all duration-300"
           style={{
             backgroundColor: 'var(--bg-glass-card)',
@@ -116,14 +110,13 @@ export default function LoginHeroSection() {
             <span style={{ color: 'var(--text-hero-accent)' }}>Anytime, Anywhere!</span>
           </h1>
 
-          <p 
+          <p
             className="mx-auto mt-4 max-w-md text-center text-xs sm:text-sm opacity-90 leading-relaxed"
             style={{ color: 'var(--text-hero-subtext)' }}
           >
             Opus Touch is a 24/7 online portal to meet your investment needs. Whether you are on-the-go or simply at home, never miss a beat to fixed income opportunities!
           </p>
 
-          {/* Account Type Selector */}
           <div className="mt-6 flex justify-center items-center gap-6 text-sm font-semibold">
             <button
               type="button"
@@ -155,10 +148,7 @@ export default function LoginHeroSection() {
             </button>
           </div>
 
-          {/* Login Form */}
           <form className="mt-6 flex flex-col gap-3.5" onSubmit={(e) => e.preventDefault()}>
-            
-            {/* Google Sign-in */}
             <button
               type="button"
               className="flex items-center justify-center gap-3 w-full rounded-full py-2.5 px-4 text-sm font-semibold transition-all hover:opacity-90 active:scale-98 cursor-pointer text-white"
@@ -198,9 +188,13 @@ export default function LoginHeroSection() {
             />
 
             <div className="flex justify-end">
-              <a href="#forgot" className="text-xs text-gray-200 hover:underline italic">
+              <button
+                type="button"
+                onClick={() => setShowForgotModal(true)}
+                className="text-xs text-gray-200 hover:underline italic cursor-pointer"
+              >
                 Forgot Password?
-              </a>
+              </button>
             </div>
 
             <Link
@@ -226,9 +220,106 @@ export default function LoginHeroSection() {
           </form>
         </div>
 
-        {/* Animated Pill Overlapping bottom edge */}
         <AnimatedStatsPill />
       </div>
+
+      {/* FORGOT PASSWORD MODAL */}
+      {showForgotModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-xs transition-opacity"
+          style={{ backgroundColor: 'var(--modal-overlay, rgba(15, 23, 42, 0.7))' }}
+        >
+          <div
+            className="relative w-full max-w-md rounded-[32px] p-6 sm:p-8 shadow-2xl transition-all animate-in fade-in zoom-in-95"
+            style={{
+              backgroundColor: 'var(--modal-bg, #ffffff)',
+              color: 'var(--modal-text-primary, #0f172a)',
+              borderColor: 'var(--modal-border, transparent)',
+            }}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setShowForgotModal(false)}
+              className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full text-lg transition-colors cursor-pointer"
+              style={{
+                color: 'var(--modal-close-color, #64748b)',
+                backgroundColor: 'var(--modal-close-bg, transparent)',
+              }}
+              title="Close"
+            >
+              ×
+            </button>
+
+            {/* Illustration/Image Section */}
+            <div className="mb-4 sm:mb-6 flex justify-center">
+              <img
+                src={forgotPasswordPic}
+                alt="Forgot password illustration"
+                className="h-28 sm:h-36 w-auto max-w-full object-contain"
+              />
+            </div>
+
+            {/* Header Text */}
+            <h2 
+              className="text-xl sm:text-2xl font-bold text-center tracking-tight"
+              style={{ color: 'var(--modal-title-color, #1e293b)' }}
+            >
+              Forgot Password? Don’t Worry
+            </h2>
+            <p 
+              className="mt-1.5 text-center text-xs sm:text-sm"
+              style={{ color: 'var(--modal-subtitle-color, #64748b)' }}
+            >
+              Enter your registered email
+            </p>
+
+            {/* Form */}
+            <form onSubmit={handleForgotSubmit} className="mt-6 space-y-4">
+              <input
+                type="email"
+                required
+                value={forgotEmail}
+                onChange={(e) => setForgotEmail(e.target.value)}
+                placeholder="Enter your registered email"
+                className="w-full rounded-2xl border px-4 py-3 text-sm outline-none transition-all focus:ring-2"
+                style={{
+                  backgroundColor: 'var(--modal-input-bg, #ffffff)',
+                  borderColor: 'var(--modal-input-border, #34d399)',
+                  color: 'var(--modal-input-text, #0f172a)',
+                }}
+              />
+
+              <button
+                type="submit"
+                className="w-full rounded-2xl px-4 py-3 text-sm font-semibold text-white transition-all shadow-md active:scale-98 cursor-pointer"
+                style={{
+                  backgroundColor: 'var(--modal-btn-bg, #334155)',
+                  color: 'var(--modal-btn-text, #ffffff)',
+                }}
+              >
+                Reset Password
+              </button>
+            </form>
+
+            {/* Footer Navigation */}
+            <p 
+              className="mt-5 text-center text-xs"
+              style={{ color: 'var(--modal-subtitle-color, #64748b)' }}
+            >
+              Remember your password?{' '}
+              <button
+                type="button"
+                onClick={() => setShowForgotModal(false)}
+                className="font-bold hover:underline cursor-pointer"
+                style={{ color: 'var(--modal-link-color, #10b981)' }}
+              >
+                Login now
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

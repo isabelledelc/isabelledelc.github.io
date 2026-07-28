@@ -78,8 +78,10 @@ export default function Activity() {
   };
 
   return (
-    /* Changed bg-[#9ED382] to the theme design token class bg-app-card / bg-app-bg */
-    <div className="min-h-screen w-full bg-app-card transition-colors duration-300">
+    <div
+      className="min-h-screen w-full transition-colors duration-300 text-app-main"
+      style={{ background: 'var(--bg-page)' }}
+    >
       <Header />
 
       <main className="mx-auto max-w-6xl p-4 md:p-8 space-y-6 pb-16">
