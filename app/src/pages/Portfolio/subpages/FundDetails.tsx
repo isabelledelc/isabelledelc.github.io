@@ -63,15 +63,15 @@ export default function FundDetails() {
           </div>
 
           <div className="p-6 sm:p-8">
-            {/* Tab Switching */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex rounded-full bg-[var(--bg-btn-sec)] p-1.5 shadow-inner">
+            {/* SWIPEABLE TAB CONTAINER ON MOBILE */}
+            <div className="flex justify-center mb-8 w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              <div className="inline-flex items-center rounded-full bg-[var(--bg-btn-sec)] p-1.5 shadow-inner max-w-full overflow-x-auto whitespace-nowrap">
                 {(["History", "Performance", "Value", "Account"] as const).map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
-                    className={`rounded-full px-6 py-2 text-sm font-bold transition-all cursor-pointer ${
+                    className={`whitespace-nowrap rounded-full px-5 sm:px-6 py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                       activeTab === tab
                         ? "bg-[var(--color-primary)] text-white shadow-sm"
                         : "text-[var(--text-muted)] hover:text-[var(--text-main)]"

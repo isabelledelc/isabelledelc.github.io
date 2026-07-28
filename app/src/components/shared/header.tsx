@@ -211,9 +211,9 @@ export default function Header({ variant = 'app' }: HeaderProps) {
       {/* MOBILE FLOATING BOTTOM NAVBAR */}
       {/* Shown only on mobile (< md breakpoint) */}
       <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden max-w-[90vw]">
-        <div className="rounded-full bg-slate-800/80 dark:bg-[#22382c]/90 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-2xl px-3 py-2">
+        
           <NavbarComponent variant={useLandingHeaderStyle ? 'landing' : 'app'} />
-        </div>
+        
       </nav>
     </>
   );
