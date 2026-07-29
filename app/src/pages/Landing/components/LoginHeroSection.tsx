@@ -206,7 +206,7 @@ export default function LoginHeroSection() {
             </Link>
 
             <Link
-              to="/signup"
+              to="/account-type"
               className="w-full rounded-full py-2.5 text-center text-sm font-semibold text-white transition-all border hover:bg-white/10 active:scale-98 no-underline"
               style={{ borderColor: 'var(--border-glass-card)' }}
             >

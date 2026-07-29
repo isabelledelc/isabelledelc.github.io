@@ -39,6 +39,8 @@ import CreateGoal from './pages/Invest/subpages/CreateGoals';
 
 import Placeholder from "./pages/Other Pages/Placeholder";
 
+import AccountType from './pages/Login/subpages/AccountType';
+
 function App() {
   return (
     <BrowserRouter basename="/opustouch">
@@ -49,6 +51,7 @@ function App() {
         
         {/* Onboarding Flow Routes */}
         <Route path="/signup" element={<Signup />} />
+        <Route path="/account-type" element={<AccountType />} />
         <Route path="/signup/email" element={<SignUpEmail />} />
         <Route path="/secret-phrase" element={<SecretPhrasePage />} />
         <Route path="/kyc-onboarding" element={<KYConboarding />} />
