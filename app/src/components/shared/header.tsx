@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef, type ComponentType } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
-import Navbar from '../shared/navbar'; // Adjust path if needed
+import Navbar from '../shared/navbar';
 import logo from '../../assets/logo.png';
-import { Bell, Search, Menu } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
 
 const NavbarComponent = Navbar as ComponentType<{ variant: 'landing' | 'app' }>;
 
@@ -74,6 +72,10 @@ function LogoutIcon() {
   );
 }
 
+type HeaderProps = {
+  variant?: 'landing' | 'app';
+};
+
 export default function Header({ variant = 'app' }: HeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -107,8 +109,8 @@ export default function Header({ variant = 'app' }: HeaderProps) {
 
   return (
     <>
-      {/* TOP HEADER BAR */}
-      <header className="w-full bg-transparent px-4 md:px-6 py-4">
+      {/* TOP HEADER BAR (STICKY) */}
+      <header className="sticky top-0 z-50 w-full bg-transparent px-4 md:px-6 py-4 backdrop-blur-xs transition-colors">
         <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] md:items-end gap-4">
           
           {/* Brand Logo (Always Top Left) */}
@@ -116,7 +118,7 @@ export default function Header({ variant = 'app' }: HeaderProps) {
             <Brand />
           </div>
 
-          {/* Center Navbar (Only rendered in Header on DESKTOP screens) */}
+          {/* Center Navbar (Desktop View) */}
           <div className="hidden md:flex items-center justify-center">
             <NavbarComponent variant={useLandingHeaderStyle ? 'landing' : 'app'} />
           </div>
@@ -159,7 +161,6 @@ export default function Header({ variant = 'app' }: HeaderProps) {
                     className="inline-flex h-12 items-center gap-2.5 rounded-2xl bg-white/70 dark:bg-[#416651]/60 px-3.5 sm:px-4 text-sm font-medium text-slate-800 dark:text-slate-100 backdrop-blur-md border border-white/40 dark:border-white/10 shadow-md transition-colors duration-200 cursor-pointer hover:bg-white/90 dark:hover:bg-[#2b4737]/90 shrink-0"
                   >
                     <span className="h-7 w-7 shrink-0 rounded-full bg-[#9aa0a6]" aria-hidden="true" />
-                    {/* Name is now visible on both mobile and desktop */}
                     <span className="whitespace-nowrap">Name</span>
                     <ChevronDownIcon />
                   </button>
@@ -209,17 +210,9 @@ export default function Header({ variant = 'app' }: HeaderProps) {
       </header>
 
       {/* MOBILE FLOATING BOTTOM NAVBAR */}
-      {/* Shown only on mobile (< md breakpoint) */}
-      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden max-w-[90vw]">
-        
-          <NavbarComponent variant={useLandingHeaderStyle ? 'landing' : 'app'} />
-        
-      </nav>
+      <div className="md:hidden">
+        <NavbarComponent variant={useLandingHeaderStyle ? 'landing' : 'app'} />
+      </div>
     </>
   );
 }
-
-// Define HeaderProps to satisfy TypeScript
-type HeaderProps = {
-  variant?: 'landing' | 'app';
-};
