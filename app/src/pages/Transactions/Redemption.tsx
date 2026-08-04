@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from "../../components/shared/header";
 import { ArrowLeft, Wallet } from "lucide-react";
 
 export default function Redemption() {
+  const navigate = useNavigate();
   const [accountNum, setAccountNum] = useState('7721092384');
   const [selectedFund, setSelectedFund] = useState('OPUS Income Plus Fund');
 
   const handleBack = () => {
-    window.history.back();
+    navigate(-1);
+  };
+
+  const handleProceed = () => {
+    navigate('/transactions/redemption-information');
   };
 
   return (
@@ -202,6 +208,8 @@ export default function Redemption() {
             }}
           >
             <button 
+              type="button"
+              onClick={handleProceed}
               className="w-full sm:w-auto text-white font-semibold py-3 px-16 rounded-xl text-base transition-all shadow-md active:scale-95 cursor-pointer"
               style={{ backgroundColor: "var(--color-primary)" }}
               onMouseEnter={(e) => {

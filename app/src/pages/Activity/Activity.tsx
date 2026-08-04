@@ -4,7 +4,7 @@ import Header from '../../components/shared/header';
 
 // Modular Components
 import ActivitySummary from './components/ActivitySummary';
-import ActivityTab, { type MainTab, type FilterType } from './components/ActivityTab';
+import ActivityTab, { type MainTab, type FilterType, type TransactionFilterType, type StatementFilterType } from './components/ActivityTab';
 import TransactionView, { type Transaction } from './components/TransactionView';
 import StatementView, { type Statement } from './components/StatementView';
 
@@ -63,7 +63,8 @@ export default function Activity() {
   // Defaults to JULY (Index 6)
   const [monthIndex, setMonthIndex] = useState(6); 
   const [activeTab, setActiveTab] = useState<MainTab>('Transaction');
-  const [activeFilter, setActiveFilter] = useState<FilterType>('All');
+  const [transactionFilter, setTransactionFilter] = useState<TransactionFilterType>('All');
+  const [statementFilter, setStatementFilter] = useState<StatementFilterType>('All');
 
   // Modals
   const [showAllTx, setShowAllTx] = useState(false);
@@ -74,6 +75,22 @@ export default function Activity() {
       setMonthIndex((prev) => prev - 1);
     } else if (direction === 'next' && monthIndex < months.length - 1) {
       setMonthIndex((prev) => prev + 1);
+    }
+  };
+
+  const handleTabChange = (tab: MainTab) => {
+    setActiveTab(tab);
+    setTransactionFilter('All');
+    setStatementFilter('All');
+  };
+
+  const activeFilter = activeTab === 'Statement' ? statementFilter : transactionFilter;
+
+  const handleFilterChange = (filter: FilterType) => {
+    if (activeTab === 'Transaction') {
+      setTransactionFilter(filter as TransactionFilterType);
+    } else {
+      setStatementFilter(filter as StatementFilterType);
     }
   };
 
@@ -104,15 +121,15 @@ export default function Activity() {
           <div className="space-y-4">
             <ActivityTab
               activeTab={activeTab}
-              onTabChange={setActiveTab}
+              onTabChange={handleTabChange}
               activeFilter={activeFilter}
-              onFilterChange={setActiveFilter}
+              onFilterChange={handleFilterChange}
             />
 
             {activeTab === 'Transaction' ? (
               <TransactionView
                 transactions={sampleTransactions}
-                activeFilter={activeFilter}
+                activeFilter={transactionFilter}
                 onViewMore={() => setShowAllTx(true)}
                 selectedMonth={months[monthIndex]}
               />

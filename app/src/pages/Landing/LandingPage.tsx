@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../../components/shared/header';
 import Footer from '../../components/shared/footer';
 
@@ -8,10 +9,25 @@ import GettingStartedSection from './components/GettingStartedSection';
 import BenefitsSection from './components/BenefitsSection';
 
 export default function LandingPage() {
+  const location = useLocation();
+
   useEffect(() => {
     document.documentElement.classList.remove('dark');
     document.body.classList.remove('dark');
   }, []);
+
+  useEffect(() => {
+    if (!location.hash) return;
+
+    const sectionId = location.hash.replace('#', '');
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      window.requestAnimationFrame(() => {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [location.hash]);
 
   return (
     <div className="relative w-full min-h-screen font-sans">

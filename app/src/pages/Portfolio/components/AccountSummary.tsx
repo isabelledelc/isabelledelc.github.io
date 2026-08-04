@@ -28,11 +28,11 @@ export default function AccountSummary({ showBalance, onToggleBalance }: Account
           </button>
         </div>
 
-        <div>
+        {/* <div>
           <span className="inline-block rounded-full bg-[var(--bg-pill)] px-3 py-1.5 text-xs font-semibold text-[var(--color-primary)]">
             + 0.2340
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* <div className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 
 import Individual from '../components/Individual';
@@ -42,14 +42,13 @@ export default function AccountType({ onSelectIndividual }: AccountTypeProps) {
           <div className="absolute inset-0 bg-black/10 z-0" />
 
           {/* Back Arrow Button */}
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
+          <Link
+            to="/signup"
             className="relative z-10 w-11 h-11 text-white flex items-center justify-center rounded-full bg-black/15 hover:bg-black/30 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer border border-white/20 shadow-md"
-            aria-label="Go back"
+            aria-label="Go back to sign up"
           >
             <ChevronLeft className="w-8 h-8 stroke-[2.5]" />
-          </button>
+          </Link>
 
           {/* Overlay Watermark/Centered Logo */}
           <div className="relative z-10 my-auto flex justify-center items-center px-4 animate-fade-in">

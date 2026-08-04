@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 
 import grassBg from '../../assets/grass.jpg';
 import logoImg from '../../assets/logo.png';
 
 export default function Signup() {
-  const navigate = useNavigate();
-
   return (
     <div 
       className="min-h-screen w-full flex flex-col font-sans transition-colors"
@@ -27,14 +25,13 @@ export default function Signup() {
         >
           <div className="absolute inset-0 bg-black/10 z-0" />
 
-          <button
-            type="button"
-            onClick={() => navigate('/account-type')}
+          <Link
+            to="/"
             className="relative z-10 w-11 h-11 text-white flex items-center justify-center rounded-full bg-black/15 hover:bg-black/30 transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer border border-white/20 shadow-md"
-            aria-label="Go back to Account Type"
+            aria-label="Go back to landing page"
           >
             <ChevronLeft className="w-8 h-8 stroke-[2.5]" />
-          </button>
+          </Link>
 
           <div className="relative z-10 my-auto flex justify-center items-center px-4 animate-fade-in">
             <img 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Target, Wallet, Calendar, PiggyBank, CreditCard, Building2 } from 'lucide-react';
 import Header from '../../../components/shared/header';
-import Navbar from '../../../components/shared/navbar';
+
 
 export default function CreateGoal() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function CreateGoal() {
   return (
     <div className="min-h-screen w-full bg-app-card transition-colors duration-300">
       <Header />
-      <Navbar />
+  
 
       <main className="mx-auto max-w-5xl p-4 md:p-10">
         <div className="rounded-[32px] bg-app-card border border-app-border shadow-xl backdrop-blur-md overflow-hidden transition-colors duration-300">

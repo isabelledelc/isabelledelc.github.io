@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, CreditCard, Filter, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import Header from "../../../components/shared/header";
-import Navbar from "../../../components/shared/navbar";
 
 const sampleFunds = [
   { id: "1", name: "OPUS INCOME PLUS", code: "OPUS IPF", account: "00108048", type: "Investment" },
@@ -15,7 +14,7 @@ export default function FundDetails() {
   const navigate = useNavigate();
 
   const fund = sampleFunds.find((f) => f.id === id) || sampleFunds[0];
-  const [activeTab, setActiveTab] = useState<"History" | "Performance" | "Value" | "Account">("Performance");
+  const [activeTab, setActiveTab] = useState<"History" | "Performance" | "Value" | "Account">("Value");
   const [valueToggle, setValueToggle] = useState<"current" | "inception">("current");
 
   const handleBack = () => {
@@ -149,92 +148,147 @@ export default function FundDetails() {
               {/* VALUE TAB */}
               {activeTab === "Value" && (
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-bold text-[var(--text-heading)]">
-                      {valueToggle === "current" ? "Current Investment" : "Since Inception"}
+                  
+                  {/* High-Contrast Toggle Switch Bar */}
+                  <div className="flex items-center gap-3 select-none">
+                    <span 
+                      onClick={() => setValueToggle("inception")}
+                      className={`text-xs sm:text-sm font-bold cursor-pointer transition-colors ${
+                        valueToggle === "inception" ? "text-[var(--text-heading)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+                      }`}
+                    >
+                      Since Inception
                     </span>
+
                     <button
                       type="button"
+                      role="switch"
+                      aria-checked={valueToggle === "current"}
                       onClick={() => setValueToggle(valueToggle === "current" ? "inception" : "current")}
-                      className={`relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full transition-colors ${
-                        valueToggle === "inception" ? "bg-[var(--color-primary)]" : "bg-[var(--bg-btn-sec)]"
+                      className={`relative inline-flex h-6 w-12 cursor-pointer items-center rounded-full border-2 border-slate-400/50 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] ${
+                        valueToggle === "current" ? "bg-[var(--color-primary)] border-[var(--color-primary)]" : "bg-slate-300 dark:bg-slate-700"
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                          valueToggle === "inception" ? "translate-x-6" : "translate-x-1"
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-md transition-transform ${
+                          valueToggle === "current" ? "translate-x-6" : "translate-x-1"
                         }`}
                       />
                     </button>
+
+                    <span 
+                      onClick={() => setValueToggle("current")}
+                      className={`text-xs sm:text-sm font-bold cursor-pointer transition-colors ${
+                        valueToggle === "current" ? "text-[var(--text-heading)]" : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+                      }`}
+                    >
+                      Current Investment
+                    </span>
                   </div>
 
+                  {/* CURRENT INVESTMENT VIEW */}
                   {valueToggle === "current" ? (
-                    <div className="rounded-2xl border border-[var(--border-app)] bg-[var(--bg-container)] p-6 space-y-6">
-                      <div className="flex items-start justify-between flex-wrap gap-4">
-                        <div>
-                          <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">Total Value [MV]</p>
-                          <div className="flex items-center gap-3 mt-1">
-                            <span className="text-3xl font-extrabold text-[var(--text-heading)]">MYR 100.15</span>
-                            <span className="rounded-lg bg-[var(--bg-pill)] px-2.5 py-1 text-xs font-bold text-[var(--color-primary)]">
-                              +MYR 0.15 (+0.15%)
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 min-w-[200px]">
-                          <p className="text-xs font-bold text-red-500">Pending Transactions</p>
-                          <p className="text-lg font-extrabold text-red-600 dark:text-red-400">MYR 00.00</p>
-                          <p className="text-[10px] text-red-500 font-medium">No Pending Transactions</p>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-6 pt-4 border-t border-[var(--border-app)] md:grid-cols-4">
-                        <div>
-                          <p className="text-xs font-semibold text-[var(--text-muted)]">Invested Amount</p>
-                          <p className="text-base font-bold text-[var(--text-heading)] mt-0.5">MYR 100.100</p>
-                        </div>
+                    <div className="rounded-2xl border border-[var(--border-app)] bg-[var(--bg-container)] p-6 shadow-xs">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-6">
                         <div>
                           <p className="text-xs font-semibold text-[var(--text-muted)]">Unit Holdings</p>
-                          <p className="text-base font-bold text-[var(--text-heading)] mt-0.5">MYR 100.100</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">90.5089</p>
                         </div>
+
                         <div>
-                          <p className="text-xs font-semibold text-[var(--text-muted)]">Unit Price as of 16/07/2026</p>
-                          <p className="text-base font-bold text-[var(--text-heading)] mt-0.5">MYR 100.100</p>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Unit Price (03/08/2026)</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 1.1057</p>
                         </div>
+
                         <div>
-                          <p className="text-xs font-semibold text-[var(--text-muted)]">Average Cost of Unit</p>
-                          <p className="text-base font-bold text-[var(--text-heading)] mt-0.5">MYR 100.100</p>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Average Cost Per Unit</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 1.1049</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Invested Amount</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 100.00</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Market Value [MV]</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 100.08</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Profit/(Loss)</p>
+                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono-data">MYR 0.08</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Pending Transaction</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 0.00</p>
                         </div>
                       </div>
                     </div>
                   ) : (
-                    <div className="rounded-2xl border border-[var(--border-app)] bg-[var(--bg-container)] p-6 space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    /* SINCE INCEPTION VIEW */
+                    <div className="rounded-2xl border border-[var(--border-app)] bg-[var(--bg-container)] p-6 shadow-xs space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-6">
                         <div>
-                          <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">Total Net Investment</p>
-                          <p className="text-3xl font-extrabold text-[var(--text-heading)] mt-1">MYR 100.15</p>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Total Investment [I]</p>
+                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono-data flex items-center gap-1.5">
+                            <span className="text-xs rounded-full bg-emerald-100 dark:bg-emerald-950 px-1">⊕</span> MYR 100.00
+                          </p>
                         </div>
+
                         <div>
-                          <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">Total Return</p>
-                          <p className="text-3xl font-extrabold text-[var(--text-heading)] mt-1">MYR 100.15</p>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Total Withdrawal [W]</p>
+                          <p className="text-sm sm:text-base font-bold text-rose-600 dark:text-rose-400 mt-1 font-mono-data flex items-center gap-1.5">
+                            <span className="text-xs rounded-full bg-rose-100 dark:bg-rose-950 px-1">⊖</span> MYR 0.00
+                          </p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Distribution (Payout) [P]</p>
+                          <p className="text-sm sm:text-base font-bold text-rose-600 dark:text-rose-400 mt-1 font-mono-data flex items-center gap-1.5">
+                            <span className="text-xs rounded-full bg-rose-100 dark:bg-rose-950 px-1">⊖</span> MYR (0.31)
+                          </p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Distribution (Reinvested) [R]</p>
+                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono-data flex items-center gap-1.5">
+                            <span className="text-xs rounded-full bg-emerald-100 dark:bg-emerald-950 px-1">⊕</span> MYR 0.31
+                          </p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Total Net Investment [NI]</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 100.00</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Current Market Value [MV]</p>
+                          <p className="text-sm sm:text-base font-bold text-[var(--text-heading)] mt-1 font-mono-data">MYR 100.08</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--text-muted)]">Total Return [RTN]</p>
+                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono-data">MYR 0.08</p>
                         </div>
                       </div>
 
-                      <div className="rounded-xl bg-[var(--bg-card)] p-4 border border-[var(--border-app)] text-xs text-[var(--text-main)] space-y-3">
-                        <div className="flex flex-wrap items-center justify-between gap-2 font-medium">
-                          <span>Total Investment [I]: <strong>MYR 100.100</strong></span>
-                          <span>-</span>
-                          <span>Total Withdrawal [W]: <strong>MYR 100.100</strong></span>
-                          <span>-</span>
-                          <span>Distribution (Payout) [P]: <strong>MYR 100.100</strong></span>
-                          <span>+</span>
-                          <span>Distribution (Reinvested) [R]: <strong>MYR 100.100</strong></span>
-                          <span>=</span>
-                          <span className="font-bold text-[var(--text-heading)]">Total Net Investment [NI]</span>
+                      {/* Formula / Legend Notes */}
+                      <div className="pt-5 border-t border-[var(--border-app)] text-xs text-[var(--text-muted)] grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <p className="font-semibold text-[var(--text-heading)] mb-1">Notes:</p>
+                          <p className="text-[11px]">Total Net Investment</p>
+                          <p className="font-bold text-[var(--text-heading)] text-[11px] font-mono-data">[NI] = [I] - [W] - [P] + [R]</p>
+                        </div>
+                        <div className="md:pt-5">
+                          <p className="text-[11px]">Total Return</p>
+                          <p className="font-bold text-[var(--text-heading)] text-[11px] font-mono-data">[RTN] = [MV] - [NI]</p>
                         </div>
                       </div>
                     </div>
                   )}
+
                 </div>
               )}
 
@@ -267,8 +321,8 @@ export default function FundDetails() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs text-[var(--text-muted)]">03/07 | 09:33:50 AM</p>
-                        <p className="text-sm font-bold text-[var(--text-heading)]">100.00 MYR</p>
+                        <p className="text-xs text-[var(--text-muted)] font-mono-data">03/07 | 09:33:50 AM</p>
+                        <p className="text-sm font-bold text-[var(--text-heading)] font-mono-data">100.00 MYR</p>
                       </div>
                     </div>
                   </div>

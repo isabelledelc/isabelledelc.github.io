@@ -113,6 +113,19 @@ export default function KYConboarding() {
   const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, totalSteps));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
+  const handleBack = () => {
+    if (currentStep > 1) {
+      prevStep();
+      return;
+    }
+
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   // Trigger success modal on final submission from Summary
   const handleCompleteForm = () => {
     setShowSuccessModal(true);
@@ -138,13 +151,8 @@ export default function KYConboarding() {
             <div className="flex items-center px-6 py-5 border-b border-slate-100">
               <button
                 type="button"
-                onClick={prevStep}
-                disabled={currentStep === 1}
-                className={`p-2 rounded-xl transition ${
-                  currentStep === 1
-                    ? "opacity-30 cursor-not-allowed text-slate-400"
-                    : "hover:bg-slate-100 text-slate-800 cursor-pointer"
-                }`}
+                onClick={handleBack}
+                className="p-2 rounded-xl transition hover:bg-slate-100 text-slate-800 cursor-pointer"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import Header from '../../../components/shared/header';
 import Navbar from '../../../components/shared/navbar';
 
@@ -20,13 +20,17 @@ export default function ViewAllMyFunds() {
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-[var(--text-heading)]">All My Funds</h1>
-          <button
-            onClick={() => navigate('/portfolio')}
-            className="rounded-lg border border-[var(--border-app)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-main)] transition hover:bg-[var(--bg-card-hover)] cursor-pointer"
-          >
-            Back to Portfolio
-          </button>
+          <div className="flex items-center gap-3">
+            {/* Back Button with ChevronLeft Icon */}
+            <button
+              onClick={() => navigate(-1)}
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-app)] bg-[var(--bg-card)] text-[var(--text-main)] transition hover:bg-[var(--bg-card-hover)] cursor-pointer"
+              aria-label="Go back"
+            >
+              <ChevronLeft className="h-6 w-6 text-[var(--text-main)]" />
+            </button>
+            <h1 className="text-2xl font-bold text-[var(--text-heading)]">All My Funds</h1>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-[var(--border-app)] bg-[var(--bg-card)] p-6 shadow-sm backdrop-blur-md">

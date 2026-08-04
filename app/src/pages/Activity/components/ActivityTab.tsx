@@ -1,7 +1,9 @@
 import React from 'react';
 
 export type MainTab = 'Transaction' | 'Statement';
-export type FilterType = 'All' | 'Top Up' | 'Switch' | 'Redemption';
+export type TransactionFilterType = 'All' | 'Top Up' | 'Switch' | 'Redemption';
+export type StatementFilterType = 'All' | '1 Month' | '3 Months' | '6 Months';
+export type FilterType = TransactionFilterType | StatementFilterType;
 
 interface ActivityTabProps {
   activeTab: MainTab;
@@ -10,7 +12,8 @@ interface ActivityTabProps {
   onFilterChange: (filter: FilterType) => void;
 }
 
-const filterOptions: FilterType[] = ['All', 'Top Up', 'Switch', 'Redemption'];
+const transactionFilters: TransactionFilterType[] = ['All', 'Top Up', 'Switch', 'Redemption'];
+const statementFilters: StatementFilterType[] = ['All', '1 Month', '3 Months', '6 Months'];
 
 export default function ActivityTab({
   activeTab,
@@ -18,6 +21,7 @@ export default function ActivityTab({
   activeFilter,
   onFilterChange,
 }: ActivityTabProps) {
+  const filterOptions = activeTab === 'Statement' ? statementFilters : transactionFilters;
   return (
     <div className="space-y-4">
       {/* Top Main Tab Headers */}

@@ -90,7 +90,7 @@ export default function LoginHeroSection() {
   };
 
   return (
-    <section id="login" className="relative w-full font-sans">
+    <section id="login-hero" className="relative w-full font-sans">
       <div
         className="relative min-h-[85vh] w-full bg-cover bg-center pt-36 sm:pt-44 pb-28 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
         style={{ backgroundImage: `url(${loginHeroBg})` }}
@@ -206,7 +206,7 @@ export default function LoginHeroSection() {
             </Link>
 
             <Link
-              to="/account-type"
+              to="/signup"
               className="w-full rounded-full py-2.5 text-center text-sm font-semibold text-white transition-all border hover:bg-white/10 active:scale-98 no-underline"
               style={{ borderColor: 'var(--border-glass-card)' }}
             >
@@ -214,8 +214,8 @@ export default function LoginHeroSection() {
             </Link>
 
             <div className="mt-2 flex justify-center gap-6 text-xs text-gray-200">
-              <a href="#faq" className="hover:underline italic">FAQ</a>
-              <a href="#terms" className="hover:underline italic">Terms and Conditions</a>
+              <Link to="/faq" className="hover:underline italic">FAQ</Link>
+              <Link to="/terms-and-conditions" className="hover:underline italic">Terms and Conditions</Link>
             </div>
           </form>
         </div>

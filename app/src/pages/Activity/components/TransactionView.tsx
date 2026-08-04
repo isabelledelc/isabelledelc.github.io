@@ -1,7 +1,6 @@
 import React from 'react';
 import { PlusCircle, ArrowLeftRight, ArrowDownRight } from 'lucide-react';
-
-export type FilterType = 'All' | 'Top Up' | 'Switch' | 'Redemption';
+import type { TransactionFilterType } from './ActivityTab';
 
 export interface Transaction {
   id: string;
@@ -14,7 +13,7 @@ export interface Transaction {
 
 interface TransactionViewProps {
   transactions: Transaction[];
-  activeFilter: FilterType;
+  activeFilter: TransactionFilterType;
   onViewMore: () => void;
   selectedMonth: string;
 }

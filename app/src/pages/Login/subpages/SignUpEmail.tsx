@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../../../components/shared/header';
 import ErrorPopup from '../components/ErrorPopup';
 
 export default function SignUpEmail() {
@@ -62,8 +61,6 @@ export default function SignUpEmail() {
 
     return (
         <div className="min-h-screen w-full bg-white flex flex-col">
-            <Header />
-
             <main className="flex-1 flex flex-col px-6 py-8 max-w-5xl mx-auto w-full">
                 {/* Top bar with back navigation and title */}
                 <div className="flex items-center gap-4 mb-10">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChevronDown, ArrowLeft } from 'lucide-react';
 // import Header from '../../components/shared/header';
 
@@ -42,6 +42,8 @@ const faqDataList: FAQData[] = [
 ];
 
 export default function FAQ() {
+  const navigate = useNavigate();
+
   // Track open state (-1 means all closed, or pass index number)
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -56,13 +58,14 @@ export default function FAQ() {
       <main className="flex-1 min-h-0 max-w-5xl w-full mx-auto px-4 py-6 sm:px-8 flex flex-col">
         {/* Page Header */}
         <div className="mb-6 flex items-center gap-4">
-          <Link
-            to="/signup"
-            className="p-2.5 rounded-xl bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 transition shadow-xs flex items-center justify-center"
-            aria-label="Go back"
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="p-2.5 rounded-xl bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200 transition shadow-xs flex items-center justify-center cursor-pointer"
+            aria-label="Go back to previous page"
           >
             <ArrowLeft className="w-6 h-6 stroke-[2.5]" />
-          </Link>
+          </button>
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Frequently Asked Questions

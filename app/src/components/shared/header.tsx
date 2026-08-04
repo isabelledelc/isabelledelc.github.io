@@ -107,6 +107,24 @@ export default function Header({ variant = 'app' }: HeaderProps) {
     navigate('/'); // Redirect to landing page
   };
 
+  const handleLandingLoginClick = () => {
+    if (location.pathname === '/') {
+      const loginSection = document.getElementById('login-hero');
+      if (loginSection) {
+        loginSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+
+    navigate('/');
+    setTimeout(() => {
+      const loginSection = document.getElementById('login-hero');
+      if (loginSection) {
+        loginSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   return (
     <>
       {/* TOP HEADER BAR (STICKY) */}
@@ -126,12 +144,13 @@ export default function Header({ variant = 'app' }: HeaderProps) {
           {/* Control Pills (Theme, Notifications, Profile) */}
           <div className="flex items-center justify-end gap-2 sm:gap-3">
             {useLandingHeaderStyle ? (
-              <Link
-                to="/#login"
-                className="inline-flex h-12 items-center justify-center rounded-2xl bg-white/75 dark:bg-[#416651]/65 px-6 text-sm font-semibold text-slate-800 dark:text-slate-100 no-underline backdrop-blur-md border border-white/40 dark:border-white/15 shadow-md transition-all hover:bg-white/90 dark:hover:bg-[#2b4737]/90 active:scale-95 shrink-0"
+              <button
+                type="button"
+                onClick={handleLandingLoginClick}
+                className="inline-flex h-12 items-center justify-center rounded-2xl bg-white/75 dark:bg-[#416651]/65 px-6 text-sm font-semibold text-slate-800 dark:text-slate-100 no-underline backdrop-blur-md border border-white/40 dark:border-white/15 shadow-md transition-all hover:bg-white/90 dark:hover:bg-[#2b4737]/90 active:scale-95 shrink-0 cursor-pointer"
               >
                 Login
-              </Link>
+              </button>
             ) : (
               <>
                 {/* Theme Toggle (Desktop Only) */}

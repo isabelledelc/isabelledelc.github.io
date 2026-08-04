@@ -18,11 +18,11 @@ const settingsLinks = [
     href: '/settings/bank-account',
     icon: Landmark,
   },
-  {
-    title: 'Notification Settings',
-    href: '/settings/notifications',
-    icon: Bell,
-  },
+  // {
+  //   title: 'Notification Settings',
+  //   href: '/settings/notifications',
+  //   icon: Bell,
+  // },
   {
     title: 'Contact Us',
     href: '/settings/contact-us',

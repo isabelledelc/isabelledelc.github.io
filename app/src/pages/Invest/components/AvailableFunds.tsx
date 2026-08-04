@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight, TrendingUp } from 'lucide-react';
+import { ExternalLink, TrendingUp } from 'lucide-react';
 
 interface Fund {
   id: string;
   name: string;
   code: string;
+  externalUrl?: string;
 }
 
 interface AvailableFundsProps {
@@ -13,6 +14,8 @@ interface AvailableFundsProps {
   wholesaleFunds: Fund[];
   onViewAllClick: () => void;
 }
+
+const DEFAULT_FUND_URL = "https://www.opusasset.com/products/unit-trust-funds/opus-allocation-fund-class-a/";
 
 export default function AvailableFunds({
   retailFunds,
@@ -25,16 +28,13 @@ export default function AvailableFunds({
   const funds = activeTab === 'Retail' ? retailFunds : wholesaleFunds;
 
   const handleInvestNow = (e: React.MouseEvent, fund: Fund) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevents triggering the card's external link
     navigate('/top-up', { state: { selectedFund: fund } });
   };
 
-  const handleCardClick = (fundId: string) => {
-    if (activeTab === 'Wholesale') {
-      navigate('/placeholder');
-    } else {
-      navigate(`/invest/subpages/view-fund-details?fundId=${fundId}`);
-    }
+  const handleCardClick = (fund: Fund) => {
+    const targetUrl = fund.externalUrl || DEFAULT_FUND_URL;
+    window.open(targetUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -74,7 +74,7 @@ export default function AvailableFunds({
           {funds.slice(0, 3).map((fund) => (
             <div
               key={fund.id}
-              onClick={() => handleCardClick(fund.id)}
+              onClick={() => handleCardClick(fund)}
               className="p-4 rounded-2xl bg-app-pill border border-app-border hover:border-app-border-interactive hover:bg-app-card/60 transition-all duration-200 cursor-pointer flex items-center justify-between group shadow-sm hover:shadow-md"
             >
               {/* Left Side: Icon & Info */}
@@ -92,20 +92,22 @@ export default function AvailableFunds({
                 </div>
               </div>
 
-              {/* Right Side: Tab-Specific Actions */}
-              {activeTab === 'Retail' ? (
-                <button
-                  type="button"
-                  onClick={(e) => handleInvestNow(e, fund)}
-                  className="px-3.5 py-1.5 bg-app-primary text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-sm"
-                >
-                  Invest Now
-                </button>
-              ) : (
+              {/* Right Side: Actions */}
+              <div className="flex items-center gap-2">
+                {activeTab === 'Retail' && (
+                  <button
+                    type="button"
+                    onClick={(e) => handleInvestNow(e, fund)}
+                    className="px-3.5 py-1.5 bg-app-primary text-white text-xs font-bold rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-sm"
+                  >
+                    Invest Now
+                  </button>
+                )}
+
                 <div className="p-1 rounded-lg text-app-muted group-hover:text-app-primary transition-colors">
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
