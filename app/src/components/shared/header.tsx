@@ -85,7 +85,7 @@ export default function Header({ variant = 'app' }: HeaderProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const appRoutePrefixes = ['/home', '/portfolio', '/invest', '/activity', '/settings', '/market-commentary', '/transactions', '/fund-fact-sheet', '/funds'];
+  const appRoutePrefixes = ['/home', '/portfolio', '/invest', '/activity', '/settings', '/market-commentary', '/transactions', '/fund-fact-sheet', '/funds' , '/top-up'];
   const isInAppPage = appRoutePrefixes.some(
     (routePrefix) => location.pathname === routePrefix || location.pathname.startsWith(`${routePrefix}/`)
   );
