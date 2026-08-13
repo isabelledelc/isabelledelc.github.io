@@ -50,7 +50,7 @@ import TransactionConfirm from "./pages/Transactions/TransactionConfirm";
 
 function App() {
   return (
-    <BrowserRouter basename="/opustouch">
+    <BrowserRouter>
       <Routes>
         {/* Public & Landing Routes */}
         <Route path="/" element={<LandingPage />} />
