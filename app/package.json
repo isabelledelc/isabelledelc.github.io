@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Ry4n520.github.io/opustouch",
+  "homepage": "https://isabelledelc.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
